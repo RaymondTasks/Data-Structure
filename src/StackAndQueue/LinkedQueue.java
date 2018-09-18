@@ -4,23 +4,23 @@ import StackAndQueue.Exceptions.EmptyQueueException;
 
 public class LinkedQueue<T> implements Queue<T> {
 
-    private class node {
+    protected class node {
         private T element;
         private node next;
 
-        private T getElement() {
+        public T getElement() {
             return element;
         }
 
-        private node getNext() {
+        public node getNext() {
             return next;
         }
 
-        private void setNext(node next) {
+        public void setNext(node next) {
             this.next = next;
         }
 
-        node(T element, node next) {
+        public node(T element, node next) {
             this.element = element;
             this.next = next;
         }

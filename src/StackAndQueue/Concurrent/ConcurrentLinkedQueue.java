@@ -10,27 +10,27 @@ public class ConcurrentLinkedQueue<T> extends LinkedQueue<T> {
     private ReentrantReadWriteLock.ReadLock readLock;
     private ReentrantReadWriteLock.WriteLock writeLock;
 
-    private class node {
-        private T element;
-        private node next;
-
-        private T getElement() {
-            return element;
-        }
-
-        private node getNext() {
-            return next;
-        }
-
-        private void setNext(node next) {
-            this.next = next;
-        }
-
-        node(T element, node next) {
-            this.element = element;
-            this.next = next;
-        }
-    }
+//    private class node {
+//        private T element;
+//        private node next;
+//
+//        private T getElement() {
+//            return element;
+//        }
+//
+//        private node getNext() {
+//            return next;
+//        }
+//
+//        private void setNext(node next) {
+//            this.next = next;
+//        }
+//
+//        node(T element, node next) {
+//            this.element = element;
+//            this.next = next;
+//        }
+//    }
 
     private node front, rear;
 

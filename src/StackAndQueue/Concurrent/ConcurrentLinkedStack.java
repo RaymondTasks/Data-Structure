@@ -10,23 +10,23 @@ public class ConcurrentLinkedStack<T> extends LinkedStack<T> {
     private ReentrantReadWriteLock.ReadLock readLock;
     private ReentrantReadWriteLock.WriteLock writeLock;
 
-    private class node {
-        private T element;
-        private node next;
-
-        node(T element, node next) {
-            this.element = element;
-            this.next = next;
-        }
-
-        private T getElement() {
-            return element;
-        }
-
-        private node getNext() {
-            return next;
-        }
-    }
+//    private class node {
+//        private T element;
+//        private node next;
+//
+//        node(T element, node next) {
+//            this.element = element;
+//            this.next = next;
+//        }
+//
+//        private T getElement() {
+//            return element;
+//        }
+//
+//        private node getNext() {
+//            return next;
+//        }
+//    }
 
     private node top;
 

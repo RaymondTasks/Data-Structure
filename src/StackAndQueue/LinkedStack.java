@@ -3,20 +3,20 @@ package StackAndQueue;
 import StackAndQueue.Exceptions.EmptyStackException;
 
 public class LinkedStack<T> implements Stack<T> {
-    private class node {
+    protected class node {
         private T element;
         private node next;
 
-        node(T element, node next) {
+        public node(T element, node next) {
             this.element = element;
             this.next = next;
         }
 
-        private T getElement() {
+        public T getElement() {
             return element;
         }
 
-        private node getNext() {
+        public node getNext() {
             return next;
         }
     }
@@ -59,7 +59,7 @@ public class LinkedStack<T> implements Stack<T> {
     }
 
     @Override
-    public T pop(){
+    public T pop() {
         if (top == null) {
             throw new EmptyStackException();
         } else {
@@ -70,7 +70,7 @@ public class LinkedStack<T> implements Stack<T> {
     }
 
     @Override
-    public T getTop(){
+    public T getTop() {
         if (top == null) {
             throw new EmptyStackException();
         } else {
