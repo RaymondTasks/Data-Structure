@@ -1,4 +1,4 @@
 package StackAndQueue.Exceptions;
 
-public class IlleaglePriorityException extends RuntimeException {
+public class IlleagleQueuePriorityException extends RuntimeException {
 }

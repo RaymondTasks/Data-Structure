@@ -1,7 +1,7 @@
 package StackAndQueue;
 
 import StackAndQueue.Exceptions.EmptyQueuePriorityException;
-import StackAndQueue.Exceptions.IlleaglePriorityException;
+import StackAndQueue.Exceptions.IlleagleQueuePriorityException;
 import StackAndQueue.Exceptions.EmptyQueueException;
 
 public class PriorityLinkedQueue<T> extends LinkedQueue<T> {
@@ -54,7 +54,7 @@ public class PriorityLinkedQueue<T> extends LinkedQueue<T> {
 
     public T getTail(int priority) {
         if (priority < 0 || priority >= priorityLevel) {
-            throw new IlleaglePriorityException();
+            throw new IlleagleQueuePriorityException();
         } else {
             T ret;
             try {
@@ -84,7 +84,7 @@ public class PriorityLinkedQueue<T> extends LinkedQueue<T> {
 
     public T getHead(int priority) {
         if (priority < 0 || priority >= priorityLevel) {
-            throw new IlleaglePriorityException();
+            throw new IlleagleQueuePriorityException();
         } else {
             T ret;
             try {
@@ -103,7 +103,7 @@ public class PriorityLinkedQueue<T> extends LinkedQueue<T> {
 
     public void add(T element, int priority) {
         if (priority < 0 || priority >= priorityLevel) {
-            throw new IlleaglePriorityException();
+            throw new IlleagleQueuePriorityException();
         } else {
             queue[priority].add(element);
         }
@@ -126,7 +126,7 @@ public class PriorityLinkedQueue<T> extends LinkedQueue<T> {
 
     public T get(int priority) {
         if (priority < 0 || priority >= priorityLevel) {
-            throw new IlleaglePriorityException();
+            throw new IlleagleQueuePriorityException();
         } else {
             if (queue[priority].isEmpty()) {
                 throw new EmptyQueuePriorityException();
@@ -151,7 +151,7 @@ public class PriorityLinkedQueue<T> extends LinkedQueue<T> {
 
     public void clear(int priority) {
         if (priority < 0 || priority >= priorityLevel) {
-            throw new IlleaglePriorityException();
+            throw new IlleagleQueuePriorityException();
         } else {
             queue[priority].clear();
         }
