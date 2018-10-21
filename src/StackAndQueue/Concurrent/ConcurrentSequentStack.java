@@ -2,7 +2,7 @@ package StackAndQueue.Concurrent;
 
 import StackAndQueue.Exceptions.EmptyStackException;
 import StackAndQueue.Exceptions.StackOverflowException;
-import StackAndQueue.SequentStack;
+import Stack.SequentStack;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 

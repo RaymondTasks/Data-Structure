@@ -1,4 +1,4 @@
-package StackAndQueue;
+package Stack;
 
 import StackAndQueue.Exceptions.EmptyStackException;
 

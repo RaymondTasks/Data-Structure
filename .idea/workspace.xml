@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5665599a-aab1-4e47-b713-cd58eb86aa12" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/StackAndQueue/Exceptions/EmptyQueuePriorityException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/StackAndQueue/Exceptions/IlleaglePriorityException.java" afterDir="false" />
+    <list default="true" id="5665599a-aab1-4e47-b713-cd58eb86aa12" name="Default Changelist" comment="2018.10.22 Start refactoring @ Digital electronics Lesson">
+      <change afterPath="$PROJECT_DIR$/src/Lab1/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab1/Polynomial.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/List/Exceptions/IlleagleListCapacityException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/List/Exceptions/IndexOutOfBoundsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/List/Exceptions/ListOverflowException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/List/LinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/List/List.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/List/SequentList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/List/StaticLinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StackAndQueue/OrderedLinkedQueue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/String/String.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lab2/Elevator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lab2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/Concurrent/ConcurrentLinkedQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StackAndQueue/Concurrent/ConcurrentLinkedQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/README.MD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataStruct_Java/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DataStruct_Java/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/Concurrent/ConcurrentLinkedQueue$node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/Concurrent/ConcurrentLinkedQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/Concurrent/ConcurrentLinkedQueue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/Concurrent/ConcurrentLinkedStack$node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/Concurrent/ConcurrentLinkedStack.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/Concurrent/ConcurrentLinkedStack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/LinkedQueue$node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/LinkedQueue$node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/LinkedQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/LinkedQueue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/LinkedStack$node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/LinkedStack$node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/LinkedStack.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DataStruct_Java/StackAndQueue/LinkedStack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StackAndQueue/Concurrent/ConcurrentLinkedStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StackAndQueue/Concurrent/ConcurrentLinkedStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/Concurrent/PriorityOutOfBoundsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/Concurrent/ConcurrentSequentStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StackAndQueue/Concurrent/ConcurrentSequentStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/Exceptions/EmptyQueueException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/Exceptions/EmptyQueuePriorityException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/Exceptions/EmptyStackException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/Exceptions/IlleagleQueuePriorityException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/Exceptions/QueueOverflowException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/Exceptions/StackOverflowException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StackAndQueue/LinkedQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StackAndQueue/LinkedQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/LinkedStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StackAndQueue/LinkedStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/PriorityLinkedQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StackAndQueue/PriorityLinkedQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/LinkedStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Stack/LinkedStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/PriorityLinkedQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/SequentStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Stack/SequentStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StackAndQueue/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Stack/Stack.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,34 +53,43 @@
     <session id="-1535266307">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.3" value="1" />
-          <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.closed" value="21" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.3" value="3" />
+          <entry key="project.open.time.4" value="9" />
+          <entry key="project.open.time.5" value="3" />
+          <entry key="project.open.time.6" value="3" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="10" />
+          <entry key="MD" value="1" />
+          <entry key="java" value="40" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="10" />
+          <entry key="JAVA" value="40" />
+          <entry key="Markdown" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="57" />
-          <entry key="java" value="2315" />
-          <entry key="txt" value="117" />
+          <entry key="MD" value="98" />
+          <entry key="dummy" value="70" />
+          <entry key="java" value="21266" />
+          <entry key="txt" value="199" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2315" />
-          <entry key="PLAIN_TEXT" value="174" />
+          <entry key="JAVA" value="21266" />
+          <entry key="Markdown" value="98" />
+          <entry key="PLAIN_TEXT" value="269" />
         </counts>
       </usages-collector>
     </session>
@@ -58,42 +97,35 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/StackAndQueue/CircleQueue.java">
+        <entry file="file://$PROJECT_DIR$/src/List/SequentList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/StackAndQueue/PriorityLinkedQueue.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="921">
-              <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
+            <state relative-caret-position="300">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1863#1864#0" expanded="true" />
-                <element signature="e#1900#1901#0" expanded="true" />
+                <element signature="e#320#321#0" expanded="true" />
+                <element signature="e#347#348#0" expanded="true" />
+                <element signature="e#522#523#0" expanded="true" />
+                <element signature="e#550#551#0" expanded="true" />
+                <element signature="e#596#597#0" expanded="true" />
+                <element signature="e#624#625#0" expanded="true" />
+                <element signature="e#668#669#0" expanded="true" />
+                <element signature="e#692#693#0" expanded="true" />
+                <element signature="e#738#739#0" expanded="true" />
+                <element signature="e#762#763#0" expanded="true" />
+                <element signature="e#810#811#0" expanded="true" />
+                <element signature="e#837#838#0" expanded="true" />
+                <element signature="e#884#885#0" expanded="true" />
+                <element signature="e#920#921#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/StackAndQueue/LinkedQueue.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/List/List.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="920">
-              <caret line="56" column="13" lean-forward="true" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+            <state relative-caret-position="300">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
@@ -103,9 +135,23 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>position</find>
+      <find>ength</find>
+      <find>length</find>
+      <find>tail</find>
+      <find>long</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>count</replace>
+      <replace>int</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -113,32 +159,79 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/StackAndQueue/Concurrent/ConcurrentLinkedQueue.java" />
         <option value="$PROJECT_DIR$/src/StackAndQueue/Concurrent/ConcurrentLinkedStack.java" />
         <option value="$PROJECT_DIR$/src/StackAndQueue/LinkedStack.java" />
         <option value="$PROJECT_DIR$/src/StackAndQueue/PriorityQueue.java" />
-        <option value="$PROJECT_DIR$/src/StackAndQueue/LinkedQueue.java" />
         <option value="$PROJECT_DIR$/src/StackAndQueue/Concurrent/PriorityOutOfIndexException.java" />
         <option value="$PROJECT_DIR$/src/StackAndQueue/Concurrent/PriorityOutOfBoundException.java" />
         <option value="$PROJECT_DIR$/src/StackAndQueue/Exceptions/EmptyQueuePriorityException.java" />
         <option value="$PROJECT_DIR$/src/StackAndQueue/PriorityLinkedQueue.java" />
+        <option value="$PROJECT_DIR$/src/List/Exceptions/IndexOutOfBoundsException.java" />
+        <option value="$PROJECT_DIR$/README.MD" />
+        <option value="$PROJECT_DIR$/src/List/Exceptions/ListOverflowException.java" />
+        <option value="$PROJECT_DIR$/src/List/Exceptions/IlleagleListCapacityException.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Test.java" />
+        <option value="$PROJECT_DIR$/src/List/Exceptions/LinkedList.java" />
+        <option value="$PROJECT_DIR$/src/List/StaticLinkedList.java" />
+        <option value="$PROJECT_DIR$/src/Lab01/Polynomial.java" />
+        <option value="$PROJECT_DIR$/src/Lab01/Main.java" />
+        <option value="$PROJECT_DIR$/src/lab2/Main.java" />
+        <option value="$PROJECT_DIR$/src/lab2/Passenger.java" />
+        <option value="$PROJECT_DIR$/src/StackAndQueue/LinkedQueue.java" />
+        <option value="$PROJECT_DIR$/src/StackAndQueue/OrderedLinkedQueue.java" />
+        <option value="$PROJECT_DIR$/src/lab2/Elevator.java" />
+        <option value="$PROJECT_DIR$/src/List/List.java" />
+        <option value="$PROJECT_DIR$/src/List/SequentList.java" />
+        <option value="$PROJECT_DIR$/src/List/LinkedList.java" />
       </list>
     </option>
   </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="#JAVA_HOME" />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="-426" />
-    <option name="width" value="1096" />
-    <option name="height" value="1906" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>InternationalizationJava</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>OSGi</id>
+          </State>
+          <State>
+            <id>Properties Files</id>
+          </State>
+          <State>
+            <id>Properties FilesJava</id>
+          </State>
+          <State>
+            <id>UI Form</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -155,30 +248,46 @@
               <item name="DataStruct_Java" type="b2602c69:ProjectViewProjectNode" />
               <item name="DataStruct_Java" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="StackAndQueue" type="462c0819:PsiDirectoryNode" />
+              <item name="Lab1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DataStruct_Java" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DataStruct_Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lab2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DataStruct_Java" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DataStruct_Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="List" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DataStruct_Java" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DataStruct_Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Stack" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DataStruct_Java" type="b2602c69:ProjectViewProjectNode" />
               <item name="DataStruct_Java" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="StackAndQueue" type="462c0819:PsiDirectoryNode" />
-              <item name="Concurrent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DataStruct_Java" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DataStruct_Java" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="StackAndQueue" type="462c0819:PsiDirectoryNode" />
-              <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="switch&#9;ACTION&#9;SwitchBootJdk" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
@@ -195,8 +304,17 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="ALTERNATIVE_JRE_PATH" value="JDK 11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Lab1.Main" />
       <module name="DataStruct_Java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -219,7 +337,26 @@
       <updated>1537259497254</updated>
       <workItem from="1537259500056" duration="811000" />
       <workItem from="1537260781799" duration="2305000" />
-      <workItem from="1537267110448" duration="2312000" />
+      <workItem from="1537267110448" duration="2367000" />
+      <workItem from="1537322016947" duration="733000" />
+      <workItem from="1537330155561" duration="11869000" />
+      <workItem from="1537788248563" duration="1196000" />
+      <workItem from="1537972351222" duration="86000" />
+      <workItem from="1537972461574" duration="1728000" />
+      <workItem from="1538114547470" duration="166000" />
+      <workItem from="1538114739067" duration="359000" />
+      <workItem from="1538376200793" duration="273000" />
+      <workItem from="1538572911962" duration="16000" />
+      <workItem from="1539071973251" duration="4709000" />
+      <workItem from="1539076714591" duration="19565000" />
+      <workItem from="1539108330788" duration="2803000" />
+      <workItem from="1539346262584" duration="627000" />
+      <workItem from="1539585737542" duration="4203000" />
+      <workItem from="1539695683305" duration="5582000" />
+      <workItem from="1539775766661" duration="31495000" />
+      <workItem from="1539933150078" duration="1271000" />
+      <workItem from="1539911369216" duration="175000" />
+      <workItem from="1540147177831" duration="3267000" />
     </task>
     <task id="LOCAL-00001" summary="Finished stack and queue, including normal adn concurrent.">
       <created>1537259723890</created>
@@ -235,33 +372,39 @@
       <option name="project" value="LOCAL" />
       <updated>1537259756854</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="2018.9.18 @dormitory">
+      <created>1537269474745</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1537269474745</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5428000" />
+    <option name="totallyTimeSpent" value="95606000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-426" width="1096" height="1906" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21332046" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21055438" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32975295" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297572" />
+      <window_info anchor="bottom" id="Cvs" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="4" />
+      <window_info anchor="bottom" id="Database Changes" order="5" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="6" weight="0.32939914" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.8625134" />
+      <window_info anchor="bottom" id="Run" order="10" weight="0.5456498" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -269,6 +412,8 @@
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Maven Projects" order="6" />
+      <window_info anchor="right" id="SciView" order="7" />
+      <window_info anchor="right" id="Debug" order="8" weight="0.39925373" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -277,20 +422,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Finished stack and queue, including normal adn concurrent." />
     <MESSAGE value="Test main function." />
-    <option name="LAST_COMMIT_MESSAGE" value="Test main function." />
+    <MESSAGE value="2018.9.18 @dormitory" />
+    <MESSAGE value="2018.10.22 Start refactoring @ Digital electronics Lesson" />
+    <option name="LAST_COMMIT_MESSAGE" value="2018.10.22 Start refactoring @ Digital electronics Lesson" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/StackAndQueue/Concurrent/ConcurrentLinkedQueue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1780">
           <caret line="92" column="25" lean-forward="true" selection-start-line="92" selection-start-column="25" selection-end-line="92" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/StackAndQueue/LinkedStack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -301,21 +441,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StackAndQueue/CircleQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/StackAndQueue/Exceptions/IlleaglePriorityException.java">
+    <entry file="file://$PROJECT_DIR$/src/StackAndQueue/Exceptions/IlleagleQueuePriorityException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
@@ -329,31 +455,284 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StackAndQueue/LinkedQueue.java">
+    <entry file="file://$PROJECT_DIR$/src/StackAndQueue/CircleQueue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="56" column="13" lean-forward="true" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+        <state relative-caret-position="80">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StackAndQueue/PriorityLinkedQueue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="921">
-          <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
+        <state relative-caret-position="2440">
+          <caret line="126" column="32" selection-start-line="126" selection-start-column="32" selection-end-line="126" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/List/Exceptions/IlleagleListCapacityException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="67" selection-start-line="2" selection-start-column="67" selection-end-line="2" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/List/Exceptions/ListOverflowException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.MD">
+      <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="40">
+            <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/List/Exceptions/IndexOutOfBoundsException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="63" selection-start-line="2" selection-start-column="63" selection-end-line="2" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/List/StaticLinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1305">
+          <caret line="210" lean-forward="true" selection-start-line="210" selection-end-line="210" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab1/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1863#1864#0" expanded="true" />
-            <element signature="e#1900#1901#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/String/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lab2/Passenger.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab1/Polynomial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1910">
+          <caret line="211" selection-start-line="211" selection-end-line="211" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#Term#0;class#Polynomial#0" />
+            <element signature="e#4207#4208#0" expanded="true" />
+            <element signature="e#4241#4242#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lab2/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lab2/Elevator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="55" column="53" selection-start-line="55" selection-start-column="53" selection-end-line="55" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Elevator#0;class#Elevator#0" />
+            <element signature="method#refreshGUI#0;class#Elevator#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Stack/Stack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Stack/SequentStack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Stack/LinkedStack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StackAndQueue/OrderedLinkedQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StackAndQueue/LinkedQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/List/SequentList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#320#321#0" expanded="true" />
+            <element signature="e#347#348#0" expanded="true" />
+            <element signature="e#522#523#0" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+            <element signature="e#596#597#0" expanded="true" />
+            <element signature="e#624#625#0" expanded="true" />
+            <element signature="e#668#669#0" expanded="true" />
+            <element signature="e#692#693#0" expanded="true" />
+            <element signature="e#738#739#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
+            <element signature="e#810#811#0" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/List/LinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <folding>
+            <element signature="e#277#278#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#380#381#0" expanded="true" />
+            <element signature="e#421#422#0" expanded="true" />
+            <element signature="e#461#462#0" expanded="true" />
+            <element signature="e#506#507#0" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#2999#3000#0" expanded="true" />
+            <element signature="e#3027#3028#0" expanded="true" />
+            <element signature="e#3073#3074#0" expanded="true" />
+            <element signature="e#3118#3119#0" expanded="true" />
+            <element signature="e#3374#3375#0" expanded="true" />
+            <element signature="e#3414#3415#0" expanded="true" />
+            <element signature="e#4027#4028#0" expanded="true" />
+            <element signature="e#4079#4080#0" expanded="true" />
+            <element signature="e#4250#4251#0" expanded="true" />
+            <element signature="e#4284#4285#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/List/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>11</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>DataStruct_Java</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>

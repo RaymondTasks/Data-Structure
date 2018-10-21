@@ -4,29 +4,29 @@ import StackAndQueue.Exceptions.EmptyQueueException;
 
 public class LinkedQueue<T> implements Queue<T> {
 
-    protected class node {
+    protected class Node {
         private T element;
-        private node next;
+        private Node next;
 
         public T getElement() {
             return element;
         }
 
-        public node getNext() {
+        public Node getNext() {
             return next;
         }
 
-        public void setNext(node next) {
+        public void setNext(Node next) {
             this.next = next;
         }
 
-        public node(T element, node next) {
+        public Node(T element, Node next) {
             this.element = element;
             this.next = next;
         }
     }
 
-    private node front, rear;
+    protected Node front, rear;
 
     public LinkedQueue() {
         front = null;
@@ -36,7 +36,7 @@ public class LinkedQueue<T> implements Queue<T> {
     @Override
     public int getSize() {
         int len = 0;
-        node p = front;
+        Node p = front;
         while (p != null) {
             len++;
             p = p.getNext();
@@ -79,7 +79,7 @@ public class LinkedQueue<T> implements Queue<T> {
 
     @Override
     public void add(T element) {
-        node p = new node(element, null);
+        Node p = new Node(element, null);
         if (front == null || rear == null) {
             front = p;
             rear = p;
@@ -94,7 +94,7 @@ public class LinkedQueue<T> implements Queue<T> {
         if (front == null || rear == null) {
             throw new EmptyQueueException();
         } else {
-            node p = front;
+            Node p = front;
             front = front.getNext();
             if (front == null) {
                 rear = null;

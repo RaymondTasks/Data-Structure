@@ -1,7 +1,7 @@
 package StackAndQueue.Concurrent;
 
 import StackAndQueue.Exceptions.EmptyStackException;
-import StackAndQueue.LinkedStack;
+import Stack.LinkedStack;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
