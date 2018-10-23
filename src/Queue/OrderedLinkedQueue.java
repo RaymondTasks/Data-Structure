@@ -1,4 +1,4 @@
-package StackAndQueue;
+package Queue;
 
 import java.util.Comparator;
 

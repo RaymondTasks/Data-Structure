@@ -1,7 +1,4 @@
-package StackAndQueue;
-
-import StackAndQueue.Exceptions.EmptyQueueException;
-import StackAndQueue.Exceptions.QueueOverflowException;
+package Queue;
 
 public interface Queue<T> {
     public int getSize();

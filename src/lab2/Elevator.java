@@ -1,8 +1,8 @@
 package lab2;
 
 import List.LinkedList;
-import StackAndQueue.LinkedQueue;
-import StackAndQueue.OrderedLinkedQueue;
+import Queue.LinkedQueue;
+import Queue.OrderedLinkedQueue;
 
 import java.util.Comparator;
 import java.util.Random;

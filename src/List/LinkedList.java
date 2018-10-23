@@ -69,7 +69,10 @@ public class LinkedList<T> implements List<T> {
         throw new IndexOutOfBoundsException();
     }
 
-    @Override
+    public void insertHead(T element) {
+        head = new Node(element, head.next);
+    }
+
     public void insertTail(T element) {
         Node n = new Node(element, null);
         tail.setNext(n);
@@ -104,6 +107,20 @@ public class LinkedList<T> implements List<T> {
             }
             p = p.getNext();
             i++;
+        }
+        throw new IndexOutOfBoundsException();
+    }
+
+    public T getHead() {
+        if (head.getNext() != null) {
+            return head.getNext().getData();
+        }
+        throw new IndexOutOfBoundsException();
+    }
+
+    public T getTail() {
+        if (tail != head) {
+            return tail.getData();
         }
         throw new IndexOutOfBoundsException();
     }

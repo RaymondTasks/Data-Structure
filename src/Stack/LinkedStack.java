@@ -1,41 +1,23 @@
 package Stack;
 
-import StackAndQueue.Exceptions.EmptyStackException;
+
+import List.LinkedList;
+
+import java.util.EmptyStackException;
 
 public class LinkedStack<T> implements Stack<T> {
-    protected class node {
-        private T element;
-        private node next;
 
-        public node(T element, node next) {
-            this.element = element;
-            this.next = next;
-        }
+    //通过链表实现
 
-        public T getElement() {
-            return element;
-        }
-
-        public node getNext() {
-            return next;
-        }
-    }
-
-    private node top;
+    private LinkedList<T> store;
 
     public LinkedStack() {
-        top = null;
+        store = new LinkedList<T>();
     }
 
     @Override
     public int getSize() {
-        int len = 0;
-        node p = top;
-        while (p != null) {
-            len++;
-            p = p.getNext();
-        }
-        return len;
+        return store.getLength();
     }
 
     @Override
@@ -45,7 +27,7 @@ public class LinkedStack<T> implements Stack<T> {
 
     @Override
     public boolean isEmpty() {
-        return top == null;
+        return store.isEmpty();
     }
 
     @Override
@@ -55,34 +37,31 @@ public class LinkedStack<T> implements Stack<T> {
 
     @Override
     public void push(T element) {
-        top = new node(element, top);
+        store.insert(element, 0);
     }
 
     @Override
     public T pop() {
-        if (top == null) {
+        if (store.isEmpty()) {
             throw new EmptyStackException();
         } else {
-            node p = top;
-            top = top.getNext();
-            return p.getElement();
+            var p = store.get(0);
+            store.delete(0);
+            return p;
         }
     }
 
     @Override
     public T getTop() {
-        if (top == null) {
+        if (store.isEmpty()) {
             throw new EmptyStackException();
         } else {
-            return top.getElement();
+            return store.get(0);
         }
-
     }
 
     @Override
     public void clear() {
-        top = null;
+        store.clear();
     }
-
-
 }

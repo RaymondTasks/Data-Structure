@@ -6,11 +6,17 @@ public interface List<T> {
 
     public void insert(T element, int index);  //插入到index
 
-    public void insertTail(T element);  //插入到末尾
+//    public void insertHead(T element);
+
+//    public void insertTail(T element);  //插入到末尾
 
     public void delete(int index);  //删除index
 
     public T get(int index);  //获得index地元素
+
+//    public T getHead();
+
+//    public T getTail();
 
     public void set(T element, int index);  //设置Index
 

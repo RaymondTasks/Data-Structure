@@ -4,29 +4,15 @@ import java.util.Arrays;
 
 public class SequentList<T> implements List<T> {
 
-    private Object[] data;
+    private Object[] store;
 
     private int length, initialCapacity, increaseStep;
 
     public SequentList(int initialCapacity, int increaseStep) {
-        data = new Object[initialCapacity];
+        store = new Object[initialCapacity];
         length = 0;
         this.initialCapacity = initialCapacity;
         this.increaseStep = increaseStep;
-    }
-
-    private void checkAndAdjustCapacity() {
-        if (length > data.length || length <= data.length - increaseStep) {
-            int newCapacity;
-            if (length > data.length) {
-                newCapacity = data.length + increaseStep;
-            } else {
-                newCapacity = data.length - increaseStep;
-            }
-            var n = new Object[newCapacity];
-            System.arraycopy(data, 0, n, 0, length);
-            data = n;
-        }
     }
 
     @Override
@@ -34,31 +20,62 @@ public class SequentList<T> implements List<T> {
         if (index < 0 || index > length) {
             throw new IndexOutOfBoundsException();
         }
-        length++;
-        checkAndAdjustCapacity();
-        for (int i = length - 2; i >= index; i--) {
-            data[i + 1] = data[i];
+        if (length == store.length) {  //store已满
+            var dest = new Object[length + increaseStep];
+            System.arraycopy(store, 0, dest, 0, index);
+            System.arraycopy(store, index, dest, index + 1, length - index);
+            store = dest;
+        } else {
+            for (int i = store.length - 1; i >= index; i--) {
+                store[i + 1] = store[i];
+            }
         }
-        data[index] = element;
+        store[index] = element;
+        length++;
     }
 
-    @Override
-    public void insertTail(T element) {
-        length++;
-        checkAndAdjustCapacity();
-        data[length - 1] = element;
-    }
+//    @Override
+//    public void insertHead(T element) {
+//        if (length == store.length) {
+//            var dest = new Object[length + increaseStep];
+//            System.arraycopy(store, 0, dest, 1, length);
+//            store = dest;
+//        } else {
+//            for (int i = store.length - 1; i >= 0; i--) {
+//                store[i + 1] = store[i];
+//            }
+//        }
+//        store[0] = element;
+//        length++;
+//    }
+//
+//    @Override
+//    public void insertTail(T element) {
+//        if (length == store.length) {
+//            var dest = new Object[length + increaseStep];
+//            System.arraycopy(store, 0, dest, 0, length);
+//            store = dest;
+//        }
+//        store[length] = element;
+//        length++;
+//    }
 
     @Override
     public void delete(int index) {
         if (index < 0 || index >= length) {
             throw new IndexOutOfBoundsException();
         }
-        for (int i = index; i < length; i++) {
-            data[i] = data[i + 1];
+        if (length - 1 <= store.length - increaseStep) {
+            var dest = new Object[length - increaseStep];
+            System.arraycopy(store, 0, dest, 0, index);
+            System.arraycopy(store, index + 1, dest, index, length - index - 1);
+            store = dest;
+        } else {
+            for (int i = index; i < length - 1; i++) {
+                store[i] = store[i + 1];
+            }
         }
         length--;
-        checkAndAdjustCapacity();
     }
 
     @Override
@@ -67,20 +84,38 @@ public class SequentList<T> implements List<T> {
         if (index < 0 || index >= length) {
             throw new IndexOutOfBoundsException();
         }
-        return (T) data[index];
+        return (T) store[index];
     }
+
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public T getHead() {
+//        if (length == 0) {
+//            throw new IndexOutOfBoundsException();
+//        }
+//        return (T) store[0];
+//    }
+//
+//    @Override
+//    @SuppressWarnings("unchecked")
+//    public T getTail() {
+//        if (length == 0) {
+//            throw new IndexOutOfBoundsException();
+//        }
+//        return (T) store[length - 1];
+//    }
 
     @Override
     public void set(T element, int index) {
         if (index < 0 || index >= length) {
             throw new IndexOutOfBoundsException();
         }
-        data[index] = element;
+        store[index] = element;
     }
 
     @Override
     public void clear() {
-        data = new Object[initialCapacity];
+        store = new Object[initialCapacity];
         length = 0;
     }
 
@@ -117,7 +152,7 @@ public class SequentList<T> implements List<T> {
             @Override
             @SuppressWarnings("unchecked")
             public T next() {
-                return (T) data[index++];
+                return (T) store[index++];
             }
 
             @Override
@@ -130,6 +165,6 @@ public class SequentList<T> implements List<T> {
     @Override
     @SuppressWarnings("unchecked")
     public T[] toArray() {
-        return (T[]) Arrays.copyOf(data, length);
+        return (T[]) Arrays.copyOf(store, length);
     }
 }

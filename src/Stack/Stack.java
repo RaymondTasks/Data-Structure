@@ -1,8 +1,5 @@
 package Stack;
 
-import StackAndQueue.Exceptions.EmptyStackException;
-import StackAndQueue.Exceptions.StackOverflowException;
-
 public interface Stack<T> {
 
     public int getSize();
