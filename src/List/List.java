@@ -26,7 +26,7 @@ public interface List<T> {
 
     public Iterator iterator();
 
-    public Object[] toArray();
+    public T[] toArray();
 
     public interface Iterator<T> {
         public boolean hasNext();

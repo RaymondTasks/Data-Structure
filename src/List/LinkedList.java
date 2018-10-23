@@ -37,11 +37,17 @@ public class LinkedList<T> implements List<T> {
     }
 
     public LinkedList(T[] data) {  //用数组创建链表
-        Node p = null;
-        for (int i = data.length - 1; i >= 0; i--) {
-            p = new Node(data[i], p);
+        if (data.length != 0) {
+            tail = new Node(data[data.length - 1], null);
+            Node p = tail;
+            for (int i = data.length - 2; i >= 0; i--) {
+                p = new Node(data[i], p);
+            }
+            head = new Node(null, p);
+        } else {
+            head = new Node(null, null);
+            tail = head;
         }
-        head = new Node(null, p);
     }
 
     @Override
@@ -150,21 +156,22 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
-    public Object[] toArray() {
-        Object[] obj = new Object[getLength()];
+    @SuppressWarnings("unchecked")
+    public T[] toArray() {
+        var arr = new Object[getLength()];
         Node p = head.getNext();
         int i = 0;
         while (p != null) {
-            obj[i] = p.getData();
+            arr[i] = p.getData();
             p = p.getNext();
             i++;
         }
-        return obj;
+        return (T[]) arr;
     }
 
     @Override
     public Iterator iterator() {
-        return new List.List.Iterator<T>() {
+        return new Iterator<T>() {
             private Node now = head;
 
             @Override
