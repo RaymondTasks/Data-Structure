@@ -12,14 +12,15 @@ public class OrderedLinkedQueue<T> extends LinkedQueue<T> {
 
     @Override
     public void add(T element) {
-        if (front != null
-                && comparator.compare(front.getElement(), element) >= 0) {
-            Node n = new Node(element, front);
-            front
+        var p = store.getHeadNode();
+        while (p.getNext() != null) {
+            if (comparator.compare(element, p.getNext().getData()) < 0) {
+                p = p.getNext();
+            } else {
+                p.setNext(store.getNewNode(element, p.getNext()));
+                return;
+            }
         }
-        Node p = front;
-        while (p != null) {//升序
-            if (comparator.compare())
-        }
+        store.insertTail(element);
     }
 }

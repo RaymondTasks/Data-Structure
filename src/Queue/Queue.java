@@ -18,4 +18,14 @@ public interface Queue<T> {
     public T getTail() ;
 
     public void clear();
+
+    public interface Iterator<T> {
+        public boolean hasNext();
+
+        public T next();
+
+        public void reset();
+    }
+
+    public Iterator<T> iterator();
 }

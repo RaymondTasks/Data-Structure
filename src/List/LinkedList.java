@@ -28,8 +28,12 @@ public class LinkedList<T> implements List<T> {
         }
     }
 
-    private Node head;  //头结点
-    private Node tail;  //尾节点
+    public Node getNewNode(T data, Node next) {
+        return new Node(data, next);
+    }
+
+    protected Node head;  //头结点
+    protected Node tail;  //尾节点
 
     public LinkedList() {
         head = new Node(null, null);
@@ -125,6 +129,14 @@ public class LinkedList<T> implements List<T> {
         throw new IndexOutOfBoundsException();
     }
 
+    public Node getHeadNode() {
+        return head;
+    }
+
+    public Node getTailNode() {
+        return tail;
+    }
+
     @Override
     public void set(T element, int index) {
         Node p = head.getNext();
@@ -187,7 +199,7 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
-    public Iterator iterator() {
+    public Iterator<T> iterator() {
         return new Iterator<T>() {
             private Node now = head;
 

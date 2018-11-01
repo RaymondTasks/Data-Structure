@@ -6,7 +6,7 @@ import Queue.Exception.EmptyQueueException;
 
 public class LinkedQueue<T> implements Queue<T> {
 
-    private LinkedList<T> store;
+    protected LinkedList<T> store;
 
     public LinkedQueue() {
         store = new LinkedList<T>();
@@ -14,7 +14,7 @@ public class LinkedQueue<T> implements Queue<T> {
 
     @Override
     public int getSize() {
-        store.getLength();
+        return store.getLength();
     }
 
     @Override
@@ -66,5 +66,27 @@ public class LinkedQueue<T> implements Queue<T> {
     @Override
     public void clear() {
         store.clear();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        var iter = store.iterator();
+        return new Iterator<T>() {
+
+            @Override
+            public boolean hasNext() {
+                return iter.hasNext();
+            }
+
+            @Override
+            public T next() {
+                return iter.next();
+            }
+
+            @Override
+            public void reset() {
+                iter.reset();
+            }
+        };
     }
 }
