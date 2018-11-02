@@ -128,7 +128,7 @@ public class Polynomial {
         terms = new LinkedList<>(t);
 
         //去重
-        var p = terms.getHead().getNext();
+        var p = terms.getHeadNode().getNext();
         while (p != null) {
             var q = p.getNext();
             while (q != null && p.getData().getIndex() == q.getData().getIndex()) {

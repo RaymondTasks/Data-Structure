@@ -1,4 +1,4 @@
-package lab2;
+package Lab2;
 
 import Queue.OrderedLinkedQueue;
 import List.LinkedList;
@@ -279,10 +279,17 @@ public class ElevatorSimulator {
         events.add(new PassengerEvent(p, null, p.arrivingTime, PassengerEventType.arrive));
     }
 
+    /***
+     * 电梯调度时需要遵循的一些原则：
+     * 触发调度更新的是等待中的乘客按下按钮，或者电梯找不到目标时
+     *
+     */
+
 
     //读取一个事件，更新状态，生成下一个事件
     public void nextEvent() {
         if (!events.isEmpty()) {
+
             var e = events.get();
             time = e.occurTime;  //设定时钟
 
@@ -292,8 +299,16 @@ public class ElevatorSimulator {
 
                 switch (((PassengerEvent) e).type) {
                     case arrive:
+                        /*
+                         * 先检测本层是否存opening的电梯
+                         * 若不存在，检测本层是否存在未满且detecting的电梯
+                         * 若不存在，检测是否存在未满且closing的电梯，如果存在，取消close_end事件
+                         * 以上三种状态，都不需要更新按钮，只需把乘客置为wait_wont_abort状态
+                         * 如果都不存在，更新按钮，更新电梯调度
+                         * (更新电梯调度的算法暂未想清楚)
+                         */
 
-                        //todo 待完成,需要重构
+                        //todo 待完成
                         if (p.isForUp()) {
                             callingUp[p.inFloor] = true;
                         } else {
@@ -458,6 +473,7 @@ public class ElevatorSimulator {
                                     events.add(new CarriageEvent(c, time,
                                             CarriageEventType.down_start));
                                 } else {
+                                    //todo
                                     events.add(new CarriageEvent(c, time,
                                             CarriageEventType.berth_start));
                                 }
@@ -471,6 +487,7 @@ public class ElevatorSimulator {
                                     events.add(new CarriageEvent(c, time,
                                             CarriageEventType.up_start));
                                 } else {
+                                    //todo
                                     events.add(new CarriageEvent(c, time,
                                             CarriageEventType.berth_start));
                                 }
@@ -551,9 +568,16 @@ class PassengerLinkedQueue extends LinkedList<ElevatorSimulator.Passenger> {
         while (q.getNext() != null) {
             if (q.getNext().getData() == p) {
                 q.setNext(q.getNext().getNext());
+                if (q.getNext() == null) {
+                    tail = q;
+                }
                 break;
             }
             q = q.getNext();
         }
+    }
+
+    public void add(ElevatorSimulator.Passenger p) {
+        insertTail(p);
     }
 }
