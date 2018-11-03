@@ -1,7 +1,5 @@
 package List;
 
-import java.util.Iterator;
-
 public interface List<T> {
 
     public void insert(T element, int index);  //插入到index

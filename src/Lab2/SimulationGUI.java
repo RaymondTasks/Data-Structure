@@ -7,4 +7,8 @@ public class SimulationGUI {
     public SimulationGUI(ElevatorSimulator simulator) {
         this.simulator = simulator;
     }
+
+    public void refresh() {
+
+    }
 }
