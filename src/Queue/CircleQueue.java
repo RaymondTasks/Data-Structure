@@ -84,4 +84,8 @@ public class CircleQueue<T> implements Queue<T> {
         rear = 0;
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
 }

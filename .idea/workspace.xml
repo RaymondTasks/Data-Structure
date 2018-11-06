@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5665599a-aab1-4e47-b713-cd58eb86aa12" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataStruct_Java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Data-structure-course.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lab2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab2/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lab2/SimulationGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab2/SimulationGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/List/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/List/List.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Queue/CircleQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queue/CircleQueue.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -74,17 +72,29 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="6043" />
+          <entry key="java" value="7482" />
+          <entry key="txt" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6043" />
+          <entry key="JAVA" value="7482" />
+          <entry key="PLAIN_TEXT" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
         <counts>
           <entry key="git.branch.delete.local" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -94,21 +104,33 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lab2/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+            <state relative-caret-position="340">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Queue/CircleQueue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1154">
+              <caret line="88" column="20" lean-forward="true" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
+              <folding>
+                <element signature="e#1791#1792#0" expanded="true" />
+                <element signature="e#1818#1819#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="741">
-              <caret line="679" column="28" selection-start-line="679" selection-start-column="28" selection-end-line="679" selection-end-column="28" />
+            <state relative-caret-position="700">
+              <caret line="860" column="27" selection-start-line="860" selection-start-column="27" selection-end-line="860" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#Passenger#0;class#ElevatorSimulator#0" />
-                <element signature="class#Carriage#0;class#ElevatorSimulator#0" />
                 <element signature="e#1546#1547#0" expanded="true" />
                 <element signature="e#1596#1597#0" expanded="true" />
                 <element signature="class#Event#0;class#ElevatorSimulator#0" />
@@ -120,11 +142,8 @@
                 <element signature="class#CarriageState#0;class#ElevatorSimulator#0" />
                 <element signature="class#PassengerEventType#0;class#ElevatorSimulator#0" />
                 <element signature="class#CarriageEventType#0;class#ElevatorSimulator#0" />
-                <element signature="method#ElevatorSimulator#0;class#ElevatorSimulator#0" />
                 <element signature="method#getRandomPassenger#0;class#ElevatorSimulator#0" />
                 <element signature="method#startSimulation#0;class#ElevatorSimulator#0" />
-                <element signature="method#arrive#0;class#ElevatorSimulator#0" />
-                <element signature="method#abort#0;class#ElevatorSimulator#0" />
                 <element signature="method#enter_start#0;class#ElevatorSimulator#0" />
                 <element signature="method#enter_end#0;class#ElevatorSimulator#0" />
                 <element signature="method#exit_start#0;class#ElevatorSimulator#0" />
@@ -134,7 +153,7 @@
                 <element signature="e#15665#15999#0" />
                 <element signature="e#16005#17304#0" />
                 <element signature="e#17310#17919#0" />
-                <element signature="e#17925#19508#0" />
+                <element signature="e#17682#19383#0" />
                 <element signature="e#19514#19750#0" />
                 <element signature="e#19756#20087#0" />
                 <element signature="e#20093#20336#0" />
@@ -146,7 +165,11 @@
                 <element signature="e#22051#22322#0" />
                 <element signature="e#22328#22576#0" />
                 <element signature="e#22556#22681#0" />
-                <element signature="e#21780#25997#0" />
+                <element signature="e#22982#23053#0" />
+                <element signature="e#26089#28709#0" />
+                <element signature="e#30574#30575#0" expanded="true" />
+                <element signature="e#30603#30604#0" expanded="true" />
+                <element signature="class#PassengerLinkedQueue#0" />
                 <element signature="e#26925#26926#0" expanded="true" />
                 <element signature="e#26954#26955#0" expanded="true" />
               </folding>
@@ -157,7 +180,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/List/LinkedList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="841">
+            <state relative-caret-position="1261">
               <caret line="194" column="34" selection-start-line="194" selection-start-column="34" selection-end-line="194" selection-end-column="34" />
               <folding>
                 <element signature="e#421#422#0" expanded="true" />
@@ -169,11 +192,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Lab2/SimulationGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="460">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -239,7 +265,6 @@
         <option value="$PROJECT_DIR$/src/Stack/SequentStack.java" />
         <option value="$PROJECT_DIR$/src/Queue/Exception/EmptyQueueException.java" />
         <option value="$PROJECT_DIR$/src/Queue/Exception/QueueOverflowException.java" />
-        <option value="$PROJECT_DIR$/src/Queue/CircleQueue.java" />
         <option value="$PROJECT_DIR$/src/List/List.java" />
         <option value="$PROJECT_DIR$/src/List/SequentList.java" />
         <option value="$PROJECT_DIR$/src/lab2/Elevator.java" />
@@ -252,9 +277,10 @@
         <option value="$PROJECT_DIR$/src/List/LinkedList.java" />
         <option value="$PROJECT_DIR$/src/lab2/ElevatorSimulator.java" />
         <option value="$PROJECT_DIR$/src/Lab1/Polynomial.java" />
-        <option value="$PROJECT_DIR$/src/Lab2/SimulationGUI.java" />
+        <option value="$PROJECT_DIR$/src/Queue/CircleQueue.java" />
         <option value="$PROJECT_DIR$/src/Lab2/Main.java" />
         <option value="$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java" />
+        <option value="$PROJECT_DIR$/src/Lab2/SimulationGUI.java" />
       </list>
     </option>
   </component>
@@ -374,7 +400,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.lab1">
+  <component name="RunManager" selected="Application.lab2">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -450,7 +476,7 @@
       <workItem from="1541169089800" duration="21000" />
       <workItem from="1541169303017" duration="51000" />
       <workItem from="1541169483325" duration="1222000" />
-      <workItem from="1541171011992" duration="18819000" />
+      <workItem from="1541171011992" duration="27317000" />
     </task>
     <task id="LOCAL-00001" summary="Finished stack and queue, including normal adn concurrent.">
       <created>1537259723890</created>
@@ -508,17 +534,24 @@
       <option name="project" value="LOCAL" />
       <updated>1541134693052</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="2018.11.4 Some optimization of lab2">
+      <created>1541273604243</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1541273604244</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179967000" />
+    <option name="totallyTimeSpent" value="188465000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="1912" y="-415" width="1096" height="1906" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.008528785" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.015444015" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -532,8 +565,8 @@
       <window_info anchor="bottom" id="Terminal" order="6" weight="0.32939914" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32975295" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.24562395" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.86222476" />
-      <window_info anchor="bottom" id="Run" order="10" weight="0.5456498" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.4037267" />
+      <window_info active="true" anchor="bottom" id="Run" order="10" visible="true" weight="0.35403726" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -542,7 +575,7 @@
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="right" id="SciView" order="7" />
-      <window_info anchor="right" id="Debug" order="8" weight="0.39925373" />
+      <window_info anchor="right" id="Debug" order="8" visible="true" weight="0.0" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.06563707" />
@@ -619,7 +652,8 @@
     <MESSAGE value="2018.10.23 Completing List refactoring @ dormitory" />
     <MESSAGE value="2018.10.23 Completing List refactoring @ dormitory 2" />
     <MESSAGE value="2018.11.2 Update Lab2 ElevatorSimulation" />
-    <option name="LAST_COMMIT_MESSAGE" value="2018.11.2 Update Lab2 ElevatorSimulation" />
+    <MESSAGE value="2018.11.4 Some optimization of lab2" />
+    <option name="LAST_COMMIT_MESSAGE" value="2018.11.4 Some optimization of lab2" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -702,13 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Queue/CircleQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/List/List.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="720">
@@ -753,7 +780,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/List/LinkedList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="841">
+        <state relative-caret-position="1261">
           <caret line="194" column="34" selection-start-line="194" selection-start-column="34" selection-end-line="194" selection-end-column="34" />
           <folding>
             <element signature="e#421#422#0" expanded="true" />
@@ -764,28 +791,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lab2/SimulationGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lab2/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="679" column="28" selection-start-line="679" selection-start-column="28" selection-end-line="679" selection-end-column="28" />
+        <state relative-caret-position="700">
+          <caret line="860" column="27" selection-start-line="860" selection-start-column="27" selection-end-line="860" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#Passenger#0;class#ElevatorSimulator#0" />
-            <element signature="class#Carriage#0;class#ElevatorSimulator#0" />
             <element signature="e#1546#1547#0" expanded="true" />
             <element signature="e#1596#1597#0" expanded="true" />
             <element signature="class#Event#0;class#ElevatorSimulator#0" />
@@ -797,11 +809,8 @@
             <element signature="class#CarriageState#0;class#ElevatorSimulator#0" />
             <element signature="class#PassengerEventType#0;class#ElevatorSimulator#0" />
             <element signature="class#CarriageEventType#0;class#ElevatorSimulator#0" />
-            <element signature="method#ElevatorSimulator#0;class#ElevatorSimulator#0" />
             <element signature="method#getRandomPassenger#0;class#ElevatorSimulator#0" />
             <element signature="method#startSimulation#0;class#ElevatorSimulator#0" />
-            <element signature="method#arrive#0;class#ElevatorSimulator#0" />
-            <element signature="method#abort#0;class#ElevatorSimulator#0" />
             <element signature="method#enter_start#0;class#ElevatorSimulator#0" />
             <element signature="method#enter_end#0;class#ElevatorSimulator#0" />
             <element signature="method#exit_start#0;class#ElevatorSimulator#0" />
@@ -811,7 +820,7 @@
             <element signature="e#15665#15999#0" />
             <element signature="e#16005#17304#0" />
             <element signature="e#17310#17919#0" />
-            <element signature="e#17925#19508#0" />
+            <element signature="e#17682#19383#0" />
             <element signature="e#19514#19750#0" />
             <element signature="e#19756#20087#0" />
             <element signature="e#20093#20336#0" />
@@ -823,9 +832,41 @@
             <element signature="e#22051#22322#0" />
             <element signature="e#22328#22576#0" />
             <element signature="e#22556#22681#0" />
-            <element signature="e#21780#25997#0" />
+            <element signature="e#22982#23053#0" />
+            <element signature="e#26089#28709#0" />
+            <element signature="e#30574#30575#0" expanded="true" />
+            <element signature="e#30603#30604#0" expanded="true" />
+            <element signature="class#PassengerLinkedQueue#0" />
             <element signature="e#26925#26926#0" expanded="true" />
             <element signature="e#26954#26955#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab2/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Queue/CircleQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1154">
+          <caret line="88" column="20" lean-forward="true" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
+          <folding>
+            <element signature="e#1791#1792#0" expanded="true" />
+            <element signature="e#1818#1819#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab2/SimulationGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
