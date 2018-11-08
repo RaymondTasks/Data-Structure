@@ -3,12 +3,34 @@ package Lab2;
 import List.LinkedList;
 import Queue.OrderedLinkedQueue;
 
+import java.awt.*;
 import java.util.Comparator;
 import java.util.Random;
 
 public class ElevatorSimulator {
 
-    protected class Passenger {  //乘客类
+    private boolean logEnable = false;
+
+    private int upAndDownTime;
+    private int openAndCloseTime;
+    private int detectGap;
+    private int enterAndExitTime;
+    private int berthTime;
+
+    private int floors, base;
+    private int parallelNumber, maxLoad;
+    private int minArrivingGap, minAbortingGap;
+    private int maxArrivingGap, maxAbortingGap;
+    private Carriage[] carriages;
+    private boolean[] callingUp, callingDown;
+    private PassengerLinkedQueue passengerQueues[];
+
+    //事件队列
+    private OrderedLinkedQueue<Event> events;
+    //全局时钟
+    private int time = 0;
+
+    public class Passenger {  //乘客类
         PassengerState state;
         Direction direction;
         int arrivingTime;
@@ -21,16 +43,19 @@ public class ElevatorSimulator {
             this.inFloor = inFloor;
             this.outFloor = outFloor;
             direction = outFloor > inFloor ? Direction.up : Direction.down;
+            ID = random.nextInt();
+            color = new Color(random.nextFloat(), random.nextFloat(), random.nextFloat());
         }
 
         public void setState(PassengerState state) {
             this.state = state;
         }
 
-        public int targetFloor = -1;  //用于电梯调度的一个特殊量
+        public int ID;
+        public Color color;  //颜色
     }
 
-    protected class Carriage {  //电梯厢类
+    public class Carriage {  //电梯厢类
         CarriageState state;
         Direction direction;
         boolean[] isCalling;
@@ -84,7 +109,7 @@ public class ElevatorSimulator {
 
         public Passenger getNextPassengerForExiting() {  //找到下一个要离开的乘客
             for (int i = 0; i < content.length; i++) {
-                if (content[i].outFloor == nowFloor) {
+                if (content[i] != null && content[i].outFloor == nowFloor) {
                     return content[i];
                 }
             }
@@ -96,11 +121,11 @@ public class ElevatorSimulator {
                 return null;
             }
             Passenger p;
-            var iter = passengerQueue[nowFloor].iterator();
+            var iter = passengerQueues[nowFloor].iterator();
             while (iter.hasNext()) {
                 p = iter.next();
                 if (direction == p.direction) {
-                    passengerQueue[nowFloor].delete(p);
+                    passengerQueues[nowFloor].delete(p);
                     return p;
                 }
 
@@ -108,13 +133,13 @@ public class ElevatorSimulator {
             return null;
         }  //找到下一个要进入的乘客
 
-        public int lastStartClosingTime;  //用于中断关门后生成新的开门事件
-        public int lastStartUpOrDownToIdlingTime;  //用于中断前往待命状态的移动事件
+        public int lastStartOpenOrCloseTime;  //用于中断关门后生成新的开门事件
+        public int lastStartUpOrDownTime;  //用于中断前往待命状态的移动事件
         public Passenger targetPassenger;  //用于电梯调度时的的目标乘客
 
     }
 
-    protected abstract class Event {
+    private abstract class Event {
         int occurTime;
         Carriage carriage;
     }  //抽象事件
@@ -141,24 +166,24 @@ public class ElevatorSimulator {
         }
     }  //电梯厢事件
 
-    private enum Direction {
+    public enum Direction {
         up,
         none,
         down
     }
 
     //状态枚举
-    private enum PassengerState {
+    public enum PassengerState {
         waiting,                //等待电梯
         waiting_wont_abort,     //即将进入电梯，此时abort事件不生效
         aborted,                //已放弃
         leaved,                 //已离开
         entering,               //正在进入电梯
         exiting,                //正在离开电梯
-        InCarriage              //在电梯里
+        in_carriage              //在电梯里
     }  //乘客状态
 
-    private enum CarriageState {  //电梯厢状态
+    public enum CarriageState {  //电梯厢状态
         idling,         //正在待命
         opening,        //正在开门
         detecting,      //处于检测间隔中
@@ -171,7 +196,7 @@ public class ElevatorSimulator {
     }  //电梯厢状态
 
     //事件类型枚举
-    private enum PassengerEventType {  //乘客事件类型
+    public enum PassengerEventType {  //乘客事件类型
         arrive,         //到达
         abort,          //放弃
         enter_start,    //开始进入电梯
@@ -181,7 +206,7 @@ public class ElevatorSimulator {
         leave           //离开
     }  //乘客事件类型
 
-    private enum CarriageEventType {  //电梯厢事件类型
+    public enum CarriageEventType {  //电梯厢事件类型
         up_start,           //开始上升
         up_end,             //完成上升
         down_start,         //开始下降
@@ -230,16 +255,16 @@ public class ElevatorSimulator {
         callingUp = new boolean[floors];
         callingDown = new boolean[floors];
 
-        passengerQueue = new PassengerLinkedQueue[floors];
+        passengerQueues = new PassengerLinkedQueue[floors];
         for (int i = 0; i < floors; i++) {
-            passengerQueue[i] = new PassengerLinkedQueue();
+            passengerQueues[i] = new PassengerLinkedQueue();
         }
         events = new OrderedLinkedQueue<>(new Comparator<Event>() {
             @Override
             public int compare(Event o1, Event o2) {
                 if (o1.occurTime == o2.occurTime) {  //电梯事件优先执行
                     boolean b1 = o1 instanceof CarriageEvent;
-                    boolean b2 = o1 instanceof CarriageEvent;
+                    boolean b2 = o2 instanceof CarriageEvent;
                     if (b1 && !b2) {
                         return -1;
                     } else if (!b1 && b2) {
@@ -255,27 +280,6 @@ public class ElevatorSimulator {
         });
 
     }
-
-    private int upAndDownTime;
-    private int openAndCloseTime;
-    private int detectGap;
-    private int enterAndExitTime;
-    private int berthTime;
-
-    private int floors, base;
-    private int parallelNumber, maxLoad;
-    private int minArrivingGap, minAbortingGap;
-    private int maxArrivingGap, maxAbortingGap;
-    private Carriage[] carriages;
-    private boolean[] callingUp, callingDown;
-    private PassengerLinkedQueue passengerQueue[];
-
-
-    //事件队列
-    private OrderedLinkedQueue<Event> events;
-    //全局时钟
-    private int time = 0;
-
 
     private Random random = new Random();
 
@@ -296,52 +300,61 @@ public class ElevatorSimulator {
     }
 
     //todo 待完善
+
+    /**
+     * 检测本层是否存在未满且detecting且方向正确的电梯
+     * 若不存在，检测本层是否存在opening且方向正确的电梯的电梯
+     * 若不存在，检测是否存在未满且closing且方向正确的电梯，如果存在，取消close_end事件
+     * 以上三种状态，都不需要更新按钮，只需把乘客置为wait_wont_abort状
+     * 如果都不存在，更新按钮，更新电梯调度
+     * 乘客选择优先级：开着的>正在开的>正在关的
+     */
     private void arrive(Passenger p) {
 
-        /* 检测本层是否存在未满且detecting且方向正确的电梯
-         * 若不存在，检测本层是否存在opening且方向正确的电梯的电梯
-         * 若不存在，检测是否存在未满且closing且方向正确的电梯，如果存在，取消close_end事件
-         * 以上三种状态，都不需要更新按钮，只需把乘客置为wait_wont_abort状
-         * 如果都不存在，更新按钮，更新电梯调度
-         * 乘客选择优先级：开着的>正在开的>正在关的
-         */
+        if (logEnable) {
+            System.out.print(time + "\t: Passenger " + p.ID + " arrive ");
+            if (p.inFloor == 0) {
+                System.out.println("B1.");
+            } else {
+                System.out.println("F" + p.inFloor + ".");
+            }
+
+        }
+
+        var newp = getRandomPassenger();  //下一个乘客
+        events.add(new PassengerEvent(newp, null, newp.arrivingTime, PassengerEventType.arrive));
 
         for (var ctmp : carriages) {  //寻找开着的，方向正确的，未满的电梯
             if (ctmp.nowFloor == p.inFloor && ctmp.direction == p.direction &&
                     ctmp.state == CarriageState.detecting && !ctmp.isFull()) {
                 if (ctmp.IOPassenger == null) {   //电梯没有人进出，直接进入电梯
-                    events.add(new PassengerEvent(p, ctmp, time,
-                            PassengerEventType.enter_start));
+                    events.add(new PassengerEvent(p, ctmp, time, PassengerEventType.enter_start));
                 } else {
                     p.setState(PassengerState.waiting_wont_abort);
-                    passengerQueue[p.inFloor].add(p);
+                    passengerQueues[p.inFloor].add(p);
                 }
                 return;
             }
         }
 
         for (var ctmp : carriages) {
-            if (ctmp.nowFloor == p.inFloor && ctmp.direction == p.direction &&
-                    ctmp.state == CarriageState.opening) {  //寻找方向正确的正在开门的电梯
+            if (ctmp.nowFloor == p.inFloor && ctmp.direction == p.direction && ctmp.state == CarriageState.opening) {  //寻找方向正确的正在开门的电梯
                 p.setState(PassengerState.waiting_wont_abort);
-                passengerQueue[p.inFloor].add(p);
+                passengerQueues[p.inFloor].add(p);
                 return;
             }
         }
 
         boolean existClosingFullCarriage = false;  //是否存在正在关门的已满电梯
         for (var ctmp : carriages) {
-            if (ctmp.nowFloor == p.inFloor && ctmp.direction == p.direction &&
-                    ctmp.state == CarriageState.closing) {  //寻找方向正确的正在关门的电梯
+            if (ctmp.nowFloor == p.inFloor && ctmp.direction == p.direction && ctmp.state == CarriageState.closing) {  //寻找方向正确的正在关门的电梯
                 if (ctmp.isFull()) {
                     existClosingFullCarriage = true;
                 } else {
                     p.setState(PassengerState.waiting_wont_abort);
-                    passengerQueue[p.inFloor].add(p);
+                    passengerQueues[p.inFloor].add(p);
                     ctmp.setState(CarriageState.opening);  //取消电梯关门事件
-                    events.add(new CarriageEvent(ctmp,
-                            time + (time - ctmp.lastStartClosingTime),
-                            CarriageEventType.open_end));
+                    events.add(new CarriageEvent(ctmp, time + (time - ctmp.lastStartOpenOrCloseTime), CarriageEventType.open_end));
                     return;
                 }
             }
@@ -357,52 +370,52 @@ public class ElevatorSimulator {
                     callingDown[p.inFloor] = true;
                     break;
             }
+            reschedule(p);  //触发调度
         }
-        //todo 待完善
         //存在正在关门的已满电梯，无需按按钮，因为电梯关门结束时会更新按钮状态
         p.setState(PassengerState.waiting);
-        events.add(new PassengerEvent(p, null,
-                time + p.abortingTime, PassengerEventType.abort));
-        reschedule(p);  //重新调度
-        var newp = getRandomPassenger();  //下一个乘客
-        events.add(new PassengerEvent(newp, null, newp.arrivingTime,
-                PassengerEventType.arrive));
+        events.add(new PassengerEvent(p, null, time + p.abortingTime, PassengerEventType.abort));
     }
 
     private void abort(Passenger p) {
         if (p.state == PassengerState.waiting) {
+            if (logEnable) {
+                System.out.println(time + "\t: Passenger " + p.ID + " abort.");
+            }
             p.setState(PassengerState.aborted);
-            passengerQueue[p.inFloor].delete(p);
-            events.add(new PassengerEvent(p, null, time,
-                    PassengerEventType.leave));
+            passengerQueues[p.inFloor].delete(p);
+            events.add(new PassengerEvent(p, null, time, PassengerEventType.leave));
         }
     }
 
     private void enter_start(Passenger p, Carriage c) {
+        if (logEnable) {
+            System.out.println(time + "\t: Passenger " + p.ID + " enter carriage.");
+        }
         p.setState(PassengerState.entering);
         c.IOPassenger = p;
-        passengerQueue[c.nowFloor].delete(p);
-        events.add(new PassengerEvent(p, c, time + enterAndExitTime,
-                PassengerEventType.enter_end));
+        passengerQueues[c.nowFloor].delete(p);
+        events.add(new PassengerEvent(p, c, time + enterAndExitTime, PassengerEventType.enter_end));
     }
 
     private void enter_end(Passenger p, Carriage c) {
-        p.setState(PassengerState.InCarriage);
+        p.setState(PassengerState.in_carriage);
         c.IOPassenger = null;
         c.add(p);
         var nextp = c.getNextPassengerForEntering();
         if (nextp != null) {
-            events.add(new PassengerEvent(nextp, c, time,
-                    PassengerEventType.enter_start));
+            events.add(new PassengerEvent(nextp, c, time, PassengerEventType.enter_start));
         }
     }
 
     private void exit_start(Passenger p, Carriage c) {
+        if (logEnable) {
+            System.out.println(time + "\t: Passenger " + p.ID + " exit carriage.");
+        }
         p.setState(PassengerState.exiting);
         c.IOPassenger = p;
         c.delete(p);
-        events.add(new PassengerEvent(p, c, time + enterAndExitTime,
-                PassengerEventType.leave));
+        events.add(new PassengerEvent(p, c, time + enterAndExitTime, PassengerEventType.exit_end));
     }
 
     private void exit_end(Passenger p, Carriage c) {
@@ -412,34 +425,33 @@ public class ElevatorSimulator {
         if (nextp2 == null) {
             nextp2 = c.getNextPassengerForEntering();
             if (nextp2 != null) {
-                events.add(new PassengerEvent(nextp2, c, time,
-                        PassengerEventType.enter_start));
+                events.add(new PassengerEvent(nextp2, c, time, PassengerEventType.enter_start));
             }
         } else {
-            events.add(new PassengerEvent(nextp2, c, time,
-                    PassengerEventType.exit_start));
+            events.add(new PassengerEvent(nextp2, c, time, PassengerEventType.exit_start));
         }
     }
 
     private void leave(Passenger p) {
+        if (logEnable) {
+            System.out.println(time + "\t: Passenger " + p.ID + " leave.");
+        }
         p.setState(PassengerState.leaved);
     }
 
 
     private void open_start(Carriage c) {
         c.setState(CarriageState.opening);
+        c.lastStartOpenOrCloseTime = time;
         c.isCalling[c.nowFloor] = false;
         events.add(new CarriageEvent(c, time + openAndCloseTime,
                 CarriageEventType.open_end));
-        switch (c.direction) {
-            case up:
-                callingUp[c.nowFloor] = false;
-                break;
-            case down:
-                callingDown[c.nowFloor] = false;
-                break;
+        if (c.direction == Direction.up) {
+            callingUp[c.nowFloor] = false;
+        } else {
+            callingDown[c.nowFloor] = false;
         }
-        var iter = passengerQueue[c.nowFloor].iterator();
+        var iter = passengerQueues[c.nowFloor].iterator();
         while (iter.hasNext()) {
             var ptmp = iter.next();
             if (c.direction == ptmp.direction) {
@@ -450,56 +462,52 @@ public class ElevatorSimulator {
 
     private void open_end(Carriage c) {
         c.setState(CarriageState.detecting);
-        events.add(new CarriageEvent(c, time + detectGap,
-                CarriageEventType.detect));
+        events.add(new CarriageEvent(c, time + detectGap, CarriageEventType.detect));
         var nextp = c.getNextPassengerForExiting();
         if (nextp == null) {
             nextp = c.getNextPassengerForEntering();
             if (nextp != null) {
-                events.add(new PassengerEvent(nextp, c, time,
-                        PassengerEventType.enter_start));
+                events.add(new PassengerEvent(nextp, c, time, PassengerEventType.enter_start));
             }
         } else {
-            events.add(new PassengerEvent(nextp, c, time,
-                    PassengerEventType.exit_start));
+            events.add(new PassengerEvent(nextp, c, time, PassengerEventType.exit_start));
         }
     }
 
     private void detect(Carriage c) {
-        if (c.IOPassenger != null) {  //有乘客进出
-            events.add(new CarriageEvent(c, time + detectGap,
-                    CarriageEventType.detect));
-        } else {
+        if (c.IOPassenger == null) {  //无乘客进出
             events.add(new CarriageEvent(c, time,
                     CarriageEventType.close_start));
+        } else {
+            events.add(new CarriageEvent(c, time + detectGap,
+                    CarriageEventType.detect));
         }
     }
 
     private void close_start(Carriage c) {
         c.setState(CarriageState.closing);
-        c.lastStartClosingTime = time;
+        c.lastStartOpenOrCloseTime = time;
         events.add(new CarriageEvent(c, time + openAndCloseTime,
                 CarriageEventType.close_end));
-        boolean existOtherAppropriateCarriage = false;
         //检验是否还有其他可替代的电梯
+        boolean existOtherAppropriateCarriage = false;
         for (var ctmp : carriages) {
-            if (ctmp != c && ctmp.nowFloor == c.nowFloor &&
-                    (ctmp.state == CarriageState.opening ||
-                            ctmp.state == CarriageState.detecting)) {
+            if (ctmp.nowFloor == c.nowFloor && ctmp.direction == c.direction &&
+                    (ctmp.state == CarriageState.opening || ctmp.state == CarriageState.detecting)) {
                 existOtherAppropriateCarriage = true;
+                break;
             }
         }
-        //未能上电梯的乘客重新变回等待状态
+        //未能上电梯的，且不存在替代电梯的乘客重新变回等待状态
         if (!existOtherAppropriateCarriage) {
-            var iter2 = passengerQueue[c.nowFloor].iterator();
-            while (iter2.hasNext()) {
-                var ptmp = iter2.next();
+            var iter = passengerQueues[c.nowFloor].iterator();
+            while (iter.hasNext()) {
+                var ptmp = iter.next();
                 if (ptmp.direction == c.direction) {
                     ptmp.setState(PassengerState.waiting);  //重新变回等待状态
-                    int maxTime = time > (ptmp.arrivingTime + ptmp.abortingTime) ?
-                            time : (ptmp.arrivingTime + ptmp.abortingTime);
-                    events.add(new PassengerEvent(ptmp, null,
-                            maxTime, PassengerEventType.abort));
+                    if (time > ptmp.arrivingTime + ptmp.abortingTime) {  //已经过了放弃时间的，直接放弃
+                        events.add(new PassengerEvent(ptmp, null, time, PassengerEventType.abort));
+                    }
                 }
             }
         }
@@ -507,23 +515,44 @@ public class ElevatorSimulator {
 
     private void close_end(Carriage c) {
         if (c.state == CarriageState.closing) {
-            events.add(new CarriageEvent(c, time,
-                    CarriageEventType.decide_direction));
-        }
-        //剩下的乘客重新按按钮
-        var iter2 = passengerQueue[c.nowFloor].iterator();
-        while (iter2.hasNext()) {
-            switch (iter2.next().direction) {
-                case up:
-                    callingUp[c.nowFloor] = true;
+            events.add(new CarriageEvent(c, time, CarriageEventType.decide_direction));
+            //剩下的乘客重新按按钮
+            //检验是否还有其他可替代的电梯
+            boolean existOtherAppropriateCarriage = false;
+            for (var ctmp : carriages) {
+                if (ctmp.nowFloor == c.nowFloor && ctmp.direction == c.direction &&
+                        (ctmp.state == CarriageState.opening || ctmp.state == CarriageState.detecting)) {
+                    existOtherAppropriateCarriage = true;
                     break;
-                case down:
-                    callingDown[c.nowFloor] = true;
-                    break;
+                }
+            }
+            //不存在替代电梯,且存在等待的乘客，则按下按钮
+            if (!existOtherAppropriateCarriage) {
+                var iter = passengerQueues[c.nowFloor].iterator();
+                while (iter.hasNext()) {
+                    var ptmp = iter.next();
+                    if (ptmp.direction == c.direction && ptmp.state == PassengerState.waiting) {
+                        if (ptmp.direction == Direction.up) {
+                            callingUp[ptmp.inFloor] = true;
+                        } else {
+                            callingDown[ptmp.inFloor] = true;
+                        }
+                        reschedule(ptmp);  //触发调度
+                        break;
+                    }
+                }
             }
         }
     }
 
+    //todo 待完善
+
+    /**
+     * 先看同方向有没有乘客要下，有的话不改变方向
+     * 再看有没有被设定目标，有的话朝目标前进
+     * 如果都没有且反方向有乘客要下，则转向（看看需不需要开门）（直接生成一个反向的运动end）
+     * 如果都没有，进入停泊
+     */
     private void decide_direction(Carriage c) {
         boolean existUpCalling = false;
         boolean existDownCalling = false;
@@ -539,39 +568,47 @@ public class ElevatorSimulator {
                 break;
             }
         }
-        switch (c.direction) {
-            case up:
-                if (existUpCalling || c.targetPassenger != null) {
-                    events.add(new CarriageEvent(c, time,
-                            CarriageEventType.up_start));
-                } else if (existDownCalling) {
-                    events.add(new CarriageEvent(c, time,
-                            CarriageEventType.down_start));
+
+        if (c.direction == Direction.up) {
+            if (existUpCalling ||
+                    (c.targetPassenger != null && c.targetPassenger.inFloor > c.nowFloor)) {
+                events.add(new CarriageEvent(c, time, CarriageEventType.up_start));
+            } else if (existDownCalling ||
+                    (c.targetPassenger != null && c.targetPassenger.inFloor < c.nowFloor)) {
+                c.setDirection(Direction.down);
+                c.setState(CarriageState.downing);
+                if (c.isCalling[c.nowFloor] || callingDown[c.nowFloor]) {
+                    events.add(new CarriageEvent(c, time, CarriageEventType.open_start));
                 } else {
-                    events.add(new CarriageEvent(c, time,
-                            CarriageEventType.berth_start));
+                    events.add(new CarriageEvent(c, time, CarriageEventType.down_start));
                 }
-                break;
-            case down:
-                if (existDownCalling || c.targetPassenger != null) {
-                    events.add(new CarriageEvent(c, time,
-                            CarriageEventType.down_start));
-                } else if (existUpCalling) {
-                    events.add(new CarriageEvent(c, time,
-                            CarriageEventType.up_start));
+            } else {
+                events.add(new CarriageEvent(c, time, CarriageEventType.berth_start));
+            }
+        } else {
+            if (existDownCalling ||
+                    (c.targetPassenger != null && c.targetPassenger.inFloor < c.nowFloor)) {
+                events.add(new CarriageEvent(c, time, CarriageEventType.down_start));
+            } else if (existUpCalling ||
+                    (c.targetPassenger != null && c.targetPassenger.inFloor > c.nowFloor)) {
+                c.setDirection(Direction.up);
+                c.setState(CarriageState.upping);
+                if (c.isCalling[c.nowFloor] || callingUp[c.nowFloor]) {
+                    events.add(new CarriageEvent(c, time, CarriageEventType.open_start));
                 } else {
-                    events.add(new CarriageEvent(c, time,
-                            CarriageEventType.berth_start));
+                    events.add(new CarriageEvent(c, time, CarriageEventType.up_start));
                 }
-                break;
+            } else {
+                events.add(new CarriageEvent(c, time, CarriageEventType.berth_start));
+            }
         }
     }
 
     private void up_start(Carriage c) {
         c.setState(CarriageState.upping);
         c.setDirection(Direction.up);
-        events.add(new CarriageEvent(c, time + upAndDownTime,
-                CarriageEventType.up_end));
+        c.lastStartUpOrDownTime = time;
+        events.add(new CarriageEvent(c, time + upAndDownTime, CarriageEventType.up_end));
     }
 
     private void up_end(Carriage c) {
@@ -589,8 +626,8 @@ public class ElevatorSimulator {
     private void down_start(Carriage c) {
         c.setState(CarriageState.downing);
         c.setDirection(Direction.down);
-        events.add(new CarriageEvent(c, time + upAndDownTime,
-                CarriageEventType.down_end));
+        c.lastStartUpOrDownTime = time;
+        events.add(new CarriageEvent(c, time + upAndDownTime, CarriageEventType.down_end));
     }
 
     private void down_end(Carriage c) {
@@ -606,37 +643,28 @@ public class ElevatorSimulator {
     }
 
     private void berth_start(Carriage c) {
-        //todo 待优化完善
-        //先检查是否是被调度程序生成的电梯运动
         c.setState(CarriageState.berthing);
         c.setDirection(Direction.none);
-        events.add(new CarriageEvent(c, time + berthTime,
-                CarriageEventType.berth_end));
+        events.add(new CarriageEvent(c, time + berthTime, CarriageEventType.berth_end));
+        //todo 寻找距离最远的乘客，触发调度
     }
 
     private void berth_end(Carriage c) {
         if (c.state == CarriageState.berthing) {
             if (c.nowFloor == base) {
-                events.add(new CarriageEvent(c, time,
-                        CarriageEventType.idle_start));
+                events.add(new CarriageEvent(c, time, CarriageEventType.idle_start));
             } else if (c.nowFloor > base) {
-                events.add(new CarriageEvent(c, time,
-                        CarriageEventType.idle_down_start));
+                events.add(new CarriageEvent(c, time, CarriageEventType.idle_down_start));
             } else {
-                events.add(new CarriageEvent(c, time,
-                        CarriageEventType.idle_up_start));
+                events.add(new CarriageEvent(c, time, CarriageEventType.idle_up_start));
             }
         }
     }
 
     private void idle_up_start(Carriage c) {
         c.setState(CarriageState.idle_upping);
-        c.setDirection(Direction.none);
-        c.lastStartUpOrDownToIdlingTime = time;
-        //此处为none是因为direction不是记录真实的运动方向，是乘客预计的运动方向
-        //闲置运动时没有乘客置为none
-        events.add(new CarriageEvent(c, time + upAndDownTime,
-                CarriageEventType.idle_up_end));
+        c.lastStartUpOrDownTime = time;
+        events.add(new CarriageEvent(c, time + upAndDownTime, CarriageEventType.idle_up_end));
     }
 
     private void idle_up_end(Carriage c) {
@@ -652,10 +680,8 @@ public class ElevatorSimulator {
 
     private void idle_down_start(Carriage c) {
         c.setState(CarriageState.idle_downing);
-        c.setDirection(Direction.none);
-        c.lastStartUpOrDownToIdlingTime = time;
-        events.add(new CarriageEvent(c, time + upAndDownTime * (c.nowFloor - base),
-                CarriageEventType.idle_down_end));
+        c.lastStartUpOrDownTime = time;
+        events.add(new CarriageEvent(c, time + upAndDownTime, CarriageEventType.idle_down_end));
     }
 
     private void idle_down_end(Carriage c) {
@@ -671,13 +697,8 @@ public class ElevatorSimulator {
 
     private void idle_start(Carriage c) {
         c.setState(CarriageState.idling);
-        c.setDirection(Direction.none);
     }
 
-    /**
-     * 电梯调度时需要遵循的一些原则：
-     * 触发调度更新的是等待中的乘客按下按钮，或者电梯找不到目标时
-     */
     public void nextEvent() {
         if (!events.isEmpty()) {
             var e = events.get();
@@ -773,6 +794,21 @@ public class ElevatorSimulator {
      * 最小绝对距离原则
      */
 
+    //todo 待完善
+
+    /**
+     * 首先计算各个电梯的抽象距离
+     * 优先调用抽象距离最小的电梯
+     * <p>
+     * 需要注意一些点
+     * 不能改变原有电梯的targetPassenger
+     * <p>
+     * <p>
+     * 寻找抽象距离最近的电梯
+     * 如果有targetPassenger，判断是否可以调整targetPassenger
+     *
+     * @param triggerPassenger 触发调度的乘客
+     */
     private void reschedule(Passenger triggerPassenger) {  //重新调度
         double distance[] = new double[parallelNumber];  //记录每个电梯的抽象距离
         //计算抽象距离
@@ -789,8 +825,7 @@ public class ElevatorSimulator {
             }
         }
         //如果距离最小的电梯处于待命或者即将待命的状态，则调用
-        if (ctmp.state == CarriageState.berthing
-                || ctmp.state == CarriageState.idling) {  //直接调用状态
+        if (ctmp.state == CarriageState.berthing || ctmp.state == CarriageState.idling) {  //直接调用状态
             if (ctmp.nowFloor > triggerPassenger.inFloor) {
                 ctmp.targetPassenger = triggerPassenger;
                 events.add(new CarriageEvent(ctmp, time, CarriageEventType.down_start));
@@ -800,13 +835,12 @@ public class ElevatorSimulator {
             } else {
                 events.add(new CarriageEvent(ctmp, time, CarriageEventType.open_start));
             }
-        } else if (ctmp.state == CarriageState.idle_upping
-                || ctmp.state == CarriageState.idle_downing) {
+        } else if (ctmp.state == CarriageState.idle_upping || ctmp.state == CarriageState.idle_downing) {
             double realFloor = ctmp.nowFloor;
             if (ctmp.state == CarriageState.idle_upping) {
-                realFloor += (double) (time - ctmp.lastStartUpOrDownToIdlingTime) / upAndDownTime;
+                realFloor += (double) (time - ctmp.lastStartUpOrDownTime) / upAndDownTime;
             } else {
-                realFloor -= (double) (time - ctmp.lastStartUpOrDownToIdlingTime) / upAndDownTime;
+                realFloor -= (double) (time - ctmp.lastStartUpOrDownTime) / upAndDownTime;
             }
             int deltaTime = (int) ((realFloor - (int) realFloor) * upAndDownTime);
             if (realFloor > triggerPassenger.inFloor) {
@@ -826,50 +860,115 @@ public class ElevatorSimulator {
 
     }
 
+    //todo 抽象距离的计算
     private double getAbstractDistance(Carriage c, Passenger p) {  //计算抽象距离
-        double cRealFloor = c.nowFloor;
+        double realFloor = c.nowFloor;
         switch (c.state) {  //运动中的电梯需要修正
             case upping:
             case idle_upping:
-                cRealFloor += (double) (time - c.lastStartUpOrDownToIdlingTime) / upAndDownTime;
+                realFloor += (double) (time - c.lastStartUpOrDownTime) / upAndDownTime;
                 break;
             case downing:
             case idle_downing:
-                cRealFloor -= (double) (time - c.lastStartUpOrDownToIdlingTime) / upAndDownTime;
+                realFloor -= (double) (time - c.lastStartUpOrDownTime) / upAndDownTime;
                 break;
         }
         //berthing,idling_up or down,idling直接返回楼层差的绝对值
         //其余分8种情况讨论
-        double delta = cRealFloor - p.inFloor;
-        switch (p.direction) {
-            case up:
-                switch (c.direction) {
-                    case up:
-                        if (delta > 0) {
-                            return 2 * (floors - 1 - p.inFloor) - delta;
-                        }
-                        break;
-                    case down:
-                        return 2 * p.inFloor + delta;
-                }
-                break;
-            case down:
-                switch (c.direction) {
-                    case up:
+        double delta = Math.abs(realFloor - p.inFloor);
+
+        if (p.direction == Direction.up) {
+            switch (c.direction) {
+                case up:
+                    if (p.inFloor > realFloor) {
+                        return delta;
+                    } else {
                         return 2 * (floors - 1 - p.inFloor) - delta;
-                    case down:
-                        if (delta < 0) {
-                            return 2 * p.inFloor + delta;
-                        }
-                        break;
-                }
-                break;
+                    }
+                case down:
+                    if (p.inFloor > realFloor) {
+                        return 2 * p.inFloor - delta;
+                    } else {
+                        return 2 * p.inFloor + delta;
+                    }
+                case none:
+                    return delta;
+            }
+        } else {
+            switch (c.direction) {
+                case up:
+                    if (p.inFloor < realFloor) {
+                        return 2 * (floors - 1 - p.inFloor) - delta;
+                    } else {
+                        return 2 * (floors - 1 - p.inFloor) + delta;
+                    }
+                case down:
+                    if (p.inFloor < realFloor) {
+                        return delta;
+                    } else {
+                        return 2 * p.inFloor - delta;
+                    }
+                case none:
+                    return delta;
+            }
         }
-        return delta < 0 ? -delta : delta;
+        return delta;
     }
 
-    public OrderedLinkedQueue<Event> getEvents() {
-        return events;
+    public int getParallelNumber() {
+        return parallelNumber;
+    }
+
+    public int getFloors() {
+        return floors;
+    }
+
+    public int getNowTime() {
+        return time;
+    }
+
+    public int getNextTime() {
+        return events.getHead().occurTime;
+    }
+
+    public Carriage[] getCarriages() {
+        return carriages;
+    }
+
+    public PassengerLinkedQueue[] getPassengerQueues() {
+        return passengerQueues;
+    }
+
+    public boolean[] getCallingUp() {
+        return callingUp;
+    }
+
+    public boolean[] getCallingDown() {
+        return callingDown;
+    }
+
+    public int getMaxLoad() {
+        return maxLoad;
+    }
+
+    public int getUpAndDownTime() {
+        return upAndDownTime;
+    }
+
+    public int getEnterAndExitTime() {
+        return enterAndExitTime;
+    }
+
+    public int getOpenAndCloseTime() {
+        return openAndCloseTime;
+    }
+
+    public void setLogEnable(boolean logEnable) {
+        this.logEnable = logEnable;
+    }
+
+    private void log(Event e) {
+
     }
 }
 

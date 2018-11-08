@@ -14,7 +14,7 @@ public class OrderedLinkedQueue<T> extends LinkedQueue<T> {
     public void add(T element) {
         var p = store.getHeadNode();
         while (p.getNext() != null) {
-            if (comparator.compare(element, p.getNext().getData()) < 0) {
+            if (comparator.compare(element, p.getNext().getData()) > 0) {
                 p = p.getNext();
             } else {
                 p.setNext(store.getNewNode(element, p.getNext()));
