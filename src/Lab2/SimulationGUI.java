@@ -3,10 +3,6 @@ package Lab2;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * 乘客画个火柴人
- */
-
 public class SimulationGUI extends JFrame {
 
     private ElevatorSimulator simulator;
@@ -27,25 +23,35 @@ public class SimulationGUI extends JFrame {
     private Container mainPanel;
 
     //绘图细节参数
-    private int floorHeight;        //楼层高度
-    private int carriageHeight;     //电梯高度
-    private int carriageWidth;      //电梯宽度
-    private int carriageShaftWidth; //电梯井宽度
-    private int waitingAreaWidth;   //等待区宽度
-    private int buttonWidth;        //按钮宽度
+    private int floorHeight;
+    private int carriageHeight;
+    private int carriageWidth;
+    private int carriageShaftWidth;
+    private int waitingAreaWidth;
+    private int buttonWidth;
     private Image passengerImg;
     private int frameHeight;
     private int frameWidth;
 
+    /**
+     * @param simulator          后端模拟器
+     * @param passengerImg       乘客图片
+     * @param timeScale          时间粒度
+     * @param floorHeight        楼层高度
+     * @param carriageHeight     电梯厢高度
+     * @param carriageWidth      电梯厢宽度
+     * @param carriageShaftWidth 电梯井宽度
+     * @param waitingAreaWidth   等待区宽度
+     * @param buttonWidth        按钮区宽度
+     */
     public SimulationGUI(ElevatorSimulator simulator, Image passengerImg, long timeScale,
                          int floorHeight,
                          int carriageHeight, int carriageWidth, int carriageShaftWidth,
                          int waitingAreaWidth, int buttonWidth) {
         this.simulator = simulator;
         this.timeScale = timeScale;
-        this.passengerImg = passengerImg;
 
-        //读取必要的参数
+        //读取必要的后端数据
         this.floors = simulator.getFloors();
         this.carriages = simulator.getCarriages();
         this.passengerQueues = simulator.getPassengerQueues();
@@ -58,6 +64,7 @@ public class SimulationGUI extends JFrame {
         this.openAndCloseTime = simulator.getOpenAndCloseTime();
 
         //界面参数设置
+        this.passengerImg = passengerImg;
         this.floorHeight = floorHeight;
         this.carriageHeight = carriageHeight;
         this.carriageWidth = carriageWidth;
@@ -72,19 +79,19 @@ public class SimulationGUI extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        mainPanel = new MainPanel();  //解决错位问题
+        mainPanel = new JPanel();
         setContentPane(mainPanel);
         mainPanel.setLayout(null);
         mainPanel.setSize(frameWidth, frameHeight);
-        setSize(frameWidth + 14, frameHeight + 39);
+        setSize(frameWidth + 14, frameHeight + 39);  //解决错位问题
 
         //初始化各个panel
         waitingAreaPanel = new WaitingAreaPanel[floors];
         for (int i = 0; i < floors; i++) {
-            waitingAreaPanel[i] = new WaitingAreaPanel(passengerQueues[i], i);
+            waitingAreaPanel[i] = new WaitingAreaPanel(i);
             mainPanel.add(waitingAreaPanel[i]);
             waitingAreaPanel[i].setSize(waitingAreaWidth, floorHeight);
-            waitingAreaPanel[i].setLocation(frameWidth - waitingAreaWidth, i * floorHeight);
+            waitingAreaPanel[i].setLocation(frameWidth - waitingAreaWidth, (floors - 1 - i) * floorHeight);
         }
         carriageShaftPanel = new CarriageShaftPanel[parallelNumber];
         for (int i = 0; i < parallelNumber; i++) {
@@ -127,15 +134,6 @@ public class SimulationGUI extends JFrame {
 
     }
 
-
-    class MainPanel extends JPanel {
-        @Override
-        public void paint(Graphics g) {
-            super.paint(g);
-        }
-    }
-
-
     //电梯井
     class CarriageShaftPanel extends JPanel {
         CarriagePanel carriagePanel;
@@ -146,12 +144,13 @@ public class SimulationGUI extends JFrame {
             setLayout(null);
             carriagePanel = new CarriagePanel();
             add(carriagePanel);
+            carriagePanel.setSize(carriageWidth, carriageHeight);
+            carriagePanel.setLocation((carriageShaftWidth - 2 - carriageWidth) / 2 + 1,
+                    frameHeight - floorHeight - carriageHeight);
         }
 
         public void refresh() {
             carriagePanel.refresh();
-            carriagePanel.move();
-//            System.out.println("floor=" + carriagePanel.nowFloor + ", y=" + carriagePanel.getY());
         }
 
         @Override
@@ -162,20 +161,12 @@ public class SimulationGUI extends JFrame {
             g.drawLine(carriageShaftWidth - 1, 0, carriageShaftWidth - 1, frameHeight - 1);
         }
 
+        //电梯厢
         class CarriagePanel extends JPanel {
             double openedPercent = 0.0;  //门开的比例
             double nowFloor = carriage.nowFloor;
 
-            public CarriagePanel() {
-                System.out.println((carriageShaftWidth - 2 - carriageWidth) / 2 + 1);  //todo ?为什么是0
-
-                setLocation((carriageShaftWidth - 2 - carriageWidth) / 2 + 1,
-                        frameHeight - floorHeight - carriageHeight);
-                setSize(carriageWidth, carriageHeight);
-            }
-
             public void refresh() {
-                System.out.println(((double) floorHeight) / upAndDownTime);
                 switch (carriage.state) {
                     case idling:
                     case berthing:
@@ -197,11 +188,8 @@ public class SimulationGUI extends JFrame {
                         openedPercent -= 1.0 / openAndCloseTime;
                         break;
                 }
-            }
-
-            public void move() {
                 setLocation(getX(), frameHeight - (int) (nowFloor * floorHeight) - carriageHeight);
-                repaint();
+                carriagePanel.repaint();
             }
 
             @Override
@@ -226,11 +214,9 @@ public class SimulationGUI extends JFrame {
 
     //等待区域
     class WaitingAreaPanel extends JPanel {
-        PassengerLinkedQueue passengerQueue;
-        int floor;
+        private int floor;
 
-        public WaitingAreaPanel(PassengerLinkedQueue passengerQueue, int floor) {
-            this.passengerQueue = passengerQueue;
+        public WaitingAreaPanel(int floor) {
             this.floor = floor;
         }
 
@@ -250,20 +236,30 @@ public class SimulationGUI extends JFrame {
             g.setColor(Color.gray);
             int signHeight = floorHeight / 3;
             int signWidth = 2 * floorHeight / 3;
-            g.fillRect(waitingAreaWidth - signWidth, 0, signWidth, signHeight);
+            g.fillRect(waitingAreaWidth - signWidth, 1, signWidth, signHeight);
 
+            //绘制等待队列
+            var iter = passengerQueues[floor].iterator();
+            int x = 10;
+            while (iter.hasNext()) {
+                var p = iter.next();
+                g.setColor(p.color);
+                g.fillOval(x, floorHeight - 15, 15, 15);
+                x += 10;
+            }
         }
     }
 
     //按钮区域
     class ButtonPanel extends JPanel {
-
-        boolean up = false;
-        boolean down = false;
-        int floor;
+        private int floor;
 
         public ButtonPanel(int floor) {
             this.floor = floor;
+        }
+
+        public void refresh() {
+            repaint();
         }
 
         @Override
@@ -274,18 +270,18 @@ public class SimulationGUI extends JFrame {
             g.drawLine(0, 0, buttonWidth - 1, 0);
             g.drawLine(0, floorHeight - 1, buttonWidth - 1, floorHeight - 1);
 
+            if (floor != floors) {
+                g.setColor(callingUp[floor] ? Color.red : Color.black);
+                //todo 绘制上箭头
+            }
+            if (floor != 0) {
+                g.setColor(callingDown[floor] ? Color.red : Color.black);
+                //todo 绘制下箭头
+            }
+
+
         }
 
-        public void refresh() {
-            up = callingUp[floor];
-            down = callingDown[floor];
-
-            repaint();
-        }
-
-        private void drawArrowHead(Graphics g) {
-
-        }
     }
 }
 
