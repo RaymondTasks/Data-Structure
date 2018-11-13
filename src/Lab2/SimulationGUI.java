@@ -32,6 +32,7 @@ public class SimulationGUI extends JFrame {
     private Image passengerImg;
     private int frameHeight;
     private int frameWidth;
+    private int passengerRadius;
 
     /**
      * @param simulator          后端模拟器
@@ -47,7 +48,8 @@ public class SimulationGUI extends JFrame {
     public SimulationGUI(ElevatorSimulator simulator, Image passengerImg, long timeScale,
                          int floorHeight,
                          int carriageHeight, int carriageWidth, int carriageShaftWidth,
-                         int waitingAreaWidth, int buttonWidth) {
+                         int waitingAreaWidth, int buttonWidth,
+                         int passengerRadius) {
         this.simulator = simulator;
         this.timeScale = timeScale;
 
@@ -71,6 +73,7 @@ public class SimulationGUI extends JFrame {
         this.carriageShaftWidth = carriageShaftWidth;
         this.waitingAreaWidth = waitingAreaWidth;
         this.buttonWidth = buttonWidth;
+        this.passengerRadius = passengerRadius;
         frameHeight = floorHeight * floors;
         frameWidth = carriageShaftWidth * parallelNumber + buttonWidth + waitingAreaWidth;
 
@@ -105,7 +108,7 @@ public class SimulationGUI extends JFrame {
             buttonPanel[i] = new ButtonPanel(i);
             mainPanel.add(buttonPanel[i]);
             buttonPanel[i].setSize(buttonWidth, floorHeight);
-            buttonPanel[i].setLocation(carriageShaftWidth * parallelNumber, i * floorHeight);
+            buttonPanel[i].setLocation(carriageShaftWidth * parallelNumber, (floors - 1 - i) * floorHeight);
         }
 
     }
@@ -164,22 +167,22 @@ public class SimulationGUI extends JFrame {
         //电梯厢
         class CarriagePanel extends JPanel {
             double openedPercent = 0.0;  //门开的比例
-            double nowFloor = carriage.nowFloor;
+            double position = carriage.nowFloor;
 
             public void refresh() {
                 switch (carriage.state) {
                     case idling:
                     case berthing:
                     case detecting:
-                        nowFloor = carriage.nowFloor;
+                        position = carriage.nowFloor;
                         break;
                     case upping:
                     case idle_upping:
-                        nowFloor += 1.0 / upAndDownTime;
+                        position += 1.0 / upAndDownTime;
                         break;
                     case downing:
                     case idle_downing:
-                        nowFloor -= 1.0 / upAndDownTime;
+                        position -= 1.0 / upAndDownTime;
                         break;
                     case opening:  //更新门的状态
                         openedPercent += 1.0 / openAndCloseTime;
@@ -188,7 +191,7 @@ public class SimulationGUI extends JFrame {
                         openedPercent -= 1.0 / openAndCloseTime;
                         break;
                 }
-                setLocation(getX(), frameHeight - (int) (nowFloor * floorHeight) - carriageHeight);
+                setLocation(getX(), frameHeight - (int) (position * floorHeight) - carriageHeight);
                 carriagePanel.repaint();
             }
 
@@ -208,6 +211,24 @@ public class SimulationGUI extends JFrame {
                 g.setColor(new Color(Color.gray.getRed(), Color.gray.getGreen(), Color.gray.getBlue(), 128));  //半透明灰色
                 g.fillRect(1, 1, showedWidth, carriageHeight - 2);
                 g.fillRect(carriageWidth - 1 - showedWidth, 1, showedWidth, carriageHeight - 2);
+
+                //todo 电梯内乘客
+                int n = 1 + (int) Math.sqrt(carriageMaxLoad);
+                int raw = 0;
+                int column = 0;
+                for (var ptmp : carriage.content) {
+                    if (ptmp != null) {
+                        g.setColor(ptmp.color);
+                        g.fillOval(2 + column * (2 * passengerRadius + 1), carriageHeight - 1 - (raw + 1) * (2 * passengerRadius + 1),
+                                2 * passengerRadius, 2 * passengerRadius);
+                        column++;
+                        if (column == n - 1) {
+                            column = 0;
+                            raw++;
+                        }
+                    }
+
+                }
             }
         }
     }
@@ -233,19 +254,23 @@ public class SimulationGUI extends JFrame {
             g.drawLine(0, floorHeight - 1, waitingAreaWidth - 1, floorHeight - 1);
 
             //楼层标志
-            g.setColor(Color.gray);
-            int signHeight = floorHeight / 3;
-            int signWidth = 2 * floorHeight / 3;
-            g.fillRect(waitingAreaWidth - signWidth, 1, signWidth, signHeight);
+//            g.setColor(new Color(Color.gray.getRed(),Color.gray.getGreen(),Color.gray.getBlue(),128));
+//            int signHeight = floorHeight / 3;
+//            int signWidth = 2 * floorHeight / 3;
+//            g.fillRect(waitingAreaWidth - signWidth, 1, signWidth, signHeight);
+
+            g.setColor(Color.black);
+            g.setFont(new Font("思源黑体", Font.PLAIN, 35));
+            g.drawString(floor == 0 ? ("B1") : (floor + "F"), waitingAreaWidth - 50, 30);
 
             //绘制等待队列
             var iter = passengerQueues[floor].iterator();
-            int x = 10;
+            int x = 0;
             while (iter.hasNext()) {
                 var p = iter.next();
                 g.setColor(p.color);
-                g.fillOval(x, floorHeight - 15, 15, 15);
-                x += 10;
+                g.fillOval(x, floorHeight - 2 * passengerRadius - 1, 2 * passengerRadius, 2 * passengerRadius);
+                x += 2 * passengerRadius + 5;
             }
         }
     }
@@ -264,21 +289,26 @@ public class SimulationGUI extends JFrame {
 
         @Override
         public void paint(Graphics g) {
-            super.paint(g);
-            g.setColor(Color.black);
-            g.drawLine(0, 0, 0, floorHeight - 1);
-            g.drawLine(0, 0, buttonWidth - 1, 0);
-            g.drawLine(0, floorHeight - 1, buttonWidth - 1, floorHeight - 1);
+            Graphics2D g2 = (Graphics2D) g;
+            super.paint(g2);
+            g2.setColor(Color.black);
+            g2.drawLine(0, 0, 0, floorHeight - 1);
+            g2.drawLine(0, 0, buttonWidth - 1, 0);
+            g2.drawLine(0, floorHeight - 1, buttonWidth - 1, floorHeight - 1);
 
-            if (floor != floors) {
-                g.setColor(callingUp[floor] ? Color.red : Color.black);
-                //todo 绘制上箭头
+            g2.setStroke(new BasicStroke(2));
+            if (floor != floors - 1) {
+                g2.setColor(callingUp[floor] ? Color.red : Color.black);
+                g2.drawLine(buttonWidth / 2, floorHeight * 3 / 8, buttonWidth / 2, floorHeight / 8);
+                g2.drawLine(buttonWidth / 2, floorHeight / 8, buttonWidth / 4, floorHeight / 4);
+                g2.drawLine(buttonWidth / 2, floorHeight / 8, buttonWidth * 3 / 4, floorHeight / 4);
             }
             if (floor != 0) {
-                g.setColor(callingDown[floor] ? Color.red : Color.black);
-                //todo 绘制下箭头
+                g2.setColor(callingDown[floor] ? Color.red : Color.black);
+                g2.drawLine(buttonWidth / 2, floorHeight * 5 / 8, buttonWidth / 2, floorHeight * 7 / 8);
+                g2.drawLine(buttonWidth / 2, floorHeight * 7 / 8, buttonWidth / 4, floorHeight * 3 / 4);
+                g2.drawLine(buttonWidth / 2, floorHeight * 7 / 8, buttonWidth * 3 / 4, floorHeight * 3 / 4);
             }
-
 
         }
 

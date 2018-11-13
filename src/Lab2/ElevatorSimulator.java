@@ -10,7 +10,6 @@ import java.util.Random;
 public class ElevatorSimulator {
 
     private boolean logEnable = false;
-    private Logger logger = new Logger();
 
     private int upAndDownTime;
     private int openAndCloseTime;
@@ -139,6 +138,19 @@ public class ElevatorSimulator {
 
         int lastStartOpenOrCloseTime;  //用于中断关门后生成新的开门事件
         int lastStartUpOrDownTime;  //用于中断前往待命状态的移动事件
+
+        public double getPosition() {
+            switch (state) {
+                case upping:
+                case idle_upping:
+                    return (double) nowFloor + (double) (time - lastStartUpOrDownTime) / upAndDownTime;
+                case downing:
+                case idle_downing:
+                    return (double) nowFloor - (double) (time - lastStartUpOrDownTime) / upAndDownTime;
+                default:
+                    return (double) nowFloor;
+            }
+        }
 
     }
 
@@ -599,44 +611,59 @@ public class ElevatorSimulator {
         }
     }
 
-    private double FindLowestUpCarriageAbove(Carriage c) {
-        double min = Double.MAX_VALUE;
+    private double FindPosition(Carriage c, Direction direction, Direction searchDirection) {
+        //向上的电梯找最低
+        //向下的电梯找最高
+        double position = direction == Direction.up ? Double.MAX_VALUE : Double.MIN_VALUE;
         for (var ctmp : carriages) {
-            if (ctmp != c && ctmp.direction == Direction.up &&
-                    (ctmp.nowFloor > c.nowFloor ||
-                            (ctmp.nowFloor == c.nowFloor && ctmp.state == CarriageState.upping))) {
-                double realFloor;
-                if (ctmp.state == CarriageState.upping || ctmp.state == CarriageState.closing) {
-                    realFloor = ctmp.nowFloor + 0.5;
-                } else {
-                    realFloor = ctmp.nowFloor;
-                }
-                if (realFloor < min) {
-                    min = realFloor;
+            if (ctmp != c && ctmp.direction == direction) {
+                double realFloor = ctmp.getPosition();
+                if (searchDirection == Direction.up && realFloor > c.getPosition() ||
+                        searchDirection == Direction.down && realFloor < c.getPosition()) {
+                    if (direction == Direction.up && realFloor < position ||
+                            direction == Direction.down && realFloor > position) {
+                        position = realFloor;
+                    }
                 }
             }
         }
-        return min;
+        return position;
     }
 
-    private double FindHighestDownCarriageBelow(Carriage c) {
-        double max = Double.MIN_VALUE;
-        for (var ctmp : carriages) {
-            if (ctmp != c && ctmp.direction == Direction.down &&
-                    (ctmp.nowFloor < c.nowFloor ||
-                            (ctmp.nowFloor == c.nowFloor && ctmp.state == CarriageState.downing))) {
-                double realFloor;
-                if (ctmp.state == CarriageState.downing || ctmp.state == CarriageState.closing) {
-                    realFloor = ctmp.nowFloor - 0.5;
-                } else {
-                    realFloor = ctmp.nowFloor;
-                }
-                if (realFloor > max) {
-                    max = realFloor;
-                }
+    private boolean searchUp(Carriage c) {
+        //找到c以上向上的最低电梯
+        double min = FindPosition(c, Direction.up, Direction.up);
+        for (int i = c.nowFloor + 1; i < floors && i < min; i++) {
+            if (callingUp[i] || callingDown[i]) {
+                return true;
             }
         }
-        return max;
+        //找到c以上向下的最高电梯
+//        double max = FindPosition(c, Direction.down, Direction.up);
+//        for (int i = floors - 1; i > max && i >= 0; i--) {
+//            if (callingDown[i]) {
+//                return true;
+//            }
+//        }
+        return false;
+    }
+
+    private boolean searchDown(Carriage c) {
+        //找到c以下向下的最高电梯
+        double max = FindPosition(c, Direction.down, Direction.down);
+        for (int i = c.nowFloor - 1; i >= 0 && i > max; i--) {
+            if (callingUp[i] || callingDown[i]) {
+                return true;
+            }
+        }
+        //找到c以下向上的最低电梯
+//        double min = FindPosition(c, Direction.up, Direction.down);
+//        for (int i = 0; i < min && i < floors; i++) {
+//            if (callingUp[i]) {
+//                return true;
+//            }
+//        }
+        return false;
     }
 
     /**
@@ -659,35 +686,21 @@ public class ElevatorSimulator {
                     return;
                 }
             }
-
-            //找到c以上向上的最低的电梯
-            double min = FindLowestUpCarriageAbove(c);
-            for (int i = c.nowFloor + 1; i < floors && i < min; i++) {
-                if (callingUp[i] || callingDown[i]) {
-                    events.add(new CarriageEvent(c, time, CarriageEventType.up_start));
-                    return;
-                }
+            if (searchUp(c)) {
+                events.add(new CarriageEvent(c, time, CarriageEventType.up_start));
+                return;
             }
-
             //转向
-            c.setDirection(Direction.down);
-            c.setState(CarriageState.downing);
             if (callingDown[c.nowFloor]) {
+                c.setDirection(Direction.down);
+                c.setState(CarriageState.downing);
                 events.add(new CarriageEvent(c, time, CarriageEventType.open_start));
                 return;
             }
-
-            //找到c以下向下的最高电梯
-            double max = FindHighestDownCarriageBelow(c);
-            for (int i = c.nowFloor - 1; i >= 0 && i >= max; i--) {
-                if (callingUp[i] || callingDown[i]) {
-                    events.add(new CarriageEvent(c, time, CarriageEventType.down_start));
-                    return;
-                }
+            if (searchDown(c)) {
+                events.add(new CarriageEvent(c, time, CarriageEventType.down_start));
+                return;
             }
-
-            events.add(new CarriageEvent(c, time, CarriageEventType.berth_start));
-
         } else {
             for (int i = c.nowFloor - 1; i >= 0; i--) {
                 if (c.isCalling[i]) {
@@ -695,36 +708,23 @@ public class ElevatorSimulator {
                     return;
                 }
             }
-
-            //找到c以下向下的最高电梯
-            double max = FindHighestDownCarriageBelow(c);
-            for (int i = c.nowFloor - 1; i >= 0 && i >= max; i--) {
-                if (callingUp[i] || callingDown[i]) {
-                    events.add(new CarriageEvent(c, time, CarriageEventType.down_start));
-                    return;
-                }
+            if (searchDown(c)) {
+                events.add(new CarriageEvent(c, time, CarriageEventType.down_start));
+                return;
             }
-
             //转向
-            c.setDirection(Direction.up);
-            c.setState(CarriageState.upping);
             if (callingUp[c.nowFloor]) {
+                c.setDirection(Direction.up);
+                c.setState(CarriageState.upping);
                 events.add(new CarriageEvent(c, time, CarriageEventType.open_start));
                 return;
             }
-
-            //找到c以上向上的最低的电梯
-            double min = FindLowestUpCarriageAbove(c);
-            for (int i = c.nowFloor + 1; i < floors && i < min; i++) {
-                if (callingUp[i] || callingDown[i]) {
-                    events.add(new CarriageEvent(c, time, CarriageEventType.up_start));
-                    return;
-                }
+            if (searchUp(c)) {
+                events.add(new CarriageEvent(c, time, CarriageEventType.up_start));
+                return;
             }
-
-            events.add(new CarriageEvent(c, time, CarriageEventType.berth_start));
         }
-
+        events.add(new CarriageEvent(c, time, CarriageEventType.berth_start));
     }
 
     private void half_up_start(Carriage c) {
@@ -756,20 +756,17 @@ public class ElevatorSimulator {
 
     private void up_end(Carriage c) {
         c.nowFloor++;
-        if (c.nowFloor == floors - 1) {
+        if (c.nowFloor == floors - 1) {  //到顶转向
             c.setDirection(Direction.down);
             c.setState(CarriageState.downing);
-            if (c.isCalling[c.nowFloor] || callingDown[c.nowFloor]) {
-                events.add(new CarriageEvent(c, time, CarriageEventType.open_start));
-                return;
-            }
-        } else {
-            if (c.isCalling[c.nowFloor] || callingUp[c.nowFloor]) {
-                events.add(new CarriageEvent(c, time, CarriageEventType.open_start));
-                return;
-            }
         }
-        events.add(new CarriageEvent(c, time, CarriageEventType.decide_direction));
+        if (c.isCalling[c.nowFloor] ||
+                c.direction == Direction.up && callingUp[c.nowFloor] ||
+                c.direction == Direction.down && callingDown[c.nowFloor]) {
+            events.add(new CarriageEvent(c, time, CarriageEventType.open_start));
+        } else {
+            events.add(new CarriageEvent(c, time, CarriageEventType.decide_direction));
+        }
     }
 
     private void down_start(Carriage c) {
@@ -784,17 +781,14 @@ public class ElevatorSimulator {
         if (c.nowFloor == 0) {
             c.setDirection(Direction.up);
             c.setState(CarriageState.upping);
-            if (c.isCalling[c.nowFloor] || callingUp[c.nowFloor]) {
-                events.add(new CarriageEvent(c, time, CarriageEventType.open_start));
-                return;
-            }
-        } else {
-            if (c.isCalling[c.nowFloor] || callingDown[c.nowFloor]) {
-                events.add(new CarriageEvent(c, time, CarriageEventType.open_start));
-                return;
-            }
         }
-        events.add(new CarriageEvent(c, time, CarriageEventType.decide_direction));
+        if (c.isCalling[c.nowFloor] ||
+                c.direction == Direction.up && callingUp[c.nowFloor] ||
+                c.direction == Direction.down && callingDown[c.nowFloor]) {
+            events.add(new CarriageEvent(c, time, CarriageEventType.open_start));
+        } else {
+            events.add(new CarriageEvent(c, time, CarriageEventType.decide_direction));
+        }
     }
 
     private void berth_start(Carriage c) {
@@ -817,6 +811,7 @@ public class ElevatorSimulator {
 
     private void idle_up_start(Carriage c) {
         c.setState(CarriageState.idle_upping);
+        c.setDirection(Direction.none);
         c.lastStartUpOrDownTime = time;
         events.add(new CarriageEvent(c, time + upAndDownTime, CarriageEventType.idle_up_end));
     }
@@ -834,6 +829,7 @@ public class ElevatorSimulator {
 
     private void idle_down_start(Carriage c) {
         c.setState(CarriageState.idle_downing);
+        c.setDirection(Direction.none);
         c.lastStartUpOrDownTime = time;
         events.add(new CarriageEvent(c, time + upAndDownTime, CarriageEventType.idle_down_end));
     }
@@ -851,6 +847,7 @@ public class ElevatorSimulator {
 
     private void idle_start(Carriage c) {
         c.setState(CarriageState.idling);
+        c.setDirection(Direction.none);
     }
 
 //todo
@@ -872,6 +869,7 @@ public class ElevatorSimulator {
         } else {
             callingDown[triggerFloor] = true;
         }
+        //有正在赶来的电梯
         if (triggerDirection == Direction.up) {
             for (var ctmp : carriages) {
                 if (ctmp.direction == Direction.up && ctmp.nowFloor < triggerFloor) {
@@ -889,15 +887,8 @@ public class ElevatorSimulator {
         Carriage nearest = null;
         double min = Double.MAX_VALUE;
         for (var ctmp : carriages) {
-            if (ctmp.state == CarriageState.berthing || ctmp.state == CarriageState.idling ||
-                    ctmp.state == CarriageState.idle_upping || ctmp.state == CarriageState.idle_downing) {
-                double now = ctmp.nowFloor;
-                if (ctmp.state == CarriageState.idle_upping) {
-                    now += (double) (time - ctmp.lastStartUpOrDownTime) / upAndDownTime;
-                } else if (ctmp.state == CarriageState.idle_downing) {
-                    now -= (double) (time - ctmp.lastStartUpOrDownTime) / upAndDownTime;
-                }
-                double delta = Math.abs(now - triggerFloor);
+            if (ctmp.direction == Direction.none) {
+                double delta = Math.abs(ctmp.getPosition() - triggerFloor);
                 if (delta < min) {
                     min = delta;
                     nearest = ctmp;
@@ -919,18 +910,9 @@ public class ElevatorSimulator {
                     break;
                 case idle_upping:
                 case idle_downing:
-                    if (nearest.nowFloor > triggerFloor) {  //在本层以上
+                    if (nearest.getPosition() > triggerFloor) {
                         events.add(new CarriageEvent(nearest, time, CarriageEventType.half_down_start));
-                    } else if (nearest.nowFloor == triggerFloor) {
-                        if (time == nearest.lastStartUpOrDownTime) {  //在本层
-                            nearest.setDirection(triggerDirection);
-                            events.add(new CarriageEvent(nearest, time, CarriageEventType.open_start));
-                        } else {
-                            events.add(new CarriageEvent(nearest, time,
-                                    nearest.state == CarriageState.idle_upping ?
-                                            CarriageEventType.half_down_start : CarriageEventType.half_up_start));
-                        }
-                    } else {  //在下层
+                    } else {
                         events.add(new CarriageEvent(nearest, time, CarriageEventType.half_up_start));
                     }
                     break;

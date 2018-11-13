@@ -15,7 +15,7 @@ public class Main {
                 100,
                 90, 70, 80,
                 500,
-                50);
+                50, 10);
         sim.startSimulation();
         for (; ; ) {
             sim.nextEvent();
