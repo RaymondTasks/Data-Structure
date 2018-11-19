@@ -11,43 +11,43 @@ public class SimulationGUI extends JFrame {
     private int upAndDownTime;
     private int enterAndExitTime;
     private int openAndCloseTime;
-    private ElevatorSimulator.Carriage carriages[];
+    private ElevatorSimulator.Car cars[];
     private PassengerLinkedQueue passengerQueues[];
     private boolean callingUp[];
     private boolean callingDown[];
-    private int carriageMaxLoad;
+    private int carMaxLoad;
     private WaitingAreaPanel waitingAreaPanel[];
-    private CarriageShaftPanel carriageShaftPanel[];
+    private CarShaftPanel carShaftPanel[];
     private ButtonPanel buttonPanel[];
     private int parallelNumber;
     private Container mainPanel;
 
     //绘图细节参数
     private int floorHeight;
-    private int carriageHeight;
-    private int carriageWidth;
-    private int carriageShaftWidth;
+    private int carHeight;
+    private int carWidth;
+    private int carShaftWidth;
     private int waitingAreaWidth;
     private int buttonWidth;
-    private Image passengerImg;
     private int frameHeight;
     private int frameWidth;
     private int passengerRadius;
 
     /**
-     * @param simulator          后端模拟器
-     * @param passengerImg       乘客图片
-     * @param timeScale          时间粒度
-     * @param floorHeight        楼层高度
-     * @param carriageHeight     电梯厢高度
-     * @param carriageWidth      电梯厢宽度
-     * @param carriageShaftWidth 电梯井宽度
-     * @param waitingAreaWidth   等待区宽度
-     * @param buttonWidth        按钮区宽度
+     * SimulationGUI构造函数
+     *
+     * @param simulator        后端模拟器
+     * @param timeScale        时间粒度
+     * @param floorHeight      楼层高度
+     * @param carHeight        电梯厢高度
+     * @param carWidth         电梯厢宽度
+     * @param carShaftWidth    电梯井宽度
+     * @param waitingAreaWidth 等待区宽度
+     * @param buttonWidth      按钮区宽度
      */
-    public SimulationGUI(ElevatorSimulator simulator, Image passengerImg, long timeScale,
+    public SimulationGUI(ElevatorSimulator simulator, long timeScale,
                          int floorHeight,
-                         int carriageHeight, int carriageWidth, int carriageShaftWidth,
+                         int carHeight, int carWidth, int carShaftWidth,
                          int waitingAreaWidth, int buttonWidth,
                          int passengerRadius) {
         this.simulator = simulator;
@@ -55,27 +55,26 @@ public class SimulationGUI extends JFrame {
 
         //读取必要的后端数据
         this.floors = simulator.getFloors();
-        this.carriages = simulator.getCarriages();
+        this.cars = simulator.getCars();
         this.passengerQueues = simulator.getPassengerQueues();
         this.parallelNumber = simulator.getParallelNumber();
         this.callingUp = simulator.getCallingUp();
         this.callingDown = simulator.getCallingDown();
-        this.carriageMaxLoad = simulator.getMaxLoad();
+        this.carMaxLoad = simulator.getMaxLoad();
         this.upAndDownTime = simulator.getUpAndDownTime();
         this.enterAndExitTime = simulator.getEnterAndExitTime();
         this.openAndCloseTime = simulator.getOpenAndCloseTime();
 
         //界面参数设置
-        this.passengerImg = passengerImg;
         this.floorHeight = floorHeight;
-        this.carriageHeight = carriageHeight;
-        this.carriageWidth = carriageWidth;
-        this.carriageShaftWidth = carriageShaftWidth;
+        this.carHeight = carHeight;
+        this.carWidth = carWidth;
+        this.carShaftWidth = carShaftWidth;
         this.waitingAreaWidth = waitingAreaWidth;
         this.buttonWidth = buttonWidth;
         this.passengerRadius = passengerRadius;
         frameHeight = floorHeight * floors;
-        frameWidth = carriageShaftWidth * parallelNumber + buttonWidth + waitingAreaWidth;
+        frameWidth = carShaftWidth * parallelNumber + buttonWidth + waitingAreaWidth;
 
         setTitle("Elevator Simulation");
         setResizable(false);
@@ -96,19 +95,19 @@ public class SimulationGUI extends JFrame {
             waitingAreaPanel[i].setSize(waitingAreaWidth, floorHeight);
             waitingAreaPanel[i].setLocation(frameWidth - waitingAreaWidth, (floors - 1 - i) * floorHeight);
         }
-        carriageShaftPanel = new CarriageShaftPanel[parallelNumber];
+        carShaftPanel = new CarShaftPanel[parallelNumber];
         for (int i = 0; i < parallelNumber; i++) {
-            carriageShaftPanel[i] = new CarriageShaftPanel(carriages[i]);
-            mainPanel.add(carriageShaftPanel[i]);
-            carriageShaftPanel[i].setSize(carriageShaftWidth, frameHeight);
-            carriageShaftPanel[i].setLocation(i * carriageShaftWidth, 0);
+            carShaftPanel[i] = new CarShaftPanel(cars[i]);
+            mainPanel.add(carShaftPanel[i]);
+            carShaftPanel[i].setSize(carShaftWidth, frameHeight);
+            carShaftPanel[i].setLocation(i * carShaftWidth, 0);
         }
         buttonPanel = new ButtonPanel[floors];
         for (int i = 0; i < floors; i++) {
             buttonPanel[i] = new ButtonPanel(i);
             mainPanel.add(buttonPanel[i]);
             buttonPanel[i].setSize(buttonWidth, floorHeight);
-            buttonPanel[i].setLocation(carriageShaftWidth * parallelNumber, (floors - 1 - i) * floorHeight);
+            buttonPanel[i].setLocation(carShaftWidth * parallelNumber, (floors - 1 - i) * floorHeight);
         }
 
     }
@@ -118,7 +117,7 @@ public class SimulationGUI extends JFrame {
         int nextTime = simulator.getNextTime();
         for (int i = nowTime; i < nextTime; i++) {
 
-            for (var tmp : carriageShaftPanel) {
+            for (var tmp : carShaftPanel) {
                 tmp.refresh();
             }
             for (var tmp : waitingAreaPanel) {
@@ -138,22 +137,22 @@ public class SimulationGUI extends JFrame {
     }
 
     //电梯井
-    class CarriageShaftPanel extends JPanel {
-        CarriagePanel carriagePanel;
-        ElevatorSimulator.Carriage carriage;
+    class CarShaftPanel extends JPanel {
+        CarPanel carPanel;
+        ElevatorSimulator.Car car;
 
-        public CarriageShaftPanel(ElevatorSimulator.Carriage carriage) {
-            this.carriage = carriage;
+        public CarShaftPanel(ElevatorSimulator.Car car) {
+            this.car = car;
             setLayout(null);
-            carriagePanel = new CarriagePanel();
-            add(carriagePanel);
-            carriagePanel.setSize(carriageWidth, carriageHeight);
-            carriagePanel.setLocation((carriageShaftWidth - 2 - carriageWidth) / 2 + 1,
-                    frameHeight - floorHeight - carriageHeight);
+            carPanel = new CarPanel();
+            add(carPanel);
+            carPanel.setSize(carWidth, carHeight);
+            carPanel.setLocation((carShaftWidth - 2 - carWidth) / 2 + 1,
+                    frameHeight - floorHeight - carHeight);
         }
 
         public void refresh() {
-            carriagePanel.refresh();
+            carPanel.refresh();
         }
 
         @Override
@@ -161,20 +160,20 @@ public class SimulationGUI extends JFrame {
             super.paint(g);
             g.setColor(Color.black);
             g.drawLine(0, 0, 0, frameHeight - 1);
-            g.drawLine(carriageShaftWidth - 1, 0, carriageShaftWidth - 1, frameHeight - 1);
+            g.drawLine(carShaftWidth - 1, 0, carShaftWidth - 1, frameHeight - 1);
         }
 
         //电梯厢
-        class CarriagePanel extends JPanel {
+        class CarPanel extends JPanel {
             double openedPercent = 0.0;  //门开的比例
-            double position = carriage.nowFloor;
+            double position = car.nowFloor;
 
             public void refresh() {
-                switch (carriage.state) {
+                switch (car.state) {
                     case idling:
                     case berthing:
                     case detecting:
-                        position = carriage.nowFloor;
+                        position = car.nowFloor;
                         break;
                     case upping:
                     case idle_upping:
@@ -191,8 +190,8 @@ public class SimulationGUI extends JFrame {
                         openedPercent -= 1.0 / openAndCloseTime;
                         break;
                 }
-                setLocation(getX(), frameHeight - (int) (position * floorHeight) - carriageHeight);
-                carriagePanel.repaint();
+                setLocation(getX(), frameHeight - (int) (position * floorHeight) - carHeight);
+                carPanel.repaint();
             }
 
             @Override
@@ -201,25 +200,25 @@ public class SimulationGUI extends JFrame {
 
                 //电梯边框
                 g.setColor(Color.black);
-                g.drawLine(0, 0, 0, carriageHeight - 1);
-                g.drawLine(0, 0, carriageWidth - 1, 0);
-                g.drawLine(carriageWidth - 1, carriageHeight - 1, 0, carriageHeight - 1);
-                g.drawLine(carriageWidth - 1, carriageHeight - 1, carriageWidth - 1, 0);
+                g.drawLine(0, 0, 0, carHeight - 1);
+                g.drawLine(0, 0, carWidth - 1, 0);
+                g.drawLine(carWidth - 1, carHeight - 1, 0, carHeight - 1);
+                g.drawLine(carWidth - 1, carHeight - 1, carWidth - 1, 0);
 
                 //电梯门
-                int showedWidth = (int) ((carriageWidth - 2) / 2 * (1.0 - openedPercent));
+                int showedWidth = (int) ((carWidth - 2) / 2 * (1.0 - openedPercent));
                 g.setColor(new Color(Color.gray.getRed(), Color.gray.getGreen(), Color.gray.getBlue(), 128));  //半透明灰色
-                g.fillRect(1, 1, showedWidth, carriageHeight - 2);
-                g.fillRect(carriageWidth - 1 - showedWidth, 1, showedWidth, carriageHeight - 2);
+                g.fillRect(1, 1, showedWidth, carHeight - 2);
+                g.fillRect(carWidth - 1 - showedWidth, 1, showedWidth, carHeight - 2);
 
                 //todo 电梯内乘客
-                int n = 1 + (int) Math.sqrt(carriageMaxLoad);
+                int n = 1 + (int) Math.sqrt(carMaxLoad);
                 int raw = 0;
                 int column = 0;
-                for (var ptmp : carriage.content) {
+                for (var ptmp : car.content) {
                     if (ptmp != null) {
                         g.setColor(ptmp.color);
-                        g.fillOval(2 + column * (2 * passengerRadius + 1), carriageHeight - 1 - (raw + 1) * (2 * passengerRadius + 1),
+                        g.fillOval(2 + column * (2 * passengerRadius + 1), carHeight - 1 - (raw + 1) * (2 * passengerRadius + 1),
                                 2 * passengerRadius, 2 * passengerRadius);
                         column++;
                         if (column == n - 1) {
@@ -261,7 +260,7 @@ public class SimulationGUI extends JFrame {
 
             g.setColor(Color.black);
             g.setFont(new Font("思源黑体", Font.PLAIN, 35));
-            g.drawString(floor == 0 ? ("B1") : (floor + "F"), waitingAreaWidth - 50, 30);
+            g.drawString(floor == 0 ? ("B1") : ("F" + floor), waitingAreaWidth - 50, 30);
 
             //绘制等待队列
             var iter = passengerQueues[floor].iterator();

@@ -4,6 +4,7 @@
     <list default="true" id="5665599a-aab1-4e47-b713-cd58eb86aa12" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab2/Logger.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lab2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab2/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Lab2/SimulationGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab2/SimulationGUI.java" afterDir="false" />
     </list>
@@ -61,24 +62,25 @@
     <session id="-665296790">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.4" value="3" />
           <entry key="project.open.time.5" value="4" />
           <entry key="project.open.time.6" value="2" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.open.time.7" value="2" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="25224" />
-          <entry key="txt" value="82" />
+          <entry key="java" value="25569" />
+          <entry key="txt" value="99" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="25224" />
-          <entry key="PLAIN_TEXT" value="82" />
+          <entry key="JAVA" value="25569" />
+          <entry key="PLAIN_TEXT" value="99" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -100,11 +102,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Lab2/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+            <state relative-caret-position="120">
+              <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -112,48 +114,68 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="730" column="37" lean-forward="true" selection-start-line="730" selection-start-column="37" selection-end-line="730" selection-end-column="37" />
+            <state relative-caret-position="640">
+              <caret line="271" column="4" lean-forward="true" selection-start-line="271" selection-start-column="4" selection-end-line="291" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#38611#38612#0" expanded="true" />
-                <element signature="e#38648#38649#0" expanded="true" />
-                <element signature="e#38678#38679#0" expanded="true" />
-                <element signature="e#38707#38708#0" expanded="true" />
-                <element signature="e#38738#38739#0" expanded="true" />
-                <element signature="e#38765#38766#0" expanded="true" />
-                <element signature="e#38797#38798#0" expanded="true" />
-                <element signature="e#38846#38847#0" expanded="true" />
-                <element signature="e#38886#38887#0" expanded="true" />
-                <element signature="e#38918#38919#0" expanded="true" />
-                <element signature="e#38976#38977#0" expanded="true" />
-                <element signature="e#39014#39015#0" expanded="true" />
-                <element signature="e#39053#39054#0" expanded="true" />
-                <element signature="e#39085#39086#0" expanded="true" />
-                <element signature="e#39126#39127#0" expanded="true" />
-                <element signature="e#39160#39161#0" expanded="true" />
-                <element signature="e#39191#39192#0" expanded="true" />
-                <element signature="e#39221#39222#0" expanded="true" />
-                <element signature="e#39258#39259#0" expanded="true" />
-                <element signature="e#39294#39295#0" expanded="true" />
-                <element signature="e#39334#39335#0" expanded="true" />
-                <element signature="e#39373#39374#0" expanded="true" />
-                <element signature="e#39413#39414#0" expanded="true" />
-                <element signature="e#39452#39453#0" expanded="true" />
-                <element signature="e#39503#39504#0" expanded="true" />
-                <element signature="e#39545#39546#0" expanded="true" />
+                <element signature="e#1788#1789#0" expanded="true" />
+                <element signature="e#1830#1831#0" expanded="true" />
+                <element signature="e#2417#2418#0" expanded="true" />
+                <element signature="e#2473#2474#0" expanded="true" />
+                <element signature="e#2521#2522#0" expanded="true" />
+                <element signature="e#2563#2564#0" expanded="true" />
+                <element signature="e#2620#2621#0" expanded="true" />
+                <element signature="e#2670#2671#0" expanded="true" />
+                <element signature="e#7788#9855#0" />
+                <element signature="e#9904#10344#0" />
+                <element signature="e#10350#10517#0" />
+                <element signature="e#10539#13884#0" />
+                <element signature="e#13890#14294#0" />
+                <element signature="e#14423#14690#0" />
+                <element signature="e#14696#15093#0" />
+                <element signature="e#15099#15434#0" />
+                <element signature="e#15440#15807#0" />
+                <element signature="e#15813#16370#0" />
+                <element signature="e#16376#16569#0" />
+                <element signature="e#16575#17355#0" />
+                <element signature="e#17361#17928#0" />
+                <element signature="e#17934#18219#0" />
+                <element signature="e#19875#21854#0" />
+                <element signature="e#21860#22709#0" />
+                <element signature="e#22715#23289#0" />
+                <element signature="e#23295#23864#0" />
+                <element signature="e#23870#24024#0" />
+                <element signature="e#23870#25913#0" />
+                <element signature="e#25919#26340#0" />
+                <element signature="e#26346#26773#0" />
+                <element signature="e#26779#27030#0" />
+                <element signature="e#27036#27630#0" />
+                <element signature="e#27636#27894#0" />
+                <element signature="e#27900#28476#0" />
+                <element signature="e#28482#28699#0" />
+                <element signature="e#28705#29189#0" />
+                <element signature="e#29195#29463#0" />
+                <element signature="e#29469#29849#0" />
+                <element signature="e#29855#30128#0" />
+                <element signature="e#30134#30519#0" />
+                <element signature="e#30525#30650#0" />
+                <element signature="e#30664#30830#0" />
+                <element signature="e#30664#33123#0" />
+                <element signature="class#PassengerLinkedQueue#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Lab2/SimulationGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="781">
-              <caret line="223" column="30" selection-start-line="223" selection-start-column="30" selection-end-line="223" selection-end-column="30" />
+            <state relative-caret-position="450">
+              <caret line="114" column="4" selection-start-line="114" selection-start-column="4" selection-end-line="136" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="class#CarPanel#0;class#CarShaftPanel#0;class#SimulationGUI#0" />
+                <element signature="class#ButtonPanel#0;class#SimulationGUI#0" />
               </folding>
             </state>
           </provider>
@@ -183,6 +205,8 @@
       <find>println</find>
       <find>nowFloor--</find>
       <find>nowFloor++</find>
+      <find>carriage</find>
+      <find>car</find>
     </findStrings>
     <replaceStrings>
       <replace>count</replace>
@@ -238,20 +262,26 @@
         <option value="$PROJECT_DIR$/src/Queue/OrderedLinkedQueue.java" />
         <option value="$PROJECT_DIR$/src/Lab2/Main.kt" />
         <option value="$PROJECT_DIR$/src/Lab2/Logger.java" />
-        <option value="$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java" />
         <option value="$PROJECT_DIR$/src/Lab2/Main.java" />
+        <option value="$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java" />
         <option value="$PROJECT_DIR$/src/Lab2/SimulationGUI.java" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenRunner">
     <option name="jreName" value="#JAVA_HOME" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="342" />
-    <option name="y" value="4" />
-    <option name="width" value="1496" />
-    <option name="height" value="1057" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -289,7 +319,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -318,6 +347,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -421,7 +451,9 @@
       <workItem from="1541515235844" duration="54243000" />
       <workItem from="1541755757708" duration="2293000" />
       <workItem from="1541766606448" duration="46668000" />
-      <workItem from="1542084868057" duration="13561000" />
+      <workItem from="1542084868057" duration="17312000" />
+      <workItem from="1542512917158" duration="348000" />
+      <workItem from="1542601099335" duration="9184000" />
     </task>
     <task id="LOCAL-00001" summary="Finished stack and queue, including normal adn concurrent.">
       <created>1537259723890</created>
@@ -507,17 +539,24 @@
       <option name="project" value="LOCAL" />
       <updated>1541936087647</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="2018.11.8 Update Lab2">
+      <created>1542099897488</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1542099897488</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="307878000" />
+    <option name="totallyTimeSpent" value="321161000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.057036247" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.034648187" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -541,8 +580,8 @@
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="right" id="SciView" order="7" />
-      <window_info anchor="right" x="827" y="359" width="850" height="532" id="Debug" order="8" type="WINDOWED" visible="true" weight="0.3291506" />
-      <window_info active="true" anchor="right" x="608" y="527" width="1130" height="925" id="Run" order="9" type="WINDOWED" visible="true" weight="0.50868726" />
+      <window_info anchor="right" x="827" y="359" width="850" height="532" id="Debug" order="8" type="WINDOWED" weight="0.3291506" />
+      <window_info anchor="right" x="257" y="124" width="1130" height="925" id="Run" order="9" type="WINDOWED" weight="0.50868726" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.06563707" />
@@ -571,6 +610,9 @@
       <window_info anchor="right" id="SciView" order="7" />
       <window_info anchor="right" id="Debug" order="8" weight="0.39925373" />
     </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ORDER">
@@ -623,7 +665,8 @@
     <MESSAGE value="2018.11.6 Finished Backend of lab2" />
     <MESSAGE value="2018.11.8 Update lab2" />
     <MESSAGE value="2018.11.8 Bug fix of lab2" />
-    <option name="LAST_COMMIT_MESSAGE" value="2018.11.8 Bug fix of lab2" />
+    <MESSAGE value="2018.11.8 Update Lab2" />
+    <option name="LAST_COMMIT_MESSAGE" value="2018.11.8 Update Lab2" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -754,10 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1084">
           <caret line="88" column="20" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
-          <folding>
-            <element signature="e#1791#1792#0" expanded="true" />
-            <element signature="e#1818#1819#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -765,12 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="924">
           <caret line="194" column="34" selection-start-line="194" selection-start-column="34" selection-end-line="194" selection-end-column="34" />
-          <folding>
-            <element signature="e#421#422#0" expanded="true" />
-            <element signature="e#461#462#0" expanded="true" />
-            <element signature="e#598#599#0" expanded="true" />
-            <element signature="e#641#642#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -851,56 +884,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lab2/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        <state relative-caret-position="640">
+          <caret line="271" column="4" lean-forward="true" selection-start-line="271" selection-start-column="4" selection-end-line="291" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1788#1789#0" expanded="true" />
+            <element signature="e#1830#1831#0" expanded="true" />
+            <element signature="e#2417#2418#0" expanded="true" />
+            <element signature="e#2473#2474#0" expanded="true" />
+            <element signature="e#2521#2522#0" expanded="true" />
+            <element signature="e#2563#2564#0" expanded="true" />
+            <element signature="e#2620#2621#0" expanded="true" />
+            <element signature="e#2670#2671#0" expanded="true" />
+            <element signature="e#7788#9855#0" />
+            <element signature="e#9904#10344#0" />
+            <element signature="e#10350#10517#0" />
+            <element signature="e#10539#13884#0" />
+            <element signature="e#13890#14294#0" />
+            <element signature="e#14423#14690#0" />
+            <element signature="e#14696#15093#0" />
+            <element signature="e#15099#15434#0" />
+            <element signature="e#15440#15807#0" />
+            <element signature="e#15813#16370#0" />
+            <element signature="e#16376#16569#0" />
+            <element signature="e#16575#17355#0" />
+            <element signature="e#17361#17928#0" />
+            <element signature="e#17934#18219#0" />
+            <element signature="e#19875#21854#0" />
+            <element signature="e#21860#22709#0" />
+            <element signature="e#22715#23289#0" />
+            <element signature="e#23295#23864#0" />
+            <element signature="e#23870#24024#0" />
+            <element signature="e#23870#25913#0" />
+            <element signature="e#25919#26340#0" />
+            <element signature="e#26346#26773#0" />
+            <element signature="e#26779#27030#0" />
+            <element signature="e#27036#27630#0" />
+            <element signature="e#27636#27894#0" />
+            <element signature="e#27900#28476#0" />
+            <element signature="e#28482#28699#0" />
+            <element signature="e#28705#29189#0" />
+            <element signature="e#29195#29463#0" />
+            <element signature="e#29469#29849#0" />
+            <element signature="e#29855#30128#0" />
+            <element signature="e#30134#30519#0" />
+            <element signature="e#30525#30650#0" />
+            <element signature="e#30664#30830#0" />
+            <element signature="e#30664#33123#0" />
+            <element signature="class#PassengerLinkedQueue#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Lab2/SimulationGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="781">
-          <caret line="223" column="30" selection-start-line="223" selection-start-column="30" selection-end-line="223" selection-end-column="30" />
+        <state relative-caret-position="450">
+          <caret line="114" column="4" selection-start-line="114" selection-start-column="4" selection-end-line="136" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#CarPanel#0;class#CarShaftPanel#0;class#SimulationGUI#0" />
+            <element signature="class#ButtonPanel#0;class#SimulationGUI#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab2/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="730" column="37" lean-forward="true" selection-start-line="730" selection-start-column="37" selection-end-line="730" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#38611#38612#0" expanded="true" />
-            <element signature="e#38648#38649#0" expanded="true" />
-            <element signature="e#38678#38679#0" expanded="true" />
-            <element signature="e#38707#38708#0" expanded="true" />
-            <element signature="e#38738#38739#0" expanded="true" />
-            <element signature="e#38765#38766#0" expanded="true" />
-            <element signature="e#38797#38798#0" expanded="true" />
-            <element signature="e#38846#38847#0" expanded="true" />
-            <element signature="e#38886#38887#0" expanded="true" />
-            <element signature="e#38918#38919#0" expanded="true" />
-            <element signature="e#38976#38977#0" expanded="true" />
-            <element signature="e#39014#39015#0" expanded="true" />
-            <element signature="e#39053#39054#0" expanded="true" />
-            <element signature="e#39085#39086#0" expanded="true" />
-            <element signature="e#39126#39127#0" expanded="true" />
-            <element signature="e#39160#39161#0" expanded="true" />
-            <element signature="e#39191#39192#0" expanded="true" />
-            <element signature="e#39221#39222#0" expanded="true" />
-            <element signature="e#39258#39259#0" expanded="true" />
-            <element signature="e#39294#39295#0" expanded="true" />
-            <element signature="e#39334#39335#0" expanded="true" />
-            <element signature="e#39373#39374#0" expanded="true" />
-            <element signature="e#39413#39414#0" expanded="true" />
-            <element signature="e#39452#39453#0" expanded="true" />
-            <element signature="e#39503#39504#0" expanded="true" />
-            <element signature="e#39545#39546#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
         </state>
       </provider>
     </entry>
