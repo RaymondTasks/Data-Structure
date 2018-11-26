@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5665599a-aab1-4e47-b713-cd58eb86aa12" name="Default Changelist" comment="">
+    <list default="true" id="5665599a-aab1-4e47-b713-cd58eb86aa12" name="Default Changelist" comment="2018.11.26 Update Lab3">
+      <change afterPath="$PROJECT_DIR$/src/Lab3/GUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab3/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tree/BinaryTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab2/Logger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab2/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab2/SimulationGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab2/SimulationGUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,25 +62,26 @@
     <session id="-665296790">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="14" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.4" value="3" />
-          <entry key="project.open.time.5" value="4" />
+          <entry key="project.open.time.4" value="4" />
+          <entry key="project.open.time.5" value="5" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="2" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="25569" />
-          <entry key="txt" value="99" />
+          <entry key="java" value="43297" />
+          <entry key="txt" value="103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="25569" />
-          <entry key="PLAIN_TEXT" value="99" />
+          <entry key="JAVA" value="43297" />
+          <entry key="PLAIN_TEXT" value="103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -90,92 +91,51 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="18" />
+          <entry key="java" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="18" />
+          <entry key="JAVA" value="26" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Lab2/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java">
+        <entry file="file://$PROJECT_DIR$/src/Lab3/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="640">
-              <caret line="271" column="4" lean-forward="true" selection-start-line="271" selection-start-column="4" selection-end-line="291" selection-end-column="58" />
+            <state>
+              <caret column="13" selection-start-column="13" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1788#1789#0" expanded="true" />
-                <element signature="e#1830#1831#0" expanded="true" />
-                <element signature="e#2417#2418#0" expanded="true" />
-                <element signature="e#2473#2474#0" expanded="true" />
-                <element signature="e#2521#2522#0" expanded="true" />
-                <element signature="e#2563#2564#0" expanded="true" />
-                <element signature="e#2620#2621#0" expanded="true" />
-                <element signature="e#2670#2671#0" expanded="true" />
-                <element signature="e#7788#9855#0" />
-                <element signature="e#9904#10344#0" />
-                <element signature="e#10350#10517#0" />
-                <element signature="e#10539#13884#0" />
-                <element signature="e#13890#14294#0" />
-                <element signature="e#14423#14690#0" />
-                <element signature="e#14696#15093#0" />
-                <element signature="e#15099#15434#0" />
-                <element signature="e#15440#15807#0" />
-                <element signature="e#15813#16370#0" />
-                <element signature="e#16376#16569#0" />
-                <element signature="e#16575#17355#0" />
-                <element signature="e#17361#17928#0" />
-                <element signature="e#17934#18219#0" />
-                <element signature="e#19875#21854#0" />
-                <element signature="e#21860#22709#0" />
-                <element signature="e#22715#23289#0" />
-                <element signature="e#23295#23864#0" />
-                <element signature="e#23870#24024#0" />
-                <element signature="e#23870#25913#0" />
-                <element signature="e#25919#26340#0" />
-                <element signature="e#26346#26773#0" />
-                <element signature="e#26779#27030#0" />
-                <element signature="e#27036#27630#0" />
-                <element signature="e#27636#27894#0" />
-                <element signature="e#27900#28476#0" />
-                <element signature="e#28482#28699#0" />
-                <element signature="e#28705#29189#0" />
-                <element signature="e#29195#29463#0" />
-                <element signature="e#29469#29849#0" />
-                <element signature="e#29855#30128#0" />
-                <element signature="e#30134#30519#0" />
-                <element signature="e#30525#30650#0" />
-                <element signature="e#30664#30830#0" />
-                <element signature="e#30664#33123#0" />
-                <element signature="class#PassengerLinkedQueue#0" />
+                <element signature="e#78#79#0" expanded="true" />
+                <element signature="e#120#121#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Lab2/SimulationGUI.java">
+        <entry file="file://$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="114" column="4" selection-start-line="114" selection-start-column="4" selection-end-line="136" selection-end-column="5" />
+            <state relative-caret-position="140">
+              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+              <folding>
+                <element signature="e#994#995#0" expanded="true" />
+                <element signature="e#1070#1071#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Lab3/GUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="919">
+              <caret line="106" column="72" lean-forward="true" selection-start-line="106" selection-start-column="72" selection-end-line="106" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#CarPanel#0;class#CarShaftPanel#0;class#SimulationGUI#0" />
-                <element signature="class#ButtonPanel#0;class#SimulationGUI#0" />
               </folding>
             </state>
           </provider>
@@ -207,6 +167,8 @@
       <find>nowFloor++</find>
       <find>carriage</find>
       <find>car</find>
+      <find>-1</find>
+      <find>buffersize</find>
     </findStrings>
     <replaceStrings>
       <replace>count</replace>
@@ -219,9 +181,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/StackAndQueue/Concurrent/ConcurrentLinkedQueue.java" />
-        <option value="$PROJECT_DIR$/src/StackAndQueue/Concurrent/ConcurrentLinkedStack.java" />
-        <option value="$PROJECT_DIR$/src/StackAndQueue/LinkedStack.java" />
         <option value="$PROJECT_DIR$/src/StackAndQueue/PriorityQueue.java" />
         <option value="$PROJECT_DIR$/src/StackAndQueue/Concurrent/PriorityOutOfIndexException.java" />
         <option value="$PROJECT_DIR$/src/StackAndQueue/Concurrent/PriorityOutOfBoundException.java" />
@@ -265,6 +224,14 @@
         <option value="$PROJECT_DIR$/src/Lab2/Main.java" />
         <option value="$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java" />
         <option value="$PROJECT_DIR$/src/Lab2/SimulationGUI.java" />
+        <option value="$PROJECT_DIR$/src/Tree/BinaryTree.java" />
+        <option value="$PROJECT_DIR$/src/Tree/HuffmanTree.java" />
+        <option value="$PROJECT_DIR$/src/Tree/HuffmanCodingTree.java" />
+        <option value="$PROJECT_DIR$/src/Lab3/GUI.kt" />
+        <option value="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.kt" />
+        <option value="$PROJECT_DIR$/src/Lab3/Main.java" />
+        <option value="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java" />
+        <option value="$PROJECT_DIR$/src/Lab3/GUI.java" />
       </list>
     </option>
   </component>
@@ -278,10 +245,10 @@
     <option name="jreName" value="#JAVA_HOME" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="x" value="1912" />
+    <option name="y" value="-357" />
+    <option name="width" value="1096" />
+    <option name="height" value="1906" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -318,7 +285,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -335,7 +302,13 @@
               <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
               <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Lab2" type="462c0819:PsiDirectoryNode" />
+              <item name="Lab3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="List" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
@@ -343,11 +316,29 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Queue" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Stack" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="String" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Tree" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -371,7 +362,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.lab2">
+  <component name="RunManager" selected="Application.lab3">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -397,8 +388,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="lab3" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="JDK 11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Lab3.Main" />
+      <module name="Data-structure-course" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.lab2" />
+      <item itemvalue="Application.lab3" />
       <item itemvalue="Application.lab1" />
     </list>
     <recent_temporary>
@@ -453,7 +454,10 @@
       <workItem from="1541766606448" duration="46668000" />
       <workItem from="1542084868057" duration="17312000" />
       <workItem from="1542512917158" duration="348000" />
-      <workItem from="1542601099335" duration="9184000" />
+      <workItem from="1542601099335" duration="9271000" />
+      <workItem from="1542688603678" duration="31479000" />
+      <workItem from="1542865005358" duration="6361000" />
+      <workItem from="1543085413349" duration="49433000" />
     </task>
     <task id="LOCAL-00001" summary="Finished stack and queue, including normal adn concurrent.">
       <created>1537259723890</created>
@@ -546,32 +550,40 @@
       <option name="project" value="LOCAL" />
       <updated>1542099897488</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="2018.11.20 Update Lab2">
+      <created>1542645367592</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1542645367592</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="321161000" />
+    <option name="totallyTimeSpent" value="408521000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
+    <frame x="1912" y="-357" width="1096" height="1906" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.034648187" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3297572" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
       <window_info anchor="bottom" id="Cvs" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="4" />
+      <window_info active="true" anchor="bottom" id="TODO" order="4" visible="true" weight="0.3297572" />
       <window_info anchor="bottom" id="Database Changes" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="6" weight="0.32939914" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32975295" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.24562395" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.4025974" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.4014681" />
       <window_info anchor="bottom" id="Log4jMonitor" order="10" />
+      <window_info anchor="bottom" x="116" y="364" width="1364" height="861" id="Run" order="11" weight="0.17052513" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -580,8 +592,7 @@
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="right" id="SciView" order="7" />
-      <window_info anchor="right" x="827" y="359" width="850" height="532" id="Debug" order="8" type="WINDOWED" weight="0.3291506" />
-      <window_info anchor="right" x="257" y="124" width="1130" height="925" id="Run" order="9" type="WINDOWED" weight="0.50868726" />
+      <window_info anchor="right" x="998" y="385" width="850" height="1016" id="Debug" order="8" weight="0.32884616" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.06563707" />
@@ -666,13 +677,15 @@
     <MESSAGE value="2018.11.8 Update lab2" />
     <MESSAGE value="2018.11.8 Bug fix of lab2" />
     <MESSAGE value="2018.11.8 Update Lab2" />
-    <option name="LAST_COMMIT_MESSAGE" value="2018.11.8 Update Lab2" />
+    <MESSAGE value="2018.11.20 Update Lab2" />
+    <MESSAGE value="2018.11.26 Update Lab3" />
+    <option name="LAST_COMMIT_MESSAGE" value="2018.11.26 Update Lab3" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="Application">
-        <watch expression="((ElevatorSimulator)this).events" custom="Lab2.ElevatorSimulator" />
+        <watch expression="output" />
       </configuration>
     </watches-manager>
   </component>
@@ -849,13 +862,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lab2/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab2/Logger.java" />
     <entry file="jar://C:/Program Files/Java/jdk-11/lib/src.zip!/java.base/jdk/internal/misc/Unsafe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="581">
@@ -884,69 +891,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab2/SimulationGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="271" column="4" lean-forward="true" selection-start-line="271" selection-start-column="4" selection-end-line="291" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1788#1789#0" expanded="true" />
-            <element signature="e#1830#1831#0" expanded="true" />
-            <element signature="e#2417#2418#0" expanded="true" />
-            <element signature="e#2473#2474#0" expanded="true" />
-            <element signature="e#2521#2522#0" expanded="true" />
-            <element signature="e#2563#2564#0" expanded="true" />
-            <element signature="e#2620#2621#0" expanded="true" />
-            <element signature="e#2670#2671#0" expanded="true" />
-            <element signature="e#7788#9855#0" />
-            <element signature="e#9904#10344#0" />
-            <element signature="e#10350#10517#0" />
-            <element signature="e#10539#13884#0" />
-            <element signature="e#13890#14294#0" />
-            <element signature="e#14423#14690#0" />
-            <element signature="e#14696#15093#0" />
-            <element signature="e#15099#15434#0" />
-            <element signature="e#15440#15807#0" />
-            <element signature="e#15813#16370#0" />
-            <element signature="e#16376#16569#0" />
-            <element signature="e#16575#17355#0" />
-            <element signature="e#17361#17928#0" />
-            <element signature="e#17934#18219#0" />
-            <element signature="e#19875#21854#0" />
-            <element signature="e#21860#22709#0" />
-            <element signature="e#22715#23289#0" />
-            <element signature="e#23295#23864#0" />
-            <element signature="e#23870#24024#0" />
-            <element signature="e#23870#25913#0" />
-            <element signature="e#25919#26340#0" />
-            <element signature="e#26346#26773#0" />
-            <element signature="e#26779#27030#0" />
-            <element signature="e#27036#27630#0" />
-            <element signature="e#27636#27894#0" />
-            <element signature="e#27900#28476#0" />
-            <element signature="e#28482#28699#0" />
-            <element signature="e#28705#29189#0" />
-            <element signature="e#29195#29463#0" />
-            <element signature="e#29469#29849#0" />
-            <element signature="e#29855#30128#0" />
-            <element signature="e#30134#30519#0" />
-            <element signature="e#30525#30650#0" />
-            <element signature="e#30664#30830#0" />
-            <element signature="e#30664#33123#0" />
-            <element signature="class#PassengerLinkedQueue#0" />
-          </folding>
+        <state relative-caret-position="2260">
+          <caret line="114" column="4" selection-start-line="114" selection-start-column="4" selection-end-line="136" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lab2/SimulationGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="114" column="4" selection-start-line="114" selection-start-column="4" selection-end-line="136" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#CarPanel#0;class#CarShaftPanel#0;class#SimulationGUI#0" />
-            <element signature="class#ButtonPanel#0;class#SimulationGUI#0" />
-          </folding>
+        <state relative-caret-position="4340">
+          <caret line="227" column="25" selection-start-line="227" selection-start-column="25" selection-end-line="227" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -954,6 +909,80 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tree/BinaryTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#205#206#0" expanded="true" />
+            <element signature="e#240#241#0" expanded="true" />
+            <element signature="e#278#279#0" expanded="true" />
+            <element signature="e#318#319#0" expanded="true" />
+            <element signature="e#357#358#0" expanded="true" />
+            <element signature="e#398#399#0" expanded="true" />
+            <element signature="e#437#438#0" expanded="true" />
+            <element signature="e#477#478#0" expanded="true" />
+            <element signature="e#529#530#0" expanded="true" />
+            <element signature="e#579#580#0" expanded="true" />
+            <element signature="e#633#634#0" expanded="true" />
+            <element signature="e#680#681#0" expanded="true" />
+            <element signature="e#955#956#0" expanded="true" />
+            <element signature="e#982#983#0" expanded="true" />
+            <element signature="e#989#990#0" expanded="true" />
+            <element signature="e#1016#1017#0" expanded="true" />
+            <element signature="e#1070#1071#0" expanded="true" />
+            <element signature="e#1105#1106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11/lib/src.zip!/java.base/java/io/BufferedReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="135" column="25" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11/lib/src.zip!/java.base/java/io/ObjectInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="349" selection-start-line="349" selection-end-line="349" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab3/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+          <folding>
+            <element signature="e#78#79#0" expanded="true" />
+            <element signature="e#120#121#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+          <folding>
+            <element signature="e#994#995#0" expanded="true" />
+            <element signature="e#1070#1071#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab3/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="919">
+          <caret line="106" column="72" lean-forward="true" selection-start-line="106" selection-start-column="72" selection-end-line="106" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
