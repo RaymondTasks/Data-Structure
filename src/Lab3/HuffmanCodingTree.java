@@ -10,19 +10,15 @@ public class HuffmanCodingTree implements Serializable {
         private byte data;
         private long weight;
         private int parentIndex;
-        private int leftChildIndex;
-        private int rightChildIndex;
+        private int childIndex[] = new int[2];  //0是左，1是右
+        private boolean isLeaf;
 
         public Node(byte data, long weight) {
             this.data = data;
             this.weight = weight;
-            this.leftChildIndex = -1;
-            this.rightChildIndex = -1;
+            childIndex[0] = -1;
+            childIndex[1] = -1;
             parentIndex = -1;
-        }
-
-        public boolean isLeaf() {
-            return leftChildIndex == -1 && rightChildIndex == -1;
         }
     }
 
@@ -42,6 +38,7 @@ public class HuffmanCodingTree implements Serializable {
         store = new Node[256 * 2 - 1];
         for (int i = 0; i < 256; i++) {
             store[i] = new Node((byte) i, input.readLong());
+            store[i].isLeaf = true;
         }
         completeHuffmanTree();
     }
@@ -55,9 +52,9 @@ public class HuffmanCodingTree implements Serializable {
     private void completeHuffmanTree() {
         //每次找到0~i之间最小的两个节点，组合并加入数组
         for (int i = 256; i < store.length; i++) {
+            //要寻找的最小权重的位置
             int minIndex1 = -1, minIndex2 = -1;
             long minWeight1 = Long.MAX_VALUE, minWeight2 = Long.MAX_VALUE;
-
             for (int j = 0; j < i; j++) {
                 if (store[j].parentIndex == -1) {
                     if (store[j].weight < minWeight1) {
@@ -71,12 +68,15 @@ public class HuffmanCodingTree implements Serializable {
                     }
                 }
             }
+            //创建新新节点，孩子节点是找到的权重最小的两个节点，新节点权重是两个孩子节点权重之和
             store[i] = new Node((byte) 0, store[minIndex1].weight + store[minIndex2].weight);
+            store[i].isLeaf = false;
             store[minIndex1].parentIndex = i;
             store[minIndex2].parentIndex = i;
-            store[i].leftChildIndex = minIndex1;
-            store[i].rightChildIndex = minIndex2;
+            store[i].childIndex[0] = minIndex1;
+            store[i].childIndex[1] = minIndex2;
         }
+        //记录root的位置
         rootIndex = store.length - 1;
     }
 
@@ -84,6 +84,7 @@ public class HuffmanCodingTree implements Serializable {
         store = new Node[256 * 2 - 1];
         for (int i = 0; i < 256; i++) {
             store[i] = new Node((byte) i, 0);
+            store[i].isLeaf = true;
         }
         int b;
         while ((b = input.read()) != -1) {
@@ -94,6 +95,10 @@ public class HuffmanCodingTree implements Serializable {
 
     /**
      * 编码byte流
+     *
+     * @param input  输入的byte流
+     * @param output 输出的byte流
+     * @return 输出bit流的bit数
      */
     public long encode(BufferedInputStream input, BufferedOutputStream output) throws IOException {
         var out = new BitOutputStream(output);
@@ -106,8 +111,7 @@ public class HuffmanCodingTree implements Serializable {
             int parent = store[now].parentIndex;
             int tmp_len = 0;
             while (parent != -1) {
-                //性能瓶颈处
-                tmp[tmp_len++] = store[parent].leftChildIndex == now ? (byte) 0 : (byte) 1;
+                tmp[tmp_len++] = store[parent].childIndex[0] == now ? (byte) 0 : (byte) 1;
                 now = parent;
                 parent = store[now].parentIndex;
             }
@@ -122,23 +126,23 @@ public class HuffmanCodingTree implements Serializable {
 
     /**
      * 解码bit流
+     *
+     * @param input  输入的byte流
+     * @param limit  读取的bit数限制，避免编码时最后一个byte补的0被算作有效的编码
+     * @param output 输出的byte流
      */
     public void decode(BufferedInputStream input, long limit, BufferedOutputStream output) throws IOException {
-        BitInputStream in = new BitInputStream(input, limit);
-        for (; ; ) {
+        BitInputStream in = new BitInputStream(input);
+        long rest = limit;
+        while (rest > 0) {
             int now = rootIndex;
-            for (; ; ) {
+            while (!store[now].isLeaf) {
                 int b = in.read();
-                if (b == 0) {
-                    now = store[now].leftChildIndex;
-                } else if (b == 1) {
-                    now = store[now].rightChildIndex;
-                } else {
-                    return;
+                if (b == -1) {
+                    throw new IOException();
                 }
-                if (store[now].isLeaf()) {
-                    break;
-                }
+                rest--;
+                now = store[now].childIndex[b];
             }
             output.write(store[now].data);
         }
@@ -150,31 +154,24 @@ public class HuffmanCodingTree implements Serializable {
  */
 class BitInputStream {
     private BufferedInputStream input;
-    private long limit;
-    private int b;
+    private int temp;
     private int rest;
 
-    public BitInputStream(BufferedInputStream input, long limit) {
+    public BitInputStream(BufferedInputStream input) {
         this.input = input;
-        this.limit = limit;
         rest = 0;
     }
 
     public int read() throws IOException {
-        if (limit == 0) {
-            return -1;
-        }
         if (rest == 0) {
-            b = input.read();
-            if (b == -1) {
-                throw new IOException();
-            } else {
-                rest = 8;
+            temp = input.read();
+            if (temp == -1) {
+                return -1;
             }
+            rest = 8;
         }
         rest--;
-        limit--;
-        return (byte) ((b >> rest) & 1);
+        return (temp >> rest) & 1;
     }
 }
 
@@ -183,30 +180,26 @@ class BitInputStream {
  */
 class BitOutputStream {
     private BufferedOutputStream output;
+    private byte temp;
+    private int temp_len;
 
     public BitOutputStream(BufferedOutputStream output) {
         this.output = output;
-        rest = new byte[8];
-        restLength = 0;
+        temp_len = 0;
     }
 
-    private byte[] rest;
-    private int restLength;
-
     public void write(byte bit) throws IOException {
-        rest[restLength++] = bit;
-        if (restLength == 8) {
-            flush();
+        temp <<= 1;
+        temp += bit;
+        temp_len++;
+        if (temp_len == 8) {
+            output.write(temp);
+            temp_len = 0;
         }
     }
 
     public void flush() throws IOException {
-        byte tmp = 0;
-        for (int i = 0; i < restLength; i++) {
-            tmp <<= 1;
-            tmp += rest[i];
-        }
-        output.write(tmp << (8 - restLength));
-        restLength = 0;
+        temp <<= 8 - temp_len;
+        output.write(temp);
     }
 }

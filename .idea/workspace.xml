@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5665599a-aab1-4e47-b713-cd58eb86aa12" name="Default Changelist" comment="2018.11.26 Update Lab3">
-      <change afterPath="$PROJECT_DIR$/src/Lab3/GUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Lab3/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Tree/BinaryTree.java" afterDir="false" />
+    <list default="true" id="5665599a-aab1-4e47-b713-cd58eb86aa12" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Graph/MatrixGraph.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab4/GUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab4/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,25 +63,26 @@
     <session id="-665296790">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="14" />
+          <entry key="project.closed" value="19" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="4" />
-          <entry key="project.open.time.5" value="5" />
+          <entry key="project.open.time.5" value="8" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="2" />
-          <entry key="project.opened" value="15" />
+          <entry key="project.opened" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="43297" />
+          <entry key="java" value="52735" />
           <entry key="txt" value="103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="43297" />
+          <entry key="JAVA" value="52735" />
           <entry key="PLAIN_TEXT" value="103" />
         </counts>
       </usages-collector>
@@ -91,49 +93,45 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="26" />
+          <entry key="java" value="58" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="26" />
+          <entry key="JAVA" value="58" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Lab3/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="13" selection-start-column="13" selection-end-column="13" />
-              <folding>
-                <element signature="e#78#79#0" expanded="true" />
-                <element signature="e#120#121#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-              <folding>
-                <element signature="e#994#995#0" expanded="true" />
-                <element signature="e#1070#1071#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Lab3/GUI.java">
+        <entry file="file://$PROJECT_DIR$/src/Graph/MatrixGraph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="919">
-              <caret line="106" column="72" lean-forward="true" selection-start-line="106" selection-start-column="72" selection-end-line="106" selection-end-column="72" />
+            <state relative-caret-position="920">
+              <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+              <folding>
+                <element signature="e#343#344#0" expanded="true" />
+                <element signature="e#377#378#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Lab4/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="80">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Lab4/GUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="787">
+              <caret line="166" column="48" selection-start-line="166" selection-start-column="48" selection-end-line="166" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -169,6 +167,7 @@
       <find>car</find>
       <find>-1</find>
       <find>buffersize</find>
+      <find>write</find>
     </findStrings>
     <replaceStrings>
       <replace>count</replace>
@@ -181,23 +180,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/StackAndQueue/PriorityQueue.java" />
-        <option value="$PROJECT_DIR$/src/StackAndQueue/Concurrent/PriorityOutOfIndexException.java" />
-        <option value="$PROJECT_DIR$/src/StackAndQueue/Concurrent/PriorityOutOfBoundException.java" />
-        <option value="$PROJECT_DIR$/src/StackAndQueue/Exceptions/EmptyQueuePriorityException.java" />
-        <option value="$PROJECT_DIR$/src/StackAndQueue/PriorityLinkedQueue.java" />
-        <option value="$PROJECT_DIR$/src/List/Exceptions/IndexOutOfBoundsException.java" />
-        <option value="$PROJECT_DIR$/README.MD" />
-        <option value="$PROJECT_DIR$/src/List/Exceptions/ListOverflowException.java" />
-        <option value="$PROJECT_DIR$/src/List/Exceptions/IlleagleListCapacityException.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/Test.java" />
-        <option value="$PROJECT_DIR$/src/List/Exceptions/LinkedList.java" />
-        <option value="$PROJECT_DIR$/src/List/StaticLinkedList.java" />
-        <option value="$PROJECT_DIR$/src/Lab01/Polynomial.java" />
-        <option value="$PROJECT_DIR$/src/Lab01/Main.java" />
-        <option value="$PROJECT_DIR$/src/lab2/Passenger.java" />
-        <option value="$PROJECT_DIR$/src/StackAndQueue/LinkedQueue.java" />
         <option value="$PROJECT_DIR$/src/StackAndQueue/OrderedLinkedQueue.java" />
         <option value="$PROJECT_DIR$/src/Stack/Stack.java" />
         <option value="$PROJECT_DIR$/src/Stack/Exceptions/StackUnderflowException.java" />
@@ -230,8 +212,25 @@
         <option value="$PROJECT_DIR$/src/Lab3/GUI.kt" />
         <option value="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.kt" />
         <option value="$PROJECT_DIR$/src/Lab3/Main.java" />
-        <option value="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java" />
         <option value="$PROJECT_DIR$/src/Lab3/GUI.java" />
+        <option value="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java" />
+        <option value="$PROJECT_DIR$/src/Graph/Graph.java" />
+        <option value="$PROJECT_DIR$/src/Graph/CrossLinkedGraph.java" />
+        <option value="$PROJECT_DIR$/src/Graph/AdjacencyListGraph.java" />
+        <option value="$PROJECT_DIR$/src/Graph/Main.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/graphvizapi/Attribute.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/graphvizapi/Edge.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/graphvizapi/GraphType.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/graphvizapi/Node.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/graphvizapi/exception/AttributeNotFondException.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/graphvizapi/exception/GraphException.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/graphvizapi/exception/GraphvizApiException.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/graphvizapi/Graphviz.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/graphvizapi/Graph.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/graphvizapi/BaseGraphObject.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/Main.java" />
+        <option value="$PROJECT_DIR$/src/Lab4/GUI.java" />
+        <option value="$PROJECT_DIR$/src/Graph/MatrixGraph.java" />
       </list>
     </option>
   </component>
@@ -285,7 +284,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -302,49 +300,39 @@
               <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
               <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Lab3" type="462c0819:PsiDirectoryNode" />
+              <item name="Graph" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
               <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="List" type="462c0819:PsiDirectoryNode" />
+              <item name="Lab2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
               <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Queue" type="462c0819:PsiDirectoryNode" />
+              <item name="Lab2" type="462c0819:PsiDirectoryNode" />
+              <item name="ElevatorSimulator.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
             <path>
               <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
               <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Stack" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="String" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Tree" type="462c0819:PsiDirectoryNode" />
+              <item name="Lab4" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="switch&#9;ACTION&#9;SwitchBootJdk" />
+    <property name="SearchEverywhereHistoryKey" value="boot&#9;ACTION&#9;SwitchBootJdk&#10;switch&#9;ACTION&#9;SwitchBootJdk" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dependency/apache-log4j-2.11.1-bin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../graphvizapi" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -362,7 +350,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.lab3">
+  <component name="RunManager" selected="Application.lab4">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -397,9 +385,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="lab4" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="JDK 11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Lab4.Main" />
+      <module name="Data-structure-course" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.lab2" />
       <item itemvalue="Application.lab3" />
+      <item itemvalue="Application.lab4" />
       <item itemvalue="Application.lab1" />
     </list>
     <recent_temporary>
@@ -457,7 +455,12 @@
       <workItem from="1542601099335" duration="9271000" />
       <workItem from="1542688603678" duration="31479000" />
       <workItem from="1542865005358" duration="6361000" />
-      <workItem from="1543085413349" duration="49433000" />
+      <workItem from="1543085413349" duration="49461000" />
+      <workItem from="1543314677677" duration="7486000" />
+      <workItem from="1543760727126" duration="5000" />
+      <workItem from="1543891039848" duration="7328000" />
+      <workItem from="1544164382580" duration="29852000" />
+      <workItem from="1544508015863" duration="5050000" />
     </task>
     <task id="LOCAL-00001" summary="Finished stack and queue, including normal adn concurrent.">
       <created>1537259723890</created>
@@ -557,33 +560,48 @@
       <option name="project" value="LOCAL" />
       <updated>1542645367592</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="2018.11.26 Update Lab3">
+      <created>1543244156747</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1543244156747</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="408521000" />
+    <option name="totallyTimeSpent" value="458270000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-357" width="1096" height="1906" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13127413" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32943678" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32919255" />
       <window_info anchor="bottom" id="Cvs" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="4" visible="true" weight="0.3297572" />
+      <window_info anchor="bottom" id="TODO" order="4" weight="0.32939914" />
       <window_info anchor="bottom" id="Database Changes" order="5" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="6" weight="0.32939914" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32975295" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.24562395" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.4014681" />
       <window_info anchor="bottom" id="Log4jMonitor" order="10" />
-      <window_info anchor="bottom" x="116" y="364" width="1364" height="861" id="Run" order="11" weight="0.17052513" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -592,7 +610,8 @@
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="right" id="SciView" order="7" />
-      <window_info anchor="right" x="998" y="385" width="850" height="1016" id="Debug" order="8" weight="0.32884616" />
+      <window_info anchor="right" x="843" y="33" width="850" height="1016" id="Debug" order="8" type="WINDOWED" weight="0.32818532" />
+      <window_info active="true" anchor="right" x="808" y="145" width="1063" height="861" id="Run" order="9" type="WINDOWED" visible="true" weight="0.3347548" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.06563707" />
@@ -686,6 +705,7 @@
     <watches-manager>
       <configuration name="Application">
         <watch expression="output" />
+        <watch expression="S" />
       </configuration>
     </watches-manager>
   </component>
@@ -699,36 +719,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Queue/Concurrent/ConcurrentLinkedQueue.java" />
-    <entry file="file://$PROJECT_DIR$/src/Queue/Concurrent/ConcurrentLinkedStack.java" />
-    <entry file="file://$PROJECT_DIR$/src/StackAndQueue/Exceptions/IlleagleQueuePriorityException.java" />
-    <entry file="file://$PROJECT_DIR$/src/StackAndQueue/Exceptions/EmptyQueuePriorityException.java" />
-    <entry file="file://$PROJECT_DIR$/src/StackAndQueue/PriorityLinkedQueue.java" />
-    <entry file="file://$PROJECT_DIR$/src/List/Exceptions/IlleagleListCapacityException.java" />
-    <entry file="file://$PROJECT_DIR$/src/List/Exceptions/ListOverflowException.java" />
-    <entry file="file://$PROJECT_DIR$/README.MD">
-      <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="40">
-            <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/List/Exceptions/IndexOutOfBoundsException.java" />
-    <entry file="file://$PROJECT_DIR$/src/Main.java" />
-    <entry file="file://$PROJECT_DIR$/src/String/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lab2/Passenger.java" />
-    <entry file="file://$PROJECT_DIR$/src/List/StaticLinkedList.java" />
-    <entry file="file://$PROJECT_DIR$/src/Stack/Exceptions/StackUnderflowException.java" />
     <entry file="file://$PROJECT_DIR$/src/Stack/Exceptions/StackOverflowException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -891,13 +881,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lab2/SimulationGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2260">
-          <caret line="114" column="4" selection-start-line="114" selection-start-column="4" selection-end-line="136" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Lab2/ElevatorSimulator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4340">
@@ -916,27 +899,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#205#206#0" expanded="true" />
-            <element signature="e#240#241#0" expanded="true" />
-            <element signature="e#278#279#0" expanded="true" />
-            <element signature="e#318#319#0" expanded="true" />
-            <element signature="e#357#358#0" expanded="true" />
-            <element signature="e#398#399#0" expanded="true" />
-            <element signature="e#437#438#0" expanded="true" />
-            <element signature="e#477#478#0" expanded="true" />
-            <element signature="e#529#530#0" expanded="true" />
-            <element signature="e#579#580#0" expanded="true" />
-            <element signature="e#633#634#0" expanded="true" />
-            <element signature="e#680#681#0" expanded="true" />
-            <element signature="e#955#956#0" expanded="true" />
-            <element signature="e#982#983#0" expanded="true" />
-            <element signature="e#989#990#0" expanded="true" />
-            <element signature="e#1016#1017#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -967,21 +929,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+        <state relative-caret-position="2340">
+          <caret line="117" column="14" selection-start-line="117" selection-start-column="14" selection-end-line="117" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Graph/Graph.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab3/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="52" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="52" />
           <folding>
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lab3/GUI.java">
+    <entry file="file://$PROJECT_DIR$/src/Lab4/org/enoir/graphvizapi/Attribute.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/org/enoir/graphvizapi/BaseGraphObject.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/org/enoir/graphvizapi/Edge.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/org/enoir/graphvizapi/exception/AttributeNotFondException.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/graphvizapi/exception/GraphException.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/graphvizapi/exception/AttributeNotFondException.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/graphvizapi/exception/GraphvizApiException.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/graphvizapi/Edge.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/graphvizapi/GraphType.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/graphvizapi/Node.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/graphvizapi/Graph.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/graphvizapi/BaseGraphObject.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/graphvizapi/Attribute.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/graphvizapi/Graphviz.java" />
+    <entry file="file://$PROJECT_DIR$/src/Lab4/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="919">
-          <caret line="106" column="72" lean-forward="true" selection-start-line="106" selection-start-column="72" selection-end-line="106" selection-end-column="72" />
+        <state relative-caret-position="80">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab2/SimulationGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1345">
+          <caret line="114" column="4" selection-start-line="114" selection-start-column="4" selection-end-line="136" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab4/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="787">
+          <caret line="166" column="48" selection-start-line="166" selection-start-column="48" selection-end-line="166" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Graph/MatrixGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="920">
+          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+          <folding>
+            <element signature="e#343#344#0" expanded="true" />
+            <element signature="e#377#378#0" expanded="true" />
           </folding>
         </state>
       </provider>
