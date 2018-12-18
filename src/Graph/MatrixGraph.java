@@ -7,10 +7,10 @@ import java.util.ArrayList;
  */
 public class MatrixGraph {
 
-    private static final int Infinity = -1;
+    private static final int Infinity = -1;     //表示不连接
 
-    private String vexs[];
-    private int arcs[][];
+    private String vexs[];      //顶的名称
+    private int arcs[][];       //边长度
 
     public String[] getVexs() {
         return vexs;
@@ -38,13 +38,13 @@ public class MatrixGraph {
     /**
      * 用Dijkstra算法求最短路径
      *
-     * @param a 起始点
-     * @param b 终点
+     * @param a 起始点的序号
+     * @param b 终点的讯号
      * @return 最短路径经过的顶，有序排列
      */
     public int[] Dijkstra(int a, int b) {
         if (a == b) {
-            lastPath = new ArrayList<Integer>();
+            lastPath = new ArrayList<>();
             lastPath.add(a);
             int[] p = new int[1];
             p[0] = a;
@@ -75,7 +75,7 @@ public class MatrixGraph {
         var S = new ArrayList<Integer>();
         S.add(a);
 
-
+        //S中包括所有的顶前一直循环
         while (S.size() < vexs.length) {
             //找到新的最近节点
             int min = Integer.MAX_VALUE;
@@ -118,7 +118,7 @@ public class MatrixGraph {
             }
         }
 
-        return null; //没有找到b
+        return null; //没有找到b，可能是b不存在或者与a不连通v
     }
 
     private ArrayList<Integer> lastPath;
@@ -133,23 +133,26 @@ public class MatrixGraph {
      * @return dot语言字符串
      */
     public String toDotLanguage() {
-
         var sb = new StringBuilder();
         sb.append("graph{\n\tnode[shape=circle]\n");
+        //添加顶
         for (int i = 0; i < vexs.length; i++) {
             sb.append("\t" + vexs[i]);
+            //经过的顶显示为红色
             if (lastPath.contains(i)) {
                 sb.append(" [color=red,fontcolor=red]");
             }
             sb.append("\n");
 
         }
+        //添加边
         for (int i = 0; i < vexs.length; i++) {
             for (int j = i + 1; j < vexs.length; j++) {
                 if (arcs[i][j] != Infinity) {
                     sb.append("\t" + vexs[i] + " -- " + vexs[j] + " [");
                     var indexi = lastPath.indexOf(i);
                     var indexj = lastPath.indexOf(j);
+                    //经过的边显示为红色
                     if (indexi != -1 && indexj != -1 && Math.abs(indexi - indexj) == 1) {
                         sb.append("color=red,fontcolor=red,");
                     }

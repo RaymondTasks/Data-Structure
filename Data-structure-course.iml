@@ -20,5 +20,6 @@
         <jarDirectory url="file://$MODULE_DIR$/dependency/apache-log4j-2.11.1-bin" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
   </component>
 </module>
