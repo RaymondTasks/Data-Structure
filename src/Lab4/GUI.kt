@@ -12,6 +12,10 @@ import javax.imageio.ImageIO
 import javax.swing.*
 import javax.swing.filechooser.FileNameExtensionFilter
 
+fun main(args: Array<String>) {
+    GUI().isVisible = true
+}
+
 class GUI : JFrame(), ActionListener {
 
     private val buttonPanel: JPanel
@@ -225,8 +229,8 @@ internal class ShowFrame(title: String) : JFrame(title) {
         repaint()
     }
 
-    override fun paint(g: Graphics?) {
+    override fun paint(g: Graphics) {
         super.paint(g)
-        g!!.drawImage(img, 7, 30, null)
+        g.drawImage(img, 7, 30, null)
     }
 }
