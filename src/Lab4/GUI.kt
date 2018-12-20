@@ -16,84 +16,89 @@ fun main(args: Array<String>) {
     GUI().isVisible = true
 }
 
-class GUI : JFrame(), ActionListener {
+class GUI : JFrame("Dijkstra"), ActionListener {
 
-    private val buttonPanel: JPanel
-    private val argsPanel: JPanel
-    private val resultPanel: JPanel
+    private val buttonPanel = JPanel()
+    private val argsPanel = JPanel()
+    private val resultPanel = JPanel()
 
-    private lateinit var open: JButton
-    private lateinit var reset: JButton
-    private lateinit var dijkstra: JButton
-    private lateinit var from: JTextField
-    private lateinit var to: JTextField
-    private lateinit var result: JLabel
+    private val open = JButton("Open")
+    private val reset = JButton("Reset")
+    private val dijkstra = JButton("Dijkstra")
+
+    private val fileChooser = JFileChooser()
+    private val showFrame = ShowFrame()
+
+    private val from = JTextField()
+    private val to = JTextField()
+
+    private val result = JLabel()
 
     private lateinit var graph: MatrixGraph
 
-    private var fileChooser: JFileChooser? = null
     private var path: IntArray? = null
-    private var showFrame: ShowFrame? = null
+
 
     init {
-        title = "Dijkstra"
         defaultCloseOperation = WindowConstants.EXIT_ON_CLOSE
         setSize(350, 450)
         isResizable = false
         layout = GridLayout(3, 1)
-        buttonPanel = JPanel()
-        argsPanel = JPanel()
-        resultPanel = JPanel()
-        add(buttonPanel)
-        add(argsPanel)
-        add(resultPanel)
+
         initButtonPanel()
         initArgsPanel()
         initResultPanel()
-        fileChooser = JFileChooser()
 
+        add(buttonPanel)
+        add(argsPanel)
+        add(resultPanel)
+
+        fileChooser.dialogTitle = "Select The File to Build Graph"
+        fileChooser.fileFilter = FileNameExtensionFilter("Text File", "txt")
+        fileChooser.isAcceptAllFileFilterUsed = false
+        fileChooser.isMultiSelectionEnabled = false
     }
 
     private fun initButtonPanel() {
         buttonPanel.layout = null
-        open = JButton("OPEN")
-        reset = JButton("RESET")
+
         reset.isEnabled = false
         open.addActionListener(this)
         reset.addActionListener(this)
         open.setBounds(50, 50, 100, 50)
         reset.setBounds(200, 50, 100, 50)
-        buttonPanel.setSize(350, 150)
+
         buttonPanel.add(open)
         buttonPanel.add(reset)
     }
 
     private fun initArgsPanel() {
         argsPanel.layout = null
+
         val l1 = JLabel("From:")
         val l2 = JLabel("To:")
         l1.setBounds(30, 30, 70, 30)
         l2.setBounds(30, 90, 370, 30)
         argsPanel.add(l1)
         argsPanel.add(l2)
-        from = JTextField()
-        to = JTextField()
+
         from.setBounds(100, 30, 70, 30)
         to.setBounds(100, 90, 70, 30)
         argsPanel.add(from)
         argsPanel.add(to)
-        dijkstra = JButton("DIJKSTRA")
+
         dijkstra.isEnabled = false
         dijkstra.addActionListener(this)
         dijkstra.setBounds(220, 30, 90, 90)
+
         argsPanel.add(dijkstra)
     }
 
     private fun initResultPanel() {
         resultPanel.layout = null
+
         val msg = JLabel("Shortest Path Length:")
         msg.setBounds(30, 50, 150, 30)
-        result = JLabel()
         result.setBounds(180, 50, 100, 30)
         resultPanel.add(msg)
         resultPanel.add(result)
@@ -115,24 +120,17 @@ class GUI : JFrame(), ActionListener {
 
     @Throws(IOException::class)
     private fun open() {
-        if (fileChooser == null) {
-            fileChooser = JFileChooser()
-            fileChooser!!.dialogTitle = "Select The File to Build Graph"
-            fileChooser!!.fileFilter = FileNameExtensionFilter("TEXT File", "txt")
-            fileChooser!!.isAcceptAllFileFilterUsed = false
-            fileChooser!!.isMultiSelectionEnabled = false
-        }
-        fileChooser!!.showOpenDialog(this@GUI)
-        val fin = fileChooser!!.selectedFile
+
+        fileChooser.showOpenDialog(this@GUI)
+        val fin = fileChooser.selectedFile
         if (fin != null) {
             //fin是储存信息的文件
             val sc = Scanner(BufferedReader(FileReader(fin)))
+            //顶数量
             val n = sc.nextInt()
-            val vexs = arrayOfNulls<String>(n)
-            //顶命名，此处用默认命名
-            for (i in 0 until n) {
-                vexs[i] = "V$i"
-            }
+            //顶信息，使用默认命名
+            val vexs = Array(n, { i -> "V$i" })
+            //边长度
             val arcs = Array(n) { IntArray(n) }
             for (i in 0 until n) {
                 //读取矩阵
@@ -145,7 +143,6 @@ class GUI : JFrame(), ActionListener {
                 }
             }
             graph = MatrixGraph(vexs, arcs)
-            graph.resetLastPath()
             reset.isEnabled = true
             dijkstra.isEnabled = true
             showGraph()
@@ -162,7 +159,7 @@ class GUI : JFrame(), ActionListener {
     private fun dijkstra() {
         val a = Integer.valueOf(from.text)
         val b = Integer.valueOf(to.text)
-        if (a < 0 || a >= graph.vexNumber || b < 0 || b >= graph.vexNumber) {
+        if (a < 0 || a >= graph.getVexNumber() || b < 0 || b >= graph.getVexNumber()) {
             //非法输入
             JOptionPane.showConfirmDialog(this@GUI,
                     "Please input right start and end vertexs.",
@@ -171,7 +168,6 @@ class GUI : JFrame(), ActionListener {
         }
         path = graph.Dijkstra(a, b)
         if (path == null) {
-            graph.resetLastPath()
             result.text = "Not Connected"
         } else {
             var len = 0
@@ -197,7 +193,8 @@ class GUI : JFrame(), ActionListener {
         out.close()
 
         //生成png文件，写入到系统临时目录下
-        val cmd = arrayOf("dot", "-T", "png", "-Gdpi=100", "-o", "$tempdir\\graphviz.png", dot.absolutePath)
+        val cmd = arrayOf("dot", "-T", "png", "-Gdpi=100", "-o", "$tempdir\\graphviz.png",
+                dot.absolutePath)
         try {
             Runtime.getRuntime().exec(cmd).waitFor()
         } catch (e: InterruptedException) {
@@ -205,16 +202,13 @@ class GUI : JFrame(), ActionListener {
         }
 
         //显示图片
-        if (showFrame == null) {
-            showFrame = ShowFrame("Graph")
-        }
-        showFrame!!.setImg("$tempdir\\graphviz.png")
-        showFrame!!.isVisible = true
+        showFrame.setImg("$tempdir\\graphviz.png")
+        showFrame.isVisible = true
     }
 
 }
 
-internal class ShowFrame(title: String) : JFrame(title) {
+internal class ShowFrame : JFrame("Graph") {
 
     private var img: BufferedImage? = null
 

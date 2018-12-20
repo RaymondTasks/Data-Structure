@@ -1,6 +1,8 @@
 package HashTable
 
-
+/**
+ * 使用链表法解决冲突的 Hash Table
+ */
 class HashTable_LinkedList<K, E>(val locations: Int = 100) : HashTable<K, E> {
 
     private data class Node<K, E>(var key: K, var element: E?, var next: Node<K, E>?)
@@ -83,4 +85,7 @@ class HashTable_LinkedList<K, E>(val locations: Int = 100) : HashTable<K, E> {
     }
 }
 
+/**
+ * 未找到key时抛出的错误
+ */
 class KeyNotFoundException : Exception()
