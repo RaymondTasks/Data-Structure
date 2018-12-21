@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5665599a-aab1-4e47-b713-cd58eb86aa12" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Graph/MatrixGraph.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab3/GUI.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Graph/MatrixGraph.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HashTable/HashTable_LinkedList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/HashTable/HashTable_LinkedList.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab4/GUI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab4/GUI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab5/GUI.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab5/GUI.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lab5/Main.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/GUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lab3/Main.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,29 +77,29 @@
     <session id="-665296790">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="25" />
-          <entry key="project.open.time.0" value="3" />
+          <entry key="project.closed" value="26" />
+          <entry key="project.open.time.0" value="4" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="4" />
           <entry key="project.open.time.5" value="11" />
           <entry key="project.open.time.6" value="3" />
           <entry key="project.open.time.7" value="2" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.opened" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="52933" />
-          <entry key="kt" value="3329" />
-          <entry key="txt" value="165" />
+          <entry key="kt" value="4441" />
+          <entry key="txt" value="208" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="52933" />
-          <entry key="Kotlin" value="3329" />
-          <entry key="PLAIN_TEXT" value="165" />
+          <entry key="Kotlin" value="4441" />
+          <entry key="PLAIN_TEXT" value="208" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -110,75 +109,39 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="62" />
-          <entry key="kt" value="10" />
+          <entry key="java" value="70" />
+          <entry key="kt" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="62" />
-          <entry key="Kotlin" value="10" />
+          <entry key="JAVA" value="70" />
+          <entry key="Kotlin" value="11" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HashTable/HashTable.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HashTable/HashTable_LinkedList.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Graph/MatrixGraph.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1400">
-              <caret line="70" column="41" lean-forward="true" selection-start-line="70" selection-start-column="41" selection-end-line="70" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Lab4/GUI.kt">
+        <entry file="file://$PROJECT_DIR$/src/Lab3/GUI.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="69" selection-start-line="69" selection-end-line="69" />
+            <state relative-caret-position="440">
+              <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
               <folding>
-                <element signature="e#14#338#0" expanded="true" />
+                <element signature="e#14#303#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HashTable/HashTable_LinearDetection.kt">
+        <entry file="file://$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Lab5/GUI.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+            <state relative-caret-position="880">
+              <caret line="44" column="29" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="44" selection-end-column="29" />
               <folding>
-                <element signature="e#14#110#0" expanded="true" />
+                <element signature="e#14#103#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -249,7 +212,6 @@
         <option value="$PROJECT_DIR$/src/Tree/BinaryTree.java" />
         <option value="$PROJECT_DIR$/src/Tree/HuffmanTree.java" />
         <option value="$PROJECT_DIR$/src/Tree/HuffmanCodingTree.java" />
-        <option value="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.kt" />
         <option value="$PROJECT_DIR$/src/Lab3/Main.java" />
         <option value="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java" />
         <option value="$PROJECT_DIR$/src/Graph/Graph.java" />
@@ -272,13 +234,14 @@
         <option value="$PROJECT_DIR$/src/Graph/MatrixGraph.java" />
         <option value="$PROJECT_DIR$/src/Lab5/Main.kt" />
         <option value="$PROJECT_DIR$/src/HashTable/HashTable.kt" />
-        <option value="$PROJECT_DIR$/src/Lab3/GUI.kt" />
         <option value="$PROJECT_DIR$/src/Lab3/GUI.java" />
         <option value="$PROJECT_DIR$/src/HashTable/HashTable_LinearDetection.kt" />
         <option value="$PROJECT_DIR$/src/Lab5/GUI.kt" />
         <option value="$PROJECT_DIR$/src/HashTable/HashTable_LinkedList.kt" />
-        <option value="$PROJECT_DIR$/src/Graph/MatrixGraph.kt" />
         <option value="$PROJECT_DIR$/src/Lab4/GUI.kt" />
+        <option value="$PROJECT_DIR$/src/Graph/MatrixGraph.kt" />
+        <option value="$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.kt" />
+        <option value="$PROJECT_DIR$/src/Lab3/GUI.kt" />
       </list>
     </option>
   </component>
@@ -292,10 +255,10 @@
     <option name="jreName" value="#JAVA_HOME" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="-357" />
-    <option name="width" value="1096" />
-    <option name="height" value="1906" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -332,7 +295,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -373,18 +335,32 @@
               <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
               <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Lab4" type="462c0819:PsiDirectoryNode" />
+              <item name="Lab5" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
               <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Lab5" type="462c0819:PsiDirectoryNode" />
+              <item name="List" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Queue" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Data-structure-course" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Data-structure-cource" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Queue" type="462c0819:PsiDirectoryNode" />
+              <item name="Exception" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -409,7 +385,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.lab4">
+  <component name="RunManager" selected="Application.lab3">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -438,7 +414,7 @@
     <configuration name="lab3" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="JDK 11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="Lab3.Main" />
+      <option name="MAIN_CLASS_NAME" value="Lab3.GUIKt" />
       <module name="Data-structure-course" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -535,7 +511,8 @@
       <workItem from="1544947330143" duration="5033000" />
       <workItem from="1545125705356" duration="2398000" />
       <workItem from="1545181827714" duration="11548000" />
-      <workItem from="1545303987747" duration="7336000" />
+      <workItem from="1545303987747" duration="9300000" />
+      <workItem from="1545365839771" duration="5207000" />
     </task>
     <task id="LOCAL-00001" summary="Finished stack and queue, including normal adn concurrent.">
       <created>1537259723890</created>
@@ -663,11 +640,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545218867464</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="2018.12.20 Refactor MatrixGraph with kotlin">
+      <created>1545311829979</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1545311829980</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="487379000" />
+    <option name="totallyTimeSpent" value="494550000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -679,10 +663,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-357" width="1096" height="1906" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.026061775" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1380597" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -698,7 +682,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.24562395" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.1482277" />
       <window_info anchor="bottom" id="Log4jMonitor" order="10" />
-      <window_info active="true" anchor="bottom" x="856" y="188" width="1063" height="861" id="Run" order="11" visible="true" weight="0.2518351" />
+      <window_info anchor="bottom" x="856" y="188" width="1063" height="861" id="Run" order="11" weight="0.24489796" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -798,7 +782,8 @@
     <MESSAGE value="2018.12.11 complete lab4" />
     <MESSAGE value="2018.12.18 convert Lab4 to Kotlin" />
     <MESSAGE value="2018.12.19 Update Lab5" />
-    <option name="LAST_COMMIT_MESSAGE" value="2018.12.19 Update Lab5" />
+    <MESSAGE value="2018.12.20 Refactor MatrixGraph with kotlin" />
+    <option name="LAST_COMMIT_MESSAGE" value="2018.12.20 Refactor MatrixGraph with kotlin" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -844,20 +829,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Queue/CircleQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1084">
-          <caret line="88" column="20" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/List/LinkedList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="924">
-          <caret line="194" column="34" selection-start-line="194" selection-start-column="34" selection-end-line="194" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -967,24 +938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lab3/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-          <folding>
-            <element signature="e#78#79#0" expanded="true" />
-            <element signature="e#120#121#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2340">
-          <caret line="117" column="14" selection-start-line="117" selection-start-column="14" selection-end-line="117" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Graph/Graph.java" />
     <entry file="file://$PROJECT_DIR$/src/Lab4/org/enoir/graphvizapi/Attribute.java" />
     <entry file="file://$PROJECT_DIR$/src/Lab4/org/enoir/graphvizapi/BaseGraphObject.java" />
@@ -1016,13 +969,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Lab3/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Lab1/Polynomial.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -1037,6 +983,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/HashTable/HashTable_LinkedList.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Graph/MatrixGraph.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/List/LinkedList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="194" column="34" selection-start-line="194" selection-start-column="34" selection-end-line="194" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Queue/CircleQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="88" column="20" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/HashTable/HashTable_LinearDetection.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -1046,7 +1020,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Lab5/GUI.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
+        <state relative-caret-position="140">
           <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
           <folding>
             <element signature="e#14#110#0" expanded="true" />
@@ -1054,26 +1028,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HashTable/HashTable_LinkedList.kt">
+    <entry file="file://$PROJECT_DIR$/src/Lab3/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Graph/MatrixGraph.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
-          <caret line="70" column="41" lean-forward="true" selection-start-line="70" selection-start-column="41" selection-end-line="70" selection-end-column="41" />
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="e#78#79#0" expanded="true" />
+            <element signature="e#120#121#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Lab4/GUI.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="1380">
           <caret line="69" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="e#14#338#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab3/HuffmanCodingTree.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="44" column="29" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="44" selection-end-column="29" />
+          <folding>
+            <element signature="e#14#103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Lab3/GUI.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+          <folding>
+            <element signature="e#14#303#0" expanded="true" />
           </folding>
         </state>
       </provider>
