@@ -26,4 +26,9 @@ interface HashTable<K, E> {
      */
     fun getSize(): Int
 
+    /**
+     * 每次get后更新的平均查找长度
+     */
+    var SL: Int
+
 }

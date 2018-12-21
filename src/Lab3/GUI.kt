@@ -54,22 +54,16 @@ class GUI : JFrame("Huffman Coding Zipper"), ActionListener {
     }
 
     override fun actionPerformed(e: ActionEvent) {
-        try {
-            when (e.source) {
-                open -> open()
-                zip -> zip()
-                unzip -> unzip()
-            }
-        } catch (ex: IOException) {
-            ex.printStackTrace()
+        when (e.source) {
+            open -> open()
+            zip -> zip()
+            unzip -> unzip()
         }
-
     }
 
     /**
      * 打开文件
      */
-    @Throws(IOException::class)
     private fun open() {
         fileChooser.dialogTitle = "Open A File to Zip or Unzip"
         fileChooser.resetChoosableFileFilters()
@@ -121,7 +115,6 @@ class GUI : JFrame("Huffman Coding Zipper"), ActionListener {
     /**
      * 压缩文件
      */
-    @Throws(IOException::class)
     private fun zip() {
         fileChooser.dialogTitle = "Save Zipped File"
         fileChooser.resetChoosableFileFilters()
@@ -183,7 +176,6 @@ class GUI : JFrame("Huffman Coding Zipper"), ActionListener {
     /**
      * 解压文件
      */
-    @Throws(IOException::class)
     private fun unzip() {
         fileChooser.dialogTitle = "Save Unzipped File"
         fileChooser.resetChoosableFileFilters()

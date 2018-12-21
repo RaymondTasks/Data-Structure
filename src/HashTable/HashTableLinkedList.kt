@@ -1,14 +1,19 @@
 package HashTable
 
+import kotlin.math.abs
+
+
 /**
  * 使用链表法解决冲突的 Hash Table
  */
-class HashTable_LinkedList<K, E>(val locations: Int = 100) : HashTable<K, E> {
+class HashTableLinkedList<K, E>(private val locations: Int = 100) : HashTable<K, E> {
 
-    private data class Node<K, E>(var key: K, var element: E?, var next: Node<K, E>?)
+    private data class Node<K, E>(var key: K,
+                                  var element: E?,
+                                  var next: Node<K, E>? = null)
 
     //储存元素
-    private var store: Array<Node<K, E>?> = arrayOfNulls(locations)
+    private val store: Array<Node<K, E>?> = arrayOfNulls(locations)
 
     override fun put(key: K, element: E?) {
         val addr = hash(key)
@@ -25,17 +30,26 @@ class HashTable_LinkedList<K, E>(val locations: Int = 100) : HashTable<K, E> {
         }
         //没有找到key,添加一个节点
         if (q != null) {
-            q.next = Node(key, element, null)
+            q.next = Node(key, element)
         } else {
-            store[addr] = Node(key, element, null)
+            store[addr] = Node(key, element)
         }
 
     }
 
+    /**
+     * 根据key获取元素
+     * key不存在则抛出exception
+     */
     override fun get(key: K): E? {
+        SL = 0
         val addr = hash(key)
         var p = store[addr]
-        while (p != null) {
+        while (true) {
+            SL++
+            if (p == null) {
+                break
+            }
             if (p.key == key) {
                 return p.element
             }
@@ -67,8 +81,8 @@ class HashTable_LinkedList<K, E>(val locations: Int = 100) : HashTable<K, E> {
 
     override fun hash(key: K): Int =
             when (key) {
-                is Number -> key.toInt() % locations
-                else -> key.hashCode() % locations
+                is Number -> abs(key.toInt() % locations)
+                else -> abs(key.hashCode() % locations)
             }
 
 
@@ -83,9 +97,7 @@ class HashTable_LinkedList<K, E>(val locations: Int = 100) : HashTable<K, E> {
         }
         return size
     }
+
+    override var SL = 0
 }
 
-/**
- * 未找到key时抛出的错误
- */
-class KeyNotFoundException : Exception()

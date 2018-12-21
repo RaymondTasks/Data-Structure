@@ -6,7 +6,10 @@ import java.awt.GridLayout
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
 import java.awt.image.BufferedImage
-import java.io.*
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileReader
+import java.io.FileWriter
 import java.util.*
 import javax.imageio.ImageIO
 import javax.swing.*
@@ -106,19 +109,13 @@ class GUI : JFrame("Dijkstra"), ActionListener {
 
 
     override fun actionPerformed(e: ActionEvent) {
-        try {
-            when (e.source) {
-                open -> open()
-                reset -> reset()
-                dijkstra -> dijkstra()
-            }
-        } catch (ex: IOException) {
-            ex.printStackTrace()
+        when (e.source) {
+            open -> open()
+            reset -> reset()
+            dijkstra -> dijkstra()
         }
-
     }
 
-    @Throws(IOException::class)
     private fun open() {
 
         fileChooser.showOpenDialog(this@GUI)
@@ -149,13 +146,11 @@ class GUI : JFrame("Dijkstra"), ActionListener {
         }
     }
 
-    @Throws(IOException::class)
     private fun reset() {
         graph.resetLastPath()
         showGraph()
     }
 
-    @Throws(IOException::class)
     private fun dijkstra() {
         val a = Integer.valueOf(from.text)
         val b = Integer.valueOf(to.text)
@@ -180,7 +175,6 @@ class GUI : JFrame("Dijkstra"), ActionListener {
         showGraph()
     }
 
-    @Throws(IOException::class)
     private fun showGraph() {
         val str = graph.toDotLanguage()
         val tempdir = System.getProperty("java.io.tmpdir")
@@ -216,7 +210,6 @@ internal class ShowFrame : JFrame("Graph") {
         defaultCloseOperation = WindowConstants.HIDE_ON_CLOSE
     }
 
-    @Throws(IOException::class)
     fun setImg(fileName: String) {
         img = ImageIO.read(File(fileName))
         setSize(img!!.width + 14, img!!.height + 39)

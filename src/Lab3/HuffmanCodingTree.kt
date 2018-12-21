@@ -208,6 +208,6 @@ internal class BitOutputStream(private val output: DataOutputStream) {
     @Throws(IOException::class)
     fun flush() {
         temp = temp shl (8 - tempLen)
-        output.write(temp)
+        output.writeByte(temp)
     }
 }
