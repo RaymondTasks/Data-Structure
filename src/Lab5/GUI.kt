@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
 import java.io.BufferedInputStream
 import java.io.FileInputStream
+import java.text.DecimalFormat
 import java.util.*
 import javax.swing.*
 import javax.swing.filechooser.FileNameExtensionFilter
@@ -67,7 +68,7 @@ class GUI : JFrame("Hash Table"), ActionListener {
 
         //初始化布局
         layout = GridLayout(4, 1)
-        setSize(350, 600)
+        setSize(500, 600)
 
         //打开和计算ASL按钮的面板
         val openPanel = JPanel()
@@ -102,8 +103,8 @@ class GUI : JFrame("Hash Table"), ActionListener {
         //输出搜索信息的面板
         val SLPanel = JPanel()
         SLPanel.layout = null
-        SLInfo1.setBounds(25, 45, 300, 30)
-        SLInfo2.setBounds(25, 75, 300, 30)
+        SLInfo1.setBounds(25, 45, 450, 30)
+        SLInfo2.setBounds(25, 75, 450, 30)
         SLPanel.add(SLInfo1)
         SLPanel.add(SLInfo2)
         add(SLPanel)
@@ -152,6 +153,7 @@ class GUI : JFrame("Hash Table"), ActionListener {
      */
     private fun search() {
         val key = keyInput.text
+//        val format = DecimalFormat("#.00")
         try {
             val elem = HT1.get(key)
             //查找成功
@@ -174,10 +176,11 @@ class GUI : JFrame("Hash Table"), ActionListener {
     private fun calcASL() {
         var successASL = calcSuccessASL(HT1)
         var filedASL = calcFailedASL(HT1)
-        ASLInfo1.text = "线性探测法：查找成功ASL=$successASL，失败ASL=$filedASL"
+        val format = DecimalFormat("#.00")
+        ASLInfo1.text = "线性探测法：查找成功ASL=${format.format(successASL)}，失败ASL=${format.format(filedASL)}"
         successASL = calcSuccessASL(HT2)
         filedASL = calcFailedASL(HT2)
-        ASLInfo2.text = "拉链法：查找成功ASL=$successASL，失败ASL=$filedASL"
+        ASLInfo2.text = "拉链法：查找成功ASL=${format.format(successASL)}，失败ASL=${format.format(filedASL)}"
     }
 
     /**

@@ -16,15 +16,17 @@ class HashTableLinearDetection<K, E>(val capacity: Int = 100) : HashTable<K, E> 
         for (i in 0 until capacity) {
             val index = (addr + i) % capacity
             if (store[index] == null) {
+                //找到空位
                 store[index] = Node(key, element)
                 return
             } else if (store[index]!!.key == key) {
+                //存在重复的key，覆盖
                 store[index]!!.element = element
                 return
             }
         }
         //表已满
-        throw FullTableException()
+        throw  FullTableException()
     }
 
     override fun get(key: K): E? {
@@ -51,7 +53,7 @@ class HashTableLinearDetection<K, E>(val capacity: Int = 100) : HashTable<K, E> 
             }
         }
         //未找到key
-        throw KeyNotFoundException()
+        throw  KeyNotFoundException()
     }
 
     override fun hash(key: K): Int =

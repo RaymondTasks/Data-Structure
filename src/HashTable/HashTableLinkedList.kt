@@ -34,7 +34,7 @@ class HashTableLinkedList<K, E>(private val locations: Int = 100) : HashTable<K,
         } else {
             store[addr] = Node(key, element)
         }
-
+        return
     }
 
     /**
