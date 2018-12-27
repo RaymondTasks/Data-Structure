@@ -10,7 +10,7 @@ public class Main {
         //启用log
         sim.setLogEnable(true);
         //GUI部分
-        var GUI = new SimulationGUI(sim, 5,
+        var GUI = new GUI(sim, 5,
                 100,
                 90, 70, 80,
                 500,

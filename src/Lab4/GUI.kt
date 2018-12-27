@@ -19,28 +19,22 @@ fun main(args: Array<String>) {
     GUI().isVisible = true
 }
 
-class GUI : JFrame("Dijkstra"), ActionListener {
-
-    private val buttonPanel = JPanel()
-    private val argsPanel = JPanel()
-    private val resultPanel = JPanel()
+class GUI : JFrame("dijkstra"), ActionListener {
 
     private val open = JButton("Open")
     private val reset = JButton("Reset")
-    private val dijkstra = JButton("Dijkstra")
+    private val dijkstra = JButton("dijkstra")
 
     private val fileChooser = JFileChooser()
     private val showFrame = ShowFrame()
 
     private val from = JTextField()
     private val to = JTextField()
-
     private val result = JLabel()
 
     private lateinit var graph: MatrixGraph
 
-    private var path: IntArray? = null
-
+    private lateinit var path: IntArray
 
     init {
         defaultCloseOperation = WindowConstants.EXIT_ON_CLOSE
@@ -48,65 +42,57 @@ class GUI : JFrame("Dijkstra"), ActionListener {
         isResizable = false
         layout = GridLayout(3, 1)
 
-        initButtonPanel()
-        initArgsPanel()
-        initResultPanel()
+        //初始化按钮面板
+        add(JPanel(null).apply {
+            add(open.apply {
+                addActionListener(this@GUI)
+                setBounds(50, 50, 100, 50)
+            })
+            add(reset.apply {
+                isEnabled = false
+                addActionListener(this@GUI)
+                setBounds(200, 50, 100, 50)
+            })
+        })
 
-        add(buttonPanel)
-        add(argsPanel)
-        add(resultPanel)
+        //参数输入面板
+        add(JPanel(null).apply {
+            add(JLabel("From:").apply {
+                setBounds(30, 30, 70, 30)
+            })
+            add(JLabel("To:").apply {
+                setBounds(30, 90, 370, 30)
+            })
+            add(from.apply {
+                setBounds(100, 30, 70, 30)
+            })
+            add(to.apply {
+                setBounds(100, 90, 70, 30)
+            })
+            add(dijkstra.apply {
+                isEnabled = false
+                addActionListener(this@GUI)
+                setBounds(220, 30, 90, 90)
+            })
+        })
 
-        fileChooser.dialogTitle = "Select The File to Build Graph"
-        fileChooser.fileFilter = FileNameExtensionFilter("Text File", "txt")
-        fileChooser.isAcceptAllFileFilterUsed = false
-        fileChooser.isMultiSelectionEnabled = false
+        //结果显示面板
+        add(JPanel(null).apply {
+            add(JLabel("Shortest Path Length:").apply {
+                setBounds(30, 50, 150, 30)
+            })
+            add(result.apply {
+                setBounds(180, 50, 100, 30)
+            })
+        })
+
+        fileChooser.apply {
+            dialogTitle = "Select The File to Build Graph"
+            fileFilter = FileNameExtensionFilter("Text File", "txt")
+            isAcceptAllFileFilterUsed = false
+            isMultiSelectionEnabled = false
+        }
     }
-
-    private fun initButtonPanel() {
-        buttonPanel.layout = null
-
-        reset.isEnabled = false
-        open.addActionListener(this)
-        reset.addActionListener(this)
-        open.setBounds(50, 50, 100, 50)
-        reset.setBounds(200, 50, 100, 50)
-
-        buttonPanel.add(open)
-        buttonPanel.add(reset)
-    }
-
-    private fun initArgsPanel() {
-        argsPanel.layout = null
-
-        val l1 = JLabel("From:")
-        val l2 = JLabel("To:")
-        l1.setBounds(30, 30, 70, 30)
-        l2.setBounds(30, 90, 370, 30)
-        argsPanel.add(l1)
-        argsPanel.add(l2)
-
-        from.setBounds(100, 30, 70, 30)
-        to.setBounds(100, 90, 70, 30)
-        argsPanel.add(from)
-        argsPanel.add(to)
-
-        dijkstra.isEnabled = false
-        dijkstra.addActionListener(this)
-        dijkstra.setBounds(220, 30, 90, 90)
-
-        argsPanel.add(dijkstra)
-    }
-
-    private fun initResultPanel() {
-        resultPanel.layout = null
-
-        val msg = JLabel("Shortest Path Length:")
-        msg.setBounds(30, 50, 150, 30)
-        result.setBounds(180, 50, 100, 30)
-        resultPanel.add(msg)
-        resultPanel.add(result)
-    }
-
 
     override fun actionPerformed(e: ActionEvent) {
         when (e.source) {
@@ -118,32 +104,34 @@ class GUI : JFrame("Dijkstra"), ActionListener {
 
     private fun open() {
 
-        fileChooser.showOpenDialog(this@GUI)
-        val fin = fileChooser.selectedFile
-        if (fin != null) {
-            //fin是储存信息的文件
-            val sc = Scanner(BufferedReader(FileReader(fin)))
-            //顶数量
-            val n = sc.nextInt()
-            //顶信息，使用默认命名
-            val vexs = Array(n, { i -> "V$i" })
-            //边长度
-            val arcs = Array(n) { IntArray(n) }
-            for (i in 0 until n) {
-                //读取矩阵
-                for (j in 0 until n) {
-                    arcs[i][j] = sc.nextInt()
-                }
-                //对角化
-                for (j in 0 until i) {
-                    arcs[i][j] = arcs[j][i]
-                }
+        val fin = fileChooser.apply {
+            showOpenDialog(this@GUI)
+        }.selectedFile ?: return
+
+        //fin是储存信息的文件
+        val sc = Scanner(BufferedReader(FileReader(fin)))
+        //顶数量
+        val n = sc.nextInt()
+        //顶信息，使用默认命名
+        val vexs = Array(n) { i -> "V$i" }
+        //边长度
+        val arcs = Array(n) { IntArray(n) }
+        for (i in 0 until n) {
+            //读取矩阵
+            for (j in 0 until n) {
+                arcs[i][j] = sc.nextInt()
             }
-            graph = MatrixGraph(vexs, arcs)
-            reset.isEnabled = true
-            dijkstra.isEnabled = true
-            showGraph()
+            //对角化
+            for (j in 0 until i) {
+                arcs[i][j] = arcs[j][i]
+            }
         }
+        graph = MatrixGraph(vexs, arcs)
+
+        reset.isEnabled = true
+        dijkstra.isEnabled = true
+        showGraph()
+
     }
 
     private fun reset() {
@@ -152,52 +140,51 @@ class GUI : JFrame("Dijkstra"), ActionListener {
     }
 
     private fun dijkstra() {
-        val a = Integer.valueOf(from.text)
-        val b = Integer.valueOf(to.text)
-        if (a < 0 || a >= graph.getVexNumber() || b < 0 || b >= graph.getVexNumber()) {
+        val a = from.text.toInt()
+        val b = to.text.toInt()
+
+        if (a in 0 until graph.getVexNumber() && b in 0 until graph.getVexNumber()) {
+            path = graph.dijkstra(a, b)
+            if (path.isEmpty()) {
+                result.text = "Not Connected"
+            } else {
+                var len = 0
+                val arcs = graph.arcs
+                for (i in 0 until path.size - 1) {
+                    len += arcs[path[i]][path[i + 1]]
+                }
+                result.text = len.toString()
+            }
+            showGraph()
+        } else {
             //非法输入
             JOptionPane.showConfirmDialog(this@GUI,
                     "Please input right start and end vertexs.",
-                    "Illegal Input!", JOptionPane.OK_OPTION)
-            return
+                    "Illegal Input!", JOptionPane.YES_OPTION)
         }
-        path = graph.Dijkstra(a, b)
-        if (path == null) {
-            result.text = "Not Connected"
-        } else {
-            var len = 0
-            val arcs = graph.arcs
-            for (i in 0 until path!!.size - 1) {
-                len += arcs[path!![i]][path!![i + 1]]
-            }
-            result.text = len.toString()
-        }
-        showGraph()
+
     }
 
     private fun showGraph() {
-        val str = graph.toDotLanguage()
         val tempdir = System.getProperty("java.io.tmpdir")
-        val dot = File("$tempdir\\graphviz.dot")
-        if (dot.exists()) {
-            dot.delete()
+
+        FileWriter("$tempdir\\graphviz.dot").apply {
+            write(graph.toDotLanguage())
+            close()
         }
-        val out = FileWriter(dot)
-        out.write(str)
-        out.close()
 
         //生成png文件，写入到系统临时目录下
-        val cmd = arrayOf("dot", "-T", "png", "-Gdpi=100", "-o", "$tempdir\\graphviz.png",
-                dot.absolutePath)
-        try {
-            Runtime.getRuntime().exec(cmd).waitFor()
-        } catch (e: InterruptedException) {
-            e.printStackTrace()
-        }
+        Runtime.getRuntime().exec(
+                arrayOf("dot", "-T", "png", "-Gdpi=100",
+                        "-o", "$tempdir\\graphviz.png",
+                        "$tempdir\\graphviz.dot")
+        ).waitFor()
 
         //显示图片
-        showFrame.setImg("$tempdir\\graphviz.png")
-        showFrame.isVisible = true
+        showFrame.apply {
+            isVisible = true
+            setImg("$tempdir\\graphviz.png")
+        }
     }
 
 }

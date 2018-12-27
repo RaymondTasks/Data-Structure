@@ -1,4 +1,4 @@
-package Lab3
+package Tree
 
 import java.io.DataInputStream
 import java.io.DataOutputStream

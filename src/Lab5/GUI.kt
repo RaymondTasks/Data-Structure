@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
 import java.io.BufferedInputStream
 import java.io.FileInputStream
-import java.text.DecimalFormat
 import java.util.*
 import javax.swing.*
 import javax.swing.filechooser.FileNameExtensionFilter
@@ -32,10 +31,6 @@ class GUI : JFrame("Hash Table"), ActionListener {
     //HT2是用链表法解决冲突的hash表
     private lateinit var HT2: HashTableLinkedList<String, Int>
 
-    //分别是HT1和HT2的ASL
-    private var ASL1: Int = -1
-    private var ASL2: Int = -1
-
     //文件选择框
     private val fileChooser = JFileChooser()
 
@@ -53,61 +48,65 @@ class GUI : JFrame("Hash Table"), ActionListener {
     init {
         defaultCloseOperation = WindowConstants.EXIT_ON_CLOSE
         isResizable = false
-
-        open.addActionListener(this)
-        calcASL.addActionListener(this)
-        calcASL.isEnabled = false
-        search.addActionListener(this)
-        search.isEnabled = false
-
-        fileChooser.dialogTitle = "Open Data File"
-        fileChooser.isMultiSelectionEnabled = false
-        fileChooser.isAcceptAllFileFilterUsed = false
-        fileChooser.fileFilter = FileNameExtensionFilter("Text File (*.txt)",
-                "txt")
-
-        //初始化布局
         layout = GridLayout(4, 1)
         setSize(500, 600)
 
         //打开和计算ASL按钮的面板
-        val openPanel = JPanel()
-        openPanel.layout = null
-        open.setBounds(50, 40, 100, 70)
-        calcASL.setBounds(200, 40, 100, 70)
-        openPanel.add(open)
-        openPanel.add(calcASL)
-        add(openPanel)
+        add(JPanel(null).apply {
+            add(open.apply {
+                isEnabled = true
+                addActionListener(this@GUI)
+                setBounds(50, 40, 100, 70)
+            })
+            add(calcASL.apply {
+                isEnabled = false
+                addActionListener(this@GUI)
+                setBounds(200, 40, 100, 70)
+            })
+        })
 
         //显示ASL信息的面板
-        val ASLPanel = JPanel()
-        ASLPanel.layout = null
-        ASLInfo1.setBounds(25, 45, 300, 30)
-        ASLInfo2.setBounds(25, 75, 300, 30)
-        ASLPanel.add(ASLInfo1)
-        ASLPanel.add(ASLInfo2)
-        add(ASLPanel)
+        add(JPanel(null).apply {
+            add(ASLInfo1.apply {
+                setBounds(25, 45, 300, 30)
+            })
+            add(ASLInfo2.apply {
+                setBounds(25, 75, 300, 30)
+            })
+        })
 
         //输入key的面板
-        val inputPanel = JPanel()
-        inputPanel.layout = null
-        val hint = JLabel("Input key:")
-        hint.setBounds(25, 45, 100, 30)
-        keyInput.setBounds(25, 75, 150, 30)
-        search.setBounds(200, 45, 100, 60)
-        inputPanel.add(hint)
-        inputPanel.add(keyInput)
-        inputPanel.add(search)
-        add(inputPanel)
+        add(JPanel(null).apply {
+            add(JLabel("Input key:").apply {
+                setBounds(25, 45, 100, 30)
+            })
+            add(keyInput.apply {
+                setBounds(25, 75, 150, 30)
+            })
+            add(search.apply {
+                isEnabled = false
+                addActionListener(this@GUI)
+                setBounds(200, 45, 100, 60)
+            })
+        })
 
         //输出搜索信息的面板
-        val SLPanel = JPanel()
-        SLPanel.layout = null
-        SLInfo1.setBounds(25, 45, 450, 30)
-        SLInfo2.setBounds(25, 75, 450, 30)
-        SLPanel.add(SLInfo1)
-        SLPanel.add(SLInfo2)
-        add(SLPanel)
+        add(JPanel(null).apply {
+            add(SLInfo2.apply {
+                setBounds(25, 45, 450, 30)
+            })
+            add(SLInfo1.apply {
+                setBounds(25, 75, 450, 30)
+            })
+        })
+
+        fileChooser.apply {
+            dialogTitle = "Open Data File"
+            isMultiSelectionEnabled = false
+            isAcceptAllFileFilterUsed = false
+            fileFilter = FileNameExtensionFilter("Text File (*.txt)",
+                    "txt")
+        }
 
     }
 
@@ -126,12 +125,15 @@ class GUI : JFrame("Hash Table"), ActionListener {
      * 打开文件，生成HT1和HT2
      */
     private fun open() {
-        fileChooser.showOpenDialog(this@GUI)
-        val fin = fileChooser.selectedFile
-        if (fin == null || !fin.exists()) {
-            //未选中或者文件不存在
+        val fin = fileChooser.apply {
+            showOpenDialog(this@GUI)
+        }.selectedFile ?: return
+
+        if (!fin.exists()) {
+            //文件不存在
             return
         }
+
         val sc = Scanner(BufferedInputStream(FileInputStream(fin), 4096))
         //默认容量是100
         HT1 = HashTableLinearDetection()
@@ -153,19 +155,18 @@ class GUI : JFrame("Hash Table"), ActionListener {
      */
     private fun search() {
         val key = keyInput.text
-//        val format = DecimalFormat("#.00")
         try {
-            val elem = HT1.get(key)
             //查找成功
-            SLInfo1.text = "线性探测法：查找成功，element=$elem，SL=${HT1.SL}"
+            SLInfo1.text = "线性探测法：查找成功，element=${HT1.get(key)}，SL=${HT1.SL}"
         } catch (e: Exception) {
+            //查找失败
             SLInfo1.text = "线性探测法：查找失败，SL=${HT1.SL}"
         }
         try {
-            val elem = HT2.get(key)
             //查找成功
-            SLInfo2.text = "拉链法：查找成功，element=$elem，SL=${HT2.SL}"
+            SLInfo2.text = "拉链法：查找成功，element=${HT2.get(key)}，SL=${HT2.SL}"
         } catch (e: Exception) {
+            //查找失败
             SLInfo2.text = "拉链法：查找失败，SL=${HT2.SL}"
         }
     }
@@ -174,13 +175,10 @@ class GUI : JFrame("Hash Table"), ActionListener {
      * 计算过两种解决冲突办法的ASL
      */
     private fun calcASL() {
-        var successASL = calcSuccessASL(HT1)
-        var filedASL = calcFailedASL(HT1)
-        val format = DecimalFormat("#.00")
-        ASLInfo1.text = "线性探测法：查找成功ASL=${format.format(successASL)}，失败ASL=${format.format(filedASL)}"
-        successASL = calcSuccessASL(HT2)
-        filedASL = calcFailedASL(HT2)
-        ASLInfo2.text = "拉链法：查找成功ASL=${format.format(successASL)}，失败ASL=${format.format(filedASL)}"
+        ASLInfo1.text = "线性探测法：查找成功ASL=${calcSuccessASL(HT1)}，" +
+                "失败ASL=${calcFailedASL(HT1)}"
+        ASLInfo2.text = "拉链法：查找成功ASL=${calcSuccessASL(HT2)}，" +
+                "失败ASL=${calcFailedASL(HT2)}"
     }
 
     /**

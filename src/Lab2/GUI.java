@@ -3,7 +3,7 @@ package Lab2;
 import javax.swing.*;
 import java.awt.*;
 
-public class SimulationGUI extends JFrame {
+public class GUI extends JFrame {
 
     private ElevatorSimulator simulator;
     private long timeScale;
@@ -45,11 +45,11 @@ public class SimulationGUI extends JFrame {
      * @param waitingAreaWidth 等待区宽度
      * @param buttonWidth      按钮区宽度
      */
-    public SimulationGUI(ElevatorSimulator simulator, long timeScale,
-                         int floorHeight,
-                         int carHeight, int carWidth, int carShaftWidth,
-                         int waitingAreaWidth, int buttonWidth,
-                         int passengerRadius) {
+    public GUI(ElevatorSimulator simulator, long timeScale,
+               int floorHeight,
+               int carHeight, int carWidth, int carShaftWidth,
+               int waitingAreaWidth, int buttonWidth,
+               int passengerRadius) {
         this.simulator = simulator;
         this.timeScale = timeScale;
 
