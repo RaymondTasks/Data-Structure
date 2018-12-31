@@ -1,3 +1,3 @@
-package HashTable
+package Table
 
 class FullTableException : Exception()

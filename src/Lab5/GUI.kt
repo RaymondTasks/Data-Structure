@@ -1,8 +1,8 @@
 package Lab5
 
-import HashTable.HashTable
-import HashTable.HashTableLinearDetection
-import HashTable.HashTableLinkedList
+import Table.HashTable
+import Table.HashTableLinearDetection
+import Table.HashTableLinkedList
 import java.awt.GridLayout
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
@@ -68,10 +68,10 @@ class GUI : JFrame("Hash Table"), ActionListener {
         //显示ASL信息的面板
         add(JPanel(null).apply {
             add(ASLInfo1.apply {
-                setBounds(25, 45, 300, 30)
+                setBounds(25, 45, 450, 30)
             })
             add(ASLInfo2.apply {
-                setBounds(25, 75, 300, 30)
+                setBounds(25, 75, 450, 30)
             })
         })
 

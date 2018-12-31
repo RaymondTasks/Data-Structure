@@ -1,4 +1,4 @@
-package HashTable
+package Table
 
 interface HashTable<K, E> {
     /**

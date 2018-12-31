@@ -1,4 +1,4 @@
-package HashTable
+package Table
 
 import kotlin.math.abs
 
