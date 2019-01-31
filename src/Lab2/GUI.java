@@ -5,13 +5,13 @@ import java.awt.*;
 
 public class GUI extends JFrame {
 
-    private ElevatorSimulator simulator;
+    private ElevatorSimulation simulator;
     private long timeScale;
     private int floors;
     private int upAndDownTime;
     private int enterAndExitTime;
     private int openAndCloseTime;
-    private ElevatorSimulator.Car cars[];
+    private ElevatorSimulation.Cabin cabins[];
     private PassengerLinkedQueue passengerQueues[];
     private boolean callingUp[];
     private boolean callingDown[];
@@ -45,7 +45,7 @@ public class GUI extends JFrame {
      * @param waitingAreaWidth 等待区宽度
      * @param buttonWidth      按钮区宽度
      */
-    public GUI(ElevatorSimulator simulator, long timeScale,
+    public GUI(ElevatorSimulation simulator, long timeScale,
                int floorHeight,
                int carHeight, int carWidth, int carShaftWidth,
                int waitingAreaWidth, int buttonWidth,
@@ -55,8 +55,8 @@ public class GUI extends JFrame {
 
         //读取必要的后端数据
         this.floors = simulator.getFloors();
-        this.cars = simulator.getCars();
-        this.passengerQueues = simulator.getPassengerQueues();
+        this.cabins = simulator.getCabins();
+        this.passengerQueues = simulator.getQueues();
         this.parallelNumber = simulator.getParallelNumber();
         this.callingUp = simulator.getCallingUp();
         this.callingDown = simulator.getCallingDown();
@@ -97,7 +97,7 @@ public class GUI extends JFrame {
         }
         carShaftPanel = new CarShaftPanel[parallelNumber];
         for (int i = 0; i < parallelNumber; i++) {
-            carShaftPanel[i] = new CarShaftPanel(cars[i]);
+            carShaftPanel[i] = new CarShaftPanel(cabins[i]);
             mainPanel.add(carShaftPanel[i]);
             carShaftPanel[i].setSize(carShaftWidth, frameHeight);
             carShaftPanel[i].setLocation(i * carShaftWidth, 0);
@@ -139,10 +139,10 @@ public class GUI extends JFrame {
     //电梯井
     class CarShaftPanel extends JPanel {
         CarPanel carPanel;
-        ElevatorSimulator.Car car;
+        ElevatorSimulation.Cabin cabin;
 
-        public CarShaftPanel(ElevatorSimulator.Car car) {
-            this.car = car;
+        public CarShaftPanel(ElevatorSimulation.Cabin cabin) {
+            this.cabin = cabin;
             setLayout(null);
             carPanel = new CarPanel();
             add(carPanel);
@@ -166,14 +166,14 @@ public class GUI extends JFrame {
         //电梯厢
         class CarPanel extends JPanel {
             double openedPercent = 0.0;  //门开的比例
-            double position = car.nowFloor;
+            double position = cabin.getNowFloor();
 
             public void refresh() {
-                switch (car.state) {
+                switch (cabin.getState()) {
                     case idling:
                     case berthing:
                     case detecting:
-                        position = car.nowFloor;
+                        position = cabin.getNowFloor();
                         break;
                     case upping:
                     case idle_upping:
@@ -215,9 +215,9 @@ public class GUI extends JFrame {
                 int n = 1 + (int) Math.sqrt(carMaxLoad);
                 int raw = 0;
                 int column = 0;
-                for (var ptmp : car.content) {
+                for (var ptmp : cabin.getLoad()) {
                     if (ptmp != null) {
-                        g.setColor(ptmp.color);
+                        g.setColor(ptmp.getColor());
                         g.fillOval(2 + column * (2 * passengerRadius + 1), carHeight - 1 - (raw + 1) * (2 * passengerRadius + 1),
                                 2 * passengerRadius, 2 * passengerRadius);
                         column++;
@@ -267,7 +267,7 @@ public class GUI extends JFrame {
             int x = 0;
             while (iter.hasNext()) {
                 var p = iter.next();
-                g.setColor(p.color);
+                g.setColor(p.getColor());
                 g.fillOval(x, floorHeight - 2 * passengerRadius - 1, 2 * passengerRadius, 2 * passengerRadius);
                 x += 2 * passengerRadius + 5;
             }
