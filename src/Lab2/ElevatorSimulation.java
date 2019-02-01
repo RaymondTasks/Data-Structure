@@ -287,17 +287,17 @@ public class ElevatorSimulation {
             return null;
         }
 
-        int lastStartOpenOrCloseTime;  //用于中断关门后生成新的开门事件
-        int lastStartUpOrDownTime;  //用于中断前往待命状态的移动事件
+        int startingOpenOrCloseTime;  //用于中断关门后生成新的开门事件
+        int startingUpOrDownTime;  //用于中断前往待命状态的移动事件
 
         public double getPosition() {  //获得具体位置
             switch (state) {
                 case upping:
                 case idle_upping:
-                    return (double) nowFloor + (double) (time - lastStartUpOrDownTime) / upAndDownTime;
+                    return (double) nowFloor + (double) (time - startingUpOrDownTime) / upAndDownTime;
                 case downing:
                 case idle_downing:
-                    return (double) nowFloor - (double) (time - lastStartUpOrDownTime) / upAndDownTime;
+                    return (double) nowFloor - (double) (time - startingUpOrDownTime) / upAndDownTime;
                 default:
                     return (double) nowFloor;
             }
@@ -536,8 +536,8 @@ public class ElevatorSimulation {
                     p.setState(PassengerState.waiting_wont_abort);
                     queues[p.inFloor].add(p);
                     ctmp.setState(CarState.opening);  //取消电梯关门事件
-                    ctmp.lastStartOpenOrCloseTime = time - (openAndCloseTime - (time - ctmp.lastStartOpenOrCloseTime));
-                    events.add(new CarEvent(ctmp, ctmp.lastStartOpenOrCloseTime + openAndCloseTime, CarEventType.open_end));
+                    ctmp.startingOpenOrCloseTime = time - (openAndCloseTime - (time - ctmp.startingOpenOrCloseTime));
+                    events.add(new CarEvent(ctmp, ctmp.startingOpenOrCloseTime + openAndCloseTime, CarEventType.open_end));
                     return;
                 }
             }
@@ -617,7 +617,7 @@ public class ElevatorSimulation {
 
     private void exit_end(Passenger p, Cabin c) {
         c.passengerInOrOut = null;
-        events.add(new PassengerEvent(p, c, time, PassengerEventType.leave));
+        events.add(new PassengerEvent(p, null, time, PassengerEventType.leave));
         var nextp = c.getNextPassengerForExiting();
         if (nextp == null) {
             nextp = c.getNextPassengerForEntering();
@@ -636,9 +636,10 @@ public class ElevatorSimulation {
         p.setState(PassengerState.leaved);
     }
 
+
     private void open_start(Cabin c) {
         c.setState(CarState.opening);
-        c.lastStartOpenOrCloseTime = time;
+        c.startingOpenOrCloseTime = time;
         c.isCalling[c.nowFloor] = false;  //更新按钮
         if (c.direction == Direction.up) {
             callingUp[c.nowFloor] = false;
@@ -680,7 +681,7 @@ public class ElevatorSimulation {
 
     private void close_start(Cabin c) {
         c.setState(CarState.closing);
-        c.lastStartOpenOrCloseTime = time;
+        c.startingOpenOrCloseTime = time;
         events.add(new CarEvent(c, time + openAndCloseTime, CarEventType.close_end));
 
         //更新乘客等待状态
@@ -881,9 +882,9 @@ public class ElevatorSimulation {
         c.setState(CarState.upping);
         if (c.state == CarState.idle_downing) {
             c.nowFloor--;
-            c.lastStartUpOrDownTime = time - (upAndDownTime - (time - c.lastStartUpOrDownTime));
+            c.startingUpOrDownTime = time - (upAndDownTime - (time - c.startingUpOrDownTime));
         }
-        events.add(new CarEvent(c, c.lastStartUpOrDownTime + upAndDownTime, CarEventType.up_end));
+        events.add(new CarEvent(c, c.startingUpOrDownTime + upAndDownTime, CarEventType.up_end));
     }
 
     private void half_down_start(Cabin c) {
@@ -891,15 +892,15 @@ public class ElevatorSimulation {
         c.setState(CarState.downing);
         if (c.state == CarState.idle_upping) {
             c.nowFloor++;
-            c.lastStartUpOrDownTime = time - (upAndDownTime - (time - c.lastStartUpOrDownTime));
+            c.startingUpOrDownTime = time - (upAndDownTime - (time - c.startingUpOrDownTime));
         }
-        events.add(new CarEvent(c, c.lastStartUpOrDownTime + upAndDownTime, CarEventType.down_end));
+        events.add(new CarEvent(c, c.startingUpOrDownTime + upAndDownTime, CarEventType.down_end));
     }
 
     private void up_start(Cabin c) {
         c.setState(CarState.upping);
         c.setDirection(Direction.up);
-        c.lastStartUpOrDownTime = time;
+        c.startingUpOrDownTime = time;
         events.add(new CarEvent(c, time + upAndDownTime, CarEventType.up_end));
     }
 
@@ -921,7 +922,7 @@ public class ElevatorSimulation {
     private void down_start(Cabin c) {
         c.setState(CarState.downing);
         c.setDirection(Direction.down);
-        c.lastStartUpOrDownTime = time;
+        c.startingUpOrDownTime = time;
         events.add(new CarEvent(c, time + upAndDownTime, CarEventType.down_end));
     }
 
@@ -961,7 +962,7 @@ public class ElevatorSimulation {
     private void idle_up_start(Cabin c) {
         c.setState(CarState.idle_upping);
         c.setDirection(Direction.none);
-        c.lastStartUpOrDownTime = time;
+        c.startingUpOrDownTime = time;
         events.add(new CarEvent(c, time + upAndDownTime, CarEventType.idle_up_end));
     }
 
@@ -979,7 +980,7 @@ public class ElevatorSimulation {
     private void idle_down_start(Cabin c) {
         c.setState(CarState.idle_downing);
         c.setDirection(Direction.none);
-        c.lastStartUpOrDownTime = time;
+        c.startingUpOrDownTime = time;
         events.add(new CarEvent(c, time + upAndDownTime, CarEventType.idle_down_end));
     }
 
