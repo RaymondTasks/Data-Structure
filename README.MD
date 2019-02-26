@@ -1,8 +1,8 @@
-# Codes of Data Structure Course
+# Code of Data Structure Course
 
 Implement some basic data structures by Java or Kotlin.
 
-Some Labs:
+Labs:
 
 - Lab1 Polynomial implemented by LinkedList
 
